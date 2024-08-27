@@ -1,7 +1,8 @@
 // config.js
 const config = {
     port: process.env.PORT || 3000,
-    fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    fileSizes: ['100KB', '500KB', '1MB'],
+    // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
     staticDir: 'static',
     logFormat: 'combined'
 };
@@ -109,6 +110,10 @@ async function generateFiles() {
                 console.log(`Downloaded file: ${destPath}`);
             } catch (error) {
                 console.error(`Error downloading ${file.url}: ${error.message}`);
+                if (error.response) {
+                    console.error(`Status: ${error.response.status}`);
+                    console.error(`Headers: ${JSON.stringify(error.response.headers)}`);
+                }
             }
         }
     }

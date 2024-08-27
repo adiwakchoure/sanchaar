@@ -2,7 +2,8 @@
 const config = {
     numRuns: 1,
     numMeasurements: 3,
-    fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    fileSizes: ['100KB', '500KB', '1MB'],
     diagnosticTimeout: 30000,
     websocketTimeout: 5000 // milliseconds
 };
