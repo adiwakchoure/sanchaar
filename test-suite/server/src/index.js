@@ -64,8 +64,8 @@ app.get('/stream', (req, res) => {
 });
 
 // Start the server
-server.listen(config.port, async () => {
-    console.log(`Server running on port ${config.port}`);
+server.listen(process.argv[2] || config.port, async () => {
+    console.log(`Server running on port ${process.argv[2] || config.port}`);
     await generateFiles();
 });
 
