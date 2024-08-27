@@ -1,9 +1,9 @@
 // config.js
 const config = {
     numRuns: 1,
-    numMeasurements: 3,
+    numMeasurements: 15,
     // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
-    fileSizes: ['100KB', '500KB', '1MB'],
+    fileSizes: ['100KB', '500KB', '1MB',  '5MB'],
     diagnosticTimeout: 30000,
     websocketTimeout: 5000 // milliseconds
 };
@@ -66,7 +66,7 @@ async function runTests() {
         const startTime = performance.now();
 
         // Collect diagnostics once
-        await collectNetworkDiagnostics();
+        // await collectNetworkDiagnostics();
 
         for (let i = 0; i < config.numRuns; i++) {
             logger.info(`Starting run ${i + 1} of ${config.numRuns}`);
@@ -117,8 +117,12 @@ function calculateSummaryStats(allMetrics) {
         if (key === 'downloadTimes') {
             summaryStats.downloadTimes = {};
             for (const size of config.fileSizes) {
-                const times = allMetrics.map(m => m.downloadTimes[size]).filter(v => v !== null);
-                summaryStats.downloadTimes[size] = calculateStatistics(times);
+                const axiosTimes = allMetrics.map(m => m.downloadTimes[`axios_${size}`]).filter(v => v !== null);
+                const curlTimes = allMetrics.map(m => m.downloadTimes[`curl_${size}`]).filter(v => v !== null);
+                const curlThroughputs = allMetrics.map(m => m.downloadTimes[`curl_${size}_throughput`]).filter(v => v !== null);
+                summaryStats.downloadTimes[`axios_${size}`] = calculateStatistics(axiosTimes);
+                summaryStats.downloadTimes[`curl_${size}`] = calculateStatistics(curlTimes);
+                summaryStats.downloadTimes[`curl_${size}_throughput`] = calculateStatistics(curlThroughputs);
             }
         } else {
             const values = allMetrics.map(m => m[key]).filter(v => v !== null);
@@ -148,7 +152,7 @@ function formatResults(allMetrics, summaryStats, totalDuration) {
         tool: toolName,
         measurements: [
             {
-                protocol_id: 'http',
+                protocol_id: 'tcp',
                 measurements: allMetrics.map((m, index) => ({
                     measurement_id: `measurement_${index + 1}`,
                     url: url,
@@ -183,14 +187,33 @@ async function testFileDownloading() {
     for (const size of config.fileSizes) {
         const fileUrl = `${url}/file_${size}`;
         try {
-            const start = performance.now();
+            // Axios download
+            const axiosStart = performance.now();
             await axios.get(fileUrl, { responseType: 'arraybuffer' });
-            const duration = performance.now() - start;
-            logger.info(`Downloaded ${size} in ${duration} milliseconds`);
-            metrics.downloadTimes[size] = duration;
+            const axiosDuration = performance.now() - axiosStart;
+            logger.info(`Axios downloaded ${size} in ${axiosDuration} milliseconds`);
+            metrics.downloadTimes[`axios_${size}`] = axiosDuration;
+
+            // Curl download with throughput
+            const curlCommand = `curl -s -w "%{time_total},%{speed_download}" -o /dev/null ${fileUrl}`;
+            const curlResult = await safeExec(curlCommand);
+            if (curlResult !== null) {
+                const [time, speed] = curlResult.trim().split(',').map(parseFloat);
+                const curlDuration = time * 1000; // Convert to milliseconds
+                const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
+                logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
+                metrics.downloadTimes[`curl_${size}`] = curlDuration;
+                metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
+            } else {
+                logger.error(`Error downloading ${size} file with curl`);
+                metrics.downloadTimes[`curl_${size}`] = null;
+                metrics.downloadTimes[`curl_${size}_throughput`] = null;
+            }
         } catch (error) {
             logger.error(`Error downloading ${size} file: ${error.message}`);
-            metrics.downloadTimes[size] = null;
+            metrics.downloadTimes[`axios_${size}`] = null;
+            metrics.downloadTimes[`curl_${size}`] = null;
+            metrics.downloadTimes[`curl_${size}_throughput`] = null;
         }
     }
 }
