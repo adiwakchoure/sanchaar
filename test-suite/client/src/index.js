@@ -1,7 +1,7 @@
 // config.js
 const config = {
     numRuns: 1,
-    numMeasurements: 15,
+    numMeasurements: 3,
     // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
     fileSizes: ['100KB', '500KB', '1MB',  '5MB'],
     diagnosticTimeout: 30000,
@@ -66,7 +66,7 @@ async function runTests() {
         const startTime = performance.now();
 
         // Collect diagnostics once
-        // await collectNetworkDiagnostics();
+        await collectNetworkDiagnostics();
 
         for (let i = 0; i < config.numRuns; i++) {
             logger.info(`Starting run ${i + 1} of ${config.numRuns}`);

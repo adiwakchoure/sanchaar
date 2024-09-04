@@ -12,6 +12,7 @@
     "browsertime": "^22.9.0",
     "lodash": "^4.17.21",
     "node-nmap": "^4.0.0",
+    "nodejs-traceroute": "^2.0.1",
     "pino": "^9.3.2",
     "playwright": "^1.46.1",
     "ws": "^8.18.0"
