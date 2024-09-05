@@ -3,13 +3,12 @@ const config = {
     numRuns: 1,
     numMeasurements: 3,
     // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
-    fileSizes: ['100KB', '500KB', '1MB',  '5MB'],
+    fileSizes: ['100KB', '500KB', '1MB',  '5MB', '10MB'],
     diagnosticTimeout: 30000,
     websocketTimeout: 5000 // milliseconds
 };
 
 // index.js
-const axios = require('axios');
 const WebSocket = require('ws');
 const fs = require('fs');
 const path = require('path');
@@ -55,6 +54,7 @@ validateInput(url, toolName);
         firstContentfulPaint: null,
         largestContentfulPaint: null,
         cumulativeLayoutShift: null,
+        packetCount: {},
     };
 
     let diagnostics = {};
@@ -114,15 +114,13 @@ function calculateSummaryStats(allMetrics) {
     const summaryStats = {};
     
     for (const key of Object.keys(metrics)) {
-        if (key === 'downloadTimes') {
-            summaryStats.downloadTimes = {};
+        if (key === 'downloadTimes' || key === 'packetCount') {
+            summaryStats[key] = {};
             for (const size of config.fileSizes) {
-                const axiosTimes = allMetrics.map(m => m.downloadTimes[`axios_${size}`]).filter(v => v !== null);
-                const curlTimes = allMetrics.map(m => m.downloadTimes[`curl_${size}`]).filter(v => v !== null);
-                const curlThroughputs = allMetrics.map(m => m.downloadTimes[`curl_${size}_throughput`]).filter(v => v !== null);
-                summaryStats.downloadTimes[`axios_${size}`] = calculateStatistics(axiosTimes);
-                summaryStats.downloadTimes[`curl_${size}`] = calculateStatistics(curlTimes);
-                summaryStats.downloadTimes[`curl_${size}_throughput`] = calculateStatistics(curlThroughputs);
+                const curlTimes = allMetrics.map(m => m[key][`curl_${size}`]).filter(v => v !== null);
+                const curlThroughputs = allMetrics.map(m => m[key][`curl_${size}_throughput`]).filter(v => v !== null);
+                summaryStats[key][`curl_${size}`] = calculateStatistics(curlTimes);
+                summaryStats[key][`curl_${size}_throughput`] = calculateStatistics(curlThroughputs);
             }
         } else {
             const values = allMetrics.map(m => m[key]).filter(v => v !== null);
@@ -158,6 +156,7 @@ function formatResults(allMetrics, summaryStats, totalDuration) {
                     url: url,
                     metrics: {
                         download_time: m.downloadTimes,
+                        packet_count: m.packetCount,
                         transfer_rate: m.transferRate,
                         latency: m.latency,
                         jitter: m.jitter,
@@ -187,33 +186,37 @@ async function testFileDownloading() {
     for (const size of config.fileSizes) {
         const fileUrl = `${url}/file_${size}`;
         try {
-            // Axios download
-            const axiosStart = performance.now();
-            await axios.get(fileUrl, { responseType: 'arraybuffer' });
-            const axiosDuration = performance.now() - axiosStart;
-            logger.info(`Axios downloaded ${size} in ${axiosDuration} milliseconds`);
-            metrics.downloadTimes[`axios_${size}`] = axiosDuration;
-
+            // Start tcpdump
+            const tcpdumpStart = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
+            
             // Curl download with throughput
             const curlCommand = `curl -s -w "%{time_total},%{speed_download}" -o /dev/null ${fileUrl}`;
             const curlResult = await safeExec(curlCommand);
+            
+            // Stop tcpdump and get packet count
+            const tcpdumpStop = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
+            const packetCount = parseInt(tcpdumpStop.match(/(\d+) packets captured/)[1]);
+            
             if (curlResult !== null) {
                 const [time, speed] = curlResult.trim().split(',').map(parseFloat);
                 const curlDuration = time * 1000; // Convert to milliseconds
                 const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
                 logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
+                logger.info(`Packet count for ${size}: ${packetCount}`);
                 metrics.downloadTimes[`curl_${size}`] = curlDuration;
                 metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
+                metrics.packetCount[`curl_${size}`] = packetCount;
             } else {
                 logger.error(`Error downloading ${size} file with curl`);
                 metrics.downloadTimes[`curl_${size}`] = null;
                 metrics.downloadTimes[`curl_${size}_throughput`] = null;
+                metrics.packetCount[`curl_${size}`] = null;
             }
         } catch (error) {
             logger.error(`Error downloading ${size} file: ${error.message}`);
-            metrics.downloadTimes[`axios_${size}`] = null;
             metrics.downloadTimes[`curl_${size}`] = null;
             metrics.downloadTimes[`curl_${size}_throughput`] = null;
+            metrics.packetCount[`curl_${size}`] = null;
         }
     }
 }
