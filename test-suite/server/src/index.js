@@ -1,8 +1,7 @@
 // config.js
 const config = {
     port: process.env.PORT || 3000,
-    fileSizes: ['100KB', '500KB', '1MB', '5MB'],
-    // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    fileSizes: ['500KB', '1MB', '5MB'],
     staticDir: 'static',
     logFormat: 'combined'
 };
@@ -15,7 +14,7 @@ const morgan = require('morgan');
 const WebSocket = require('ws');
 const http = require('http');
 const crypto = require('crypto');
-const axios = require('axios');
+const { exec } = require('child_process');
 
 const app = express();
 const server = http.createServer(app);
@@ -46,6 +45,41 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 // Routes
+
+app.get('/file_:size', (req, res) => {
+    const size = req.params.size;
+    const filePath = path.join(__dirname, config.staticDir, `file_${size}`);
+
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).send('File not found');
+    }
+
+    const clientIP = req.ip;
+    const tcpdumpCommand = `tcpdump -i any dst ${clientIP} -c 1000000 -l`;
+
+    // Start tcpdump
+    const tcpdump = exec(tcpdumpCommand);
+
+    let packetCount = 0;
+
+    tcpdump.stdout.on('data', (data) => {
+        const lines = data.toString().split('\n');
+        packetCount += lines.length - 1; // Subtract 1 to account for the last empty line
+    });
+
+    const fileStream = fs.createReadStream(filePath);
+
+    fileStream.on('end', () => {
+        // Stop tcpdump
+        tcpdump.kill();
+
+        // Send packet count as a header
+        res.setHeader('X-Packet-Count', packetCount.toString());
+        res.end();
+    });
+
+    fileStream.pipe(res);
+});
 
 app.get('/stream', (req, res) => {
     res.writeHead(200, {
@@ -105,15 +139,12 @@ async function generateFiles() {
         const destPath = path.join(staticDir, file.dest);
         if (!fs.existsSync(destPath)) {
             try {
-                const response = await axios.get(file.url, { responseType: 'arraybuffer' });
-                fs.writeFileSync(destPath, response.data);
+                const response = await fetch(file.url);
+                const buffer = await response.arrayBuffer();
+                fs.writeFileSync(destPath, Buffer.from(buffer));
                 console.log(`Downloaded file: ${destPath}`);
             } catch (error) {
                 console.error(`Error downloading ${file.url}: ${error.message}`);
-                if (error.response) {
-                    console.error(`Status: ${error.response.status}`);
-                    console.error(`Headers: ${JSON.stringify(error.response.headers)}`);
-                }
             }
         }
     }

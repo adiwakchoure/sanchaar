@@ -3,7 +3,7 @@ const config = {
     numRuns: 1,
     numMeasurements: 3,
     // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
-    fileSizes: ['100KB', '500KB', '1MB',  '5MB', '10MB'],
+    fileSizes: ['500KB', '1MB', '5MB'],
     diagnosticTimeout: 30000,
     websocketTimeout: 5000 // milliseconds
 };
@@ -55,6 +55,8 @@ validateInput(url, toolName);
         largestContentfulPaint: null,
         cumulativeLayoutShift: null,
         packetCount: {},
+        percentTransferred: {},
+        packetLoss: {},
     };
 
     let diagnostics = {};
@@ -66,7 +68,7 @@ async function runTests() {
         const startTime = performance.now();
 
         // Collect diagnostics once
-        await collectNetworkDiagnostics();
+        // await collectNetworkDiagnostics();
 
         for (let i = 0; i < config.numRuns; i++) {
             logger.info(`Starting run ${i + 1} of ${config.numRuns}`);
@@ -157,10 +159,11 @@ function formatResults(allMetrics, summaryStats, totalDuration) {
                     metrics: {
                         download_time: m.downloadTimes,
                         packet_count: m.packetCount,
+                        percent_transferred: m.percentTransferred,
+                        packet_loss: m.packetLoss,
                         transfer_rate: m.transferRate,
                         latency: m.latency,
                         jitter: m.jitter,
-                        packet_loss: m.packetLoss,
                         connection_time: m.connectionEstablishmentTime,
                         tls_handshake_time: m.tlsHandshakeTime,
                         dns_lookup_time: m.dnsLookupTime,
@@ -189,34 +192,51 @@ async function testFileDownloading() {
             // Start tcpdump
             const tcpdumpStart = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
             
-            // Curl download with throughput
-            const curlCommand = `curl -s -w "%{time_total},%{speed_download}" -o /dev/null ${fileUrl}`;
+            // Curl download with throughput and size info
+            const curlCommand = `curl -s -w "%{time_total},%{speed_download},%{size_download},%{size_header},%{http_code}" -D - -o /dev/null ${fileUrl}`;
             const curlResult = await safeExec(curlCommand);
             
             // Stop tcpdump and get packet count
             const tcpdumpStop = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
-            const packetCount = parseInt(tcpdumpStop.match(/(\d+) packets captured/)[1]);
+            const packetsReceived = parseInt(tcpdumpStop.match(/(\d+) packets captured/)[1]);
             
             if (curlResult !== null) {
-                const [time, speed] = curlResult.trim().split(',').map(parseFloat);
+                const [headers, stats] = curlResult.split('\r\n\r\n');
+                const [time, speed, sizeDownload, sizeHeader, httpCode] = stats.trim().split(',').map(parseFloat);
+                const packetsSent = parseInt(headers.match(/X-Packet-Count: (\d+)/)[1]);
+                
                 const curlDuration = time * 1000; // Convert to milliseconds
                 const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
+                const totalSize = parseInt(size.replace(/[^\d]/g, '')); // Extract size in KB/MB
+                const totalBytes = totalSize * (size.includes('MB') ? 1024 * 1024 : 1024); // Convert to bytes
+                const percentTransferred = ((sizeDownload + sizeHeader) / totalBytes) * 100;
+                const packetLoss = ((packetsSent - packetsReceived) / packetsSent) * 100;
+
                 logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
-                logger.info(`Packet count for ${size}: ${packetCount}`);
+                logger.info(`Packets sent: ${packetsSent}, Packets received: ${packetsReceived}`);
+                logger.info(`Packet loss: ${packetLoss.toFixed(2)}%`);
+                logger.info(`Percent transferred: ${percentTransferred.toFixed(2)}%`);
+
                 metrics.downloadTimes[`curl_${size}`] = curlDuration;
                 metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
-                metrics.packetCount[`curl_${size}`] = packetCount;
+                metrics.packetCount[`curl_${size}`] = {sent: packetsSent, received: packetsReceived};
+                metrics.percentTransferred[`curl_${size}`] = percentTransferred;
+                metrics.packetLoss[`curl_${size}`] = packetLoss;
             } else {
                 logger.error(`Error downloading ${size} file with curl`);
                 metrics.downloadTimes[`curl_${size}`] = null;
                 metrics.downloadTimes[`curl_${size}_throughput`] = null;
                 metrics.packetCount[`curl_${size}`] = null;
+                metrics.percentTransferred[`curl_${size}`] = null;
+                metrics.packetLoss[`curl_${size}`] = null;
             }
         } catch (error) {
             logger.error(`Error downloading ${size} file: ${error.message}`);
             metrics.downloadTimes[`curl_${size}`] = null;
             metrics.downloadTimes[`curl_${size}_throughput`] = null;
             metrics.packetCount[`curl_${size}`] = null;
+            metrics.percentTransferred[`curl_${size}`] = null;
+            metrics.packetLoss[`curl_${size}`] = null;
         }
     }
 }
@@ -378,17 +398,13 @@ async function measureLatency() {
             logger.warn('Could not find RTT line in ping results');
         }
         
-        const packetLossLine = pingLines.find(line => line.includes('packet loss'));
+        const packetLossLine = pingLines.find(line => line.includes('packets transmitted'));
         if (packetLossLine) {
-            const packetLossMatch = packetLossLine.match(/(\d+(?:\.\d+)?)% packet loss/);
-            if (packetLossMatch) {
-                metrics.packetLoss = parseFloat(packetLossMatch[1]);
-                logger.info(`Measured packet loss: ${metrics.packetLoss}%`);
-            } else {
-                logger.warn('Could not extract packet loss percentage');
-            }
+            const [transmitted, received] = packetLossLine.match(/\d+/g).map(Number);
+            metrics.packetLoss = ((transmitted - received) / transmitted) * 100;
+            logger.info(`Measured packet loss: ${metrics.packetLoss.toFixed(2)}%`);
         } else {
-            logger.warn('Could not find packet loss line in ping results');
+            logger.warn('Could not find packet transmission line in ping results');
         }
     } else {
         logger.warn('No ping results to parse for latency measurement');
