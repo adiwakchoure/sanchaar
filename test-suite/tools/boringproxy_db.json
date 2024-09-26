@@ -1,0 +1,15 @@
+{
+  "admin_domain": "",
+  "tokens": {
+    "1RhhCwPAeznLHNyin48mmCIeOGOzjkma": {
+      "owner": "admin"
+    }
+  },
+  "tunnels": {},
+  "users": {
+    "admin": {
+      "is_admin": true,
+      "clients": {}
+    }
+  }
+}

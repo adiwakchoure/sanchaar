@@ -1,0 +1,57 @@
+# Tor state file last generated on 2024-09-21 16:03:52 local time
+# Other times below are in UTC
+# You *do not* need to edit this file.
+
+CircuitBuildTimeBin 485 1
+CircuitBuildTimeBin 495 1
+CircuitBuildTimeBin 635 1
+CircuitBuildTimeBin 705 1
+CircuitBuildTimeBin 725 1
+CircuitBuildTimeBin 735 1
+CircuitBuildTimeBin 745 2
+CircuitBuildTimeBin 805 1
+CircuitBuildTimeBin 865 2
+CircuitBuildTimeBin 895 1
+CircuitBuildTimeBin 925 1
+CircuitBuildTimeBin 935 1
+CircuitBuildTimeBin 995 1
+CircuitBuildTimeBin 1005 1
+CircuitBuildTimeBin 1035 1
+CircuitBuildTimeBin 1045 2
+CircuitBuildTimeBin 1055 1
+CircuitBuildTimeBin 1125 1
+CircuitBuildTimeBin 1145 3
+CircuitBuildTimeBin 1155 1
+CircuitBuildTimeBin 1305 1
+CircuitBuildTimeBin 1325 1
+CircuitBuildTimeBin 1395 1
+CircuitBuildTimeBin 1405 1
+CircuitBuildTimeBin 1455 2
+CircuitBuildTimeBin 1475 2
+CircuitBuildTimeBin 1525 1
+CircuitBuildTimeBin 1535 1
+CircuitBuildTimeBin 1625 1
+Dormant 0
+Guard in=default rsa_id=E959EDAB30F44AE23BBD0147A6E1880CAE059712 nickname=sendos sampled_on=2024-09-13T12:47:02 sampled_idx=0 sampled_by=0.4.8.10 listed=1 confirmed_on=2024-09-09T21:09:47 confirmed_idx=0 pb_use_attempts=17.000000 pb_use_successes=17.000000 pb_circ_attempts=21.000000 pb_circ_successes=21.000000 pb_successful_circuits_closed=21.000000
+Guard in=default rsa_id=926955277C7BDB6CD1E1561A91847CBCD5B079E5 nickname=0x3d01 sampled_on=2024-09-10T12:08:51 sampled_idx=1 sampled_by=0.4.8.10 listed=1 confirmed_on=2024-09-17T17:11:33 confirmed_idx=1 pb_use_attempts=5.000000 pb_use_successes=5.000000 pb_circ_attempts=10.000000 pb_circ_successes=9.000000 pb_successful_circuits_closed=9.000000
+Guard in=default rsa_id=A8D34CA04DDEFAB78F6D5341B1DE00C5D4D7D91C nickname=vidaloca sampled_on=2024-09-12T22:03:00 sampled_idx=2 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=013ABAED8F4CDB677BE0B5212E4B2583B86035EE nickname=b0rken sampled_on=2024-09-10T02:38:37 sampled_idx=3 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=C22F711B9F0C22AB2D64B1A49152C8DFA920951C nickname=Felix sampled_on=2024-09-13T00:27:39 sampled_idx=4 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=37A5E87EBD0B99B09650B32C8F3E085CF83A6EA7 nickname=Unnamed sampled_on=2024-09-18T01:05:49 sampled_idx=5 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=D33E642CEA39688157ADBFB86AC68E764F598058 nickname=AdeptSystems1 sampled_on=2024-09-19T18:53:48 sampled_idx=6 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=2B96BE57F8F27D2F20C4E41A5EA0C854D9AEA815 nickname=prsv sampled_on=2024-09-09T17:00:18 sampled_idx=7 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=B9F69F144DF5BE2FD92DDBF9E67C659ECC5E539B nickname=Vanbo sampled_on=2024-09-20T22:54:53 sampled_idx=8 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=B2FC8F2D98DB351599166C4D0E20862730C3426A nickname=Mewtwo sampled_on=2024-09-20T15:01:39 sampled_idx=9 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=C80B8274FCE2FF2F7E2079D1C397F685DEFA0793 nickname=Citrinio sampled_on=2024-09-09T21:25:36 sampled_idx=10 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=5CE3AD8AD04ADE66C0037A3CF5F7F7A40D48A20B nickname=polizeierziehung sampled_on=2024-09-13T02:29:05 sampled_idx=11 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=356A3FA17857822B3B07FFD0195DF79271421916 nickname=featherRelay sampled_on=2024-09-14T07:18:33 sampled_idx=12 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=58FE6772343FF6CD9E53D8B040A2CE495808E93D nickname=Kanellos sampled_on=2024-09-12T12:40:06 sampled_idx=13 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=A3E13656DDD86B2750A379CD2E1F2EC616591CD2 nickname=Sidewinder sampled_on=2024-09-14T21:12:17 sampled_idx=14 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=6E402A413395D0E8794817C3C50C2B1F7DBF1B0E nickname=Unnamed sampled_on=2024-09-12T14:59:20 sampled_idx=15 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=B0897E4B7B42B20AC1A89856BC0F87658158795C nickname=Quetzalcoatl sampled_on=2024-09-17T06:06:13 sampled_idx=16 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=0CDCFB0B6E1500E57BDD7F240543EBAEF81C11CA nickname=TheLoneGunmen sampled_on=2024-09-18T23:52:52 sampled_idx=17 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=9021C967F93B5698AB1F53907F7D0F96A9FB2067 nickname=Gilgamesh sampled_on=2024-09-11T19:23:44 sampled_idx=18 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=474EA76AC6B5BA6656560A2C1465C2A299751AD2 nickname=jello sampled_on=2024-09-18T16:50:51 sampled_idx=19 sampled_by=0.4.8.10 listed=1
+LastWritten 2024-09-21 16:03:52
+TorVersion Tor 0.4.8.10
+TotalBuildTimes 36

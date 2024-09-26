@@ -1,0 +1,27 @@
+# Tor state file last generated on 2024-09-21 16:04:31 local time
+# Other times below are in UTC
+# You *do not* need to edit this file.
+
+Dormant 0
+Guard in=default rsa_id=52E78985D513594EA087D1B2AE280CCF7B954EBB nickname=NTH36R5 sampled_on=2024-09-11T10:10:54 sampled_idx=0 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=219BD3D1F11BEE8ED4AD70CFE1F08C697048870D nickname=cuppasle sampled_on=2024-09-18T09:39:11 sampled_idx=1 sampled_by=0.4.8.10 listed=1 confirmed_on=2024-09-18T10:12:51 confirmed_idx=0
+Guard in=default rsa_id=1AA63474AB2277A944E452649EB19044F21314E4 nickname=TorRelay1b sampled_on=2024-09-13T07:37:55 sampled_idx=2 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=D7C218579374ED6525E12362A0B2A3DAEB0B5CEC nickname=Unnamed sampled_on=2024-09-15T15:58:36 sampled_idx=3 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=7460C77412E8C8E65ABE1797C652161FE903EBFB nickname=AOP sampled_on=2024-09-12T02:02:07 sampled_idx=4 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=08CB84956340C2DBD6E22DEA25CA53F750BB5AE1 nickname=prsv sampled_on=2024-09-21T04:34:50 sampled_idx=5 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=F9246DEF2B653807236DA134F2AEAB103D58ABFE nickname=Freebird31 sampled_on=2024-09-15T18:25:24 sampled_idx=6 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=5E4EFF478027C5457C4E38AD4C9AD7ED3385C7E5 nickname=bauruine sampled_on=2024-09-18T20:35:50 sampled_idx=7 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=D047814051C453B1650AE2B630FC9629B33E5D23 nickname=BahuProHosting sampled_on=2024-09-18T02:24:06 sampled_idx=8 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=1F266797A941DF885B96C2862F2A007FD32B66D9 nickname=fuchs4 sampled_on=2024-09-16T03:06:30 sampled_idx=9 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=5BA3C23E8A7F45FA2A7D1D280FF8AB788A5EA01B nickname=clubflower sampled_on=2024-09-18T06:06:53 sampled_idx=10 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=1F4078E841EC74C92C88D69B296A8E2EAA2349AA nickname=devineRelay sampled_on=2024-09-15T16:55:42 sampled_idx=11 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=B888BBAF595BB9F5F11F4B7BD4138AC004DFA5F4 nickname=Unnamed sampled_on=2024-09-14T16:07:10 sampled_idx=12 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=76D58DE9BF46B35984FC45BB0BAE361A66968ABF nickname=Merlin sampled_on=2024-09-12T22:54:13 sampled_idx=13 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=8499AF5D981904BDD4A76737B790DCC97AAF09D6 nickname=pitarda69 sampled_on=2024-09-11T06:28:30 sampled_idx=14 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=1119A89E729DB65839FB232A1E0F8669B0AE84DF nickname=zerodivided sampled_on=2024-09-14T09:54:31 sampled_idx=15 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=9DC0D6442AE1036FDB556185C95754911EB1065A nickname=phobos sampled_on=2024-09-19T20:12:00 sampled_idx=16 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=A85182BA1AEBE09BF54F422310095E9B826E1324 nickname=clubberlanng sampled_on=2024-09-13T06:53:49 sampled_idx=17 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=246490C9408834587E96A68A05BEF039F284185A nickname=Antonia sampled_on=2024-09-10T15:18:52 sampled_idx=18 sampled_by=0.4.8.10 listed=1
+Guard in=default rsa_id=8EED46FF99D4A237356D8B365F94B43F2444C0AD nickname=sciurus1 sampled_on=2024-09-14T13:04:36 sampled_idx=19 sampled_by=0.4.8.10 listed=1
+LastWritten 2024-09-21 16:04:31
+TorVersion Tor 0.4.8.10

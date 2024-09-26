@@ -1,6 +1,6 @@
 // config.js
 const config = {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8000,
     fileSizes: ['500KB', '1MB', '5MB'],
     staticDir: 'static',
     logFormat: 'combined'

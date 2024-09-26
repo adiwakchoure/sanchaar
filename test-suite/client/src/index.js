@@ -189,47 +189,68 @@ async function testFileDownloading() {
     for (const size of config.fileSizes) {
         const fileUrl = `${url}/file_${size}`;
         try {
+            logger.info(`Starting download of ${size} file from ${fileUrl}`);
+
             // Start tcpdump
             const tcpdumpStart = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
+            logger.info(`tcpdump start result: ${tcpdumpStart}`);
             
             // Curl download with throughput and size info
             const curlCommand = `curl -s -w "%{time_total},%{speed_download},%{size_download},%{size_header},%{http_code}" -D - -o /dev/null ${fileUrl}`;
+            logger.info(`Executing curl command: ${curlCommand}`);
+
             const curlResult = await safeExec(curlCommand);
+            logger.info(`Curl result: ${curlResult}`);
             
             // Stop tcpdump and get packet count
             const tcpdumpStop = await safeExec(`sudo tcpdump -i any host ${new URL(url).hostname} -c 1 -l`);
-            const packetsReceived = parseInt(tcpdumpStop.match(/(\d+) packets captured/)[1]);
-            
-            if (curlResult !== null) {
-                const [headers, stats] = curlResult.split('\r\n\r\n');
-                const [time, speed, sizeDownload, sizeHeader, httpCode] = stats.trim().split(',').map(parseFloat);
-                const packetsSent = parseInt(headers.match(/X-Packet-Count: (\d+)/)[1]);
-                
-                const curlDuration = time * 1000; // Convert to milliseconds
-                const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
-                const totalSize = parseInt(size.replace(/[^\d]/g, '')); // Extract size in KB/MB
-                const totalBytes = totalSize * (size.includes('MB') ? 1024 * 1024 : 1024); // Convert to bytes
-                const percentTransferred = ((sizeDownload + sizeHeader) / totalBytes) * 100;
-                const packetLoss = ((packetsSent - packetsReceived) / packetsSent) * 100;
+            logger.info(`tcpdump stop result: ${tcpdumpStop}`);
 
-                logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
-                logger.info(`Packets sent: ${packetsSent}, Packets received: ${packetsReceived}`);
-                logger.info(`Packet loss: ${packetLoss.toFixed(2)}%`);
-                logger.info(`Percent transferred: ${percentTransferred.toFixed(2)}%`);
-
-                metrics.downloadTimes[`curl_${size}`] = curlDuration;
-                metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
-                metrics.packetCount[`curl_${size}`] = {sent: packetsSent, received: packetsReceived};
-                metrics.percentTransferred[`curl_${size}`] = percentTransferred;
-                metrics.packetLoss[`curl_${size}`] = packetLoss;
-            } else {
-                logger.error(`Error downloading ${size} file with curl`);
-                metrics.downloadTimes[`curl_${size}`] = null;
-                metrics.downloadTimes[`curl_${size}_throughput`] = null;
-                metrics.packetCount[`curl_${size}`] = null;
-                metrics.percentTransferred[`curl_${size}`] = null;
-                metrics.packetLoss[`curl_${size}`] = null;
+            if (!tcpdumpStop) {
+                throw new Error('tcpdump stop command failed');
             }
+
+            const packetsMatch = tcpdumpStop.match(/(\d+) packets captured/);
+            if (!packetsMatch) {
+                throw new Error('Failed to parse packet count from tcpdump output');
+            }
+
+            const packetsReceived = parseInt(packetsMatch[1]);
+            
+            if (curlResult === null) {
+                throw new Error('Curl command failed');
+            }
+
+            const [headers, stats] = curlResult.split('\r\n\r\n');
+            if (!stats) {
+                throw new Error('Failed to parse curl output');
+            }
+
+            const [time, speed, sizeDownload, sizeHeader, httpCode] = stats.trim().split(',').map(parseFloat);
+            const packetsSentMatch = headers.match(/X-Packet-Count: (\d+)/);
+            if (!packetsSentMatch) {
+                throw new Error('Failed to parse X-Packet-Count header');
+            }
+
+            const packetsSent = parseInt(packetsSentMatch[1]);
+            
+            const curlDuration = time * 1000; // Convert to milliseconds
+            const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
+            const totalSize = parseInt(size.replace(/[^\d]/g, '')); // Extract size in KB/MB
+            const totalBytes = totalSize * (size.includes('MB') ? 1024 * 1024 : 1024); // Convert to bytes
+            const percentTransferred = ((sizeDownload + sizeHeader) / totalBytes) * 100;
+            const packetLoss = ((packetsSent - packetsReceived) / packetsSent) * 100;
+
+            logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
+            logger.info(`Packets sent: ${packetsSent}, Packets received: ${packetsReceived}`);
+            logger.info(`Packet loss: ${packetLoss.toFixed(2)}%`);
+            logger.info(`Percent transferred: ${percentTransferred.toFixed(2)}%`);
+
+            metrics.downloadTimes[`curl_${size}`] = curlDuration;
+            metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
+            metrics.packetCount[`curl_${size}`] = {sent: packetsSent, received: packetsReceived};
+            metrics.percentTransferred[`curl_${size}`] = percentTransferred;
+            metrics.packetLoss[`curl_${size}`] = packetLoss;
         } catch (error) {
             logger.error(`Error downloading ${size} file: ${error.message}`);
             metrics.downloadTimes[`curl_${size}`] = null;
