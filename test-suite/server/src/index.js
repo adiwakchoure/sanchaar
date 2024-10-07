@@ -1,7 +1,8 @@
 // config.js
 const config = {
     port: process.env.PORT || 3000,
-    fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    fileSizes: ['100KB', '500KB', '1MB', '5MB'],
+    // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
     staticDir: 'static',
     logFormat: 'combined'
 };
@@ -64,8 +65,8 @@ app.get('/stream', (req, res) => {
 });
 
 // Start the server
-server.listen(config.port, async () => {
-    console.log(`Server running on port ${config.port}`);
+server.listen(process.argv[2] || config.port, async () => {
+    console.log(`Server running on port ${process.argv[2] || config.port}`);
     await generateFiles();
 });
 
@@ -109,6 +110,10 @@ async function generateFiles() {
                 console.log(`Downloaded file: ${destPath}`);
             } catch (error) {
                 console.error(`Error downloading ${file.url}: ${error.message}`);
+                if (error.response) {
+                    console.error(`Status: ${error.response.status}`);
+                    console.error(`Headers: ${JSON.stringify(error.response.headers)}`);
+                }
             }
         }
     }
