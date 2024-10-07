@@ -1,0 +1,250 @@
+[
+  {
+    "type": "destination",
+    "data": "146.190.194.169"
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 1,
+      "ip": "5.101.110.7",
+      "rtt1": "2.211 ms"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 2,
+      "ip": "143.244.192.34",
+      "rtt1": "3.971 ms"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 3,
+      "ip": "143.244.224.74",
+      "rtt1": "4.433 ms"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 4,
+      "ip": "143.244.192.93",
+      "rtt1": "159.962 ms"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 5,
+      "ip": "143.198.252.13",
+      "rtt1": "172.328 ms"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 6,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 7,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 8,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 9,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 10,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 11,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 12,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 13,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 14,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 15,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 16,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 17,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 18,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 19,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 20,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 21,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 22,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 23,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 24,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 25,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 26,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 27,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 28,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 29,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "hop",
+    "data": {
+      "hop": 30,
+      "ip": "*",
+      "rtt1": "*"
+    }
+  },
+  {
+    "type": "close",
+    "data": 0
+  }
+]

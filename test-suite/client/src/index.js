@@ -2,9 +2,9 @@
 const config = {
     numRuns: 1,
     numMeasurements: 3,
-    fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
+    fileSizes: ['100KB', '500KB', '1MB',  '5MB'],
     diagnosticTimeout: 30000,
-    bitrateTestDuration: 10, // seconds
     websocketTimeout: 5000 // milliseconds
 };
 
@@ -38,26 +38,26 @@ const toolName = process.argv[3];
 
 validateInput(url, toolName);
 
-const metrics = {
-    downloadTimes: {},
-    transferRate: null,
-    latency: null,
-    jitter: null,
-    packetLoss: null,
-    connectionEstablishmentTime: null,
-    tlsHandshakeTime: null,
-    dnsLookupTime: null,
-    timeToFirstByte: null,
-    totalTime: null,
-    loadTime: null,
-    domContentLoaded: null,
-    timeToInteractive: null,
-    firstContentfulPaint: null,
-    largestContentfulPaint: null,
-    cumulativeLayoutShift: null,
-};
+    const metrics = {
+        downloadTimes: {},
+        transferRate: null,
+        latency: null,
+        jitter: null,
+        packetLoss: null,
+        connectionEstablishmentTime: null,
+        tlsHandshakeTime: null,
+        dnsLookupTime: null,
+        timeToFirstByte: null,
+        totalTime: null,
+        loadTime: null,
+        domContentLoaded: null,
+        timeToInteractive: null,
+        firstContentfulPaint: null,
+        largestContentfulPaint: null,
+        cumulativeLayoutShift: null,
+    };
 
-let diagnostics = {};
+    let diagnostics = {};
 
 async function runTests() {
     try {
@@ -78,8 +78,9 @@ async function runTests() {
                 Object.keys(metrics).forEach(key => metrics[key] = null);
                 metrics.downloadTimes = {};
 
+                // Measure latency, jitter, and packet loss for each measurement
+                await measureLatency();
                 await testFileDownloading();
-                await testBitrateMeasurement();
                 await testWebSocket();
                 await measureWebPerformance();
                 
@@ -116,8 +117,12 @@ function calculateSummaryStats(allMetrics) {
         if (key === 'downloadTimes') {
             summaryStats.downloadTimes = {};
             for (const size of config.fileSizes) {
-                const times = allMetrics.map(m => m.downloadTimes[size]).filter(v => v !== null);
-                summaryStats.downloadTimes[size] = calculateStatistics(times);
+                const axiosTimes = allMetrics.map(m => m.downloadTimes[`axios_${size}`]).filter(v => v !== null);
+                const curlTimes = allMetrics.map(m => m.downloadTimes[`curl_${size}`]).filter(v => v !== null);
+                const curlThroughputs = allMetrics.map(m => m.downloadTimes[`curl_${size}_throughput`]).filter(v => v !== null);
+                summaryStats.downloadTimes[`axios_${size}`] = calculateStatistics(axiosTimes);
+                summaryStats.downloadTimes[`curl_${size}`] = calculateStatistics(curlTimes);
+                summaryStats.downloadTimes[`curl_${size}_throughput`] = calculateStatistics(curlThroughputs);
             }
         } else {
             const values = allMetrics.map(m => m[key]).filter(v => v !== null);
@@ -145,9 +150,9 @@ function formatResults(allMetrics, summaryStats, totalDuration) {
         duration: totalDuration,
         total_measurements: allMetrics.length,
         tool: toolName,
-        protocols: [
+        measurements: [
             {
-                protocol_id: 'http',
+                protocol_id: 'tcp',
                 measurements: allMetrics.map((m, index) => ({
                     measurement_id: `measurement_${index + 1}`,
                     url: url,
@@ -182,47 +187,34 @@ async function testFileDownloading() {
     for (const size of config.fileSizes) {
         const fileUrl = `${url}/file_${size}`;
         try {
-            const start = performance.now();
+            // Axios download
+            const axiosStart = performance.now();
             await axios.get(fileUrl, { responseType: 'arraybuffer' });
-            const duration = performance.now() - start;
-            logger.info(`Downloaded ${size} in ${duration} milliseconds`);
-            metrics.downloadTimes[size] = duration;
+            const axiosDuration = performance.now() - axiosStart;
+            logger.info(`Axios downloaded ${size} in ${axiosDuration} milliseconds`);
+            metrics.downloadTimes[`axios_${size}`] = axiosDuration;
+
+            // Curl download with throughput
+            const curlCommand = `curl -s -w "%{time_total},%{speed_download}" -o /dev/null ${fileUrl}`;
+            const curlResult = await safeExec(curlCommand);
+            if (curlResult !== null) {
+                const [time, speed] = curlResult.trim().split(',').map(parseFloat);
+                const curlDuration = time * 1000; // Convert to milliseconds
+                const throughput = speed * 8 / 1024 / 1024; // Convert B/s to Mbps
+                logger.info(`Curl downloaded ${size} in ${curlDuration} milliseconds with throughput ${throughput.toFixed(2)} Mbps`);
+                metrics.downloadTimes[`curl_${size}`] = curlDuration;
+                metrics.downloadTimes[`curl_${size}_throughput`] = throughput;
+            } else {
+                logger.error(`Error downloading ${size} file with curl`);
+                metrics.downloadTimes[`curl_${size}`] = null;
+                metrics.downloadTimes[`curl_${size}_throughput`] = null;
+            }
         } catch (error) {
             logger.error(`Error downloading ${size} file: ${error.message}`);
-            metrics.downloadTimes[size] = null;
+            metrics.downloadTimes[`axios_${size}`] = null;
+            metrics.downloadTimes[`curl_${size}`] = null;
+            metrics.downloadTimes[`curl_${size}_throughput`] = null;
         }
-    }
-}
-
-async function testBitrateMeasurement() {
-    const testUrl = `${url}/stream`;
-    
-    const start = performance.now();
-    let totalBytes = 0;
-
-    try {
-        const response = await axios({
-            method: 'get',
-            url: testUrl,
-            responseType: 'stream',
-            timeout: config.bitrateTestDuration * 1000
-        });
-
-        response.data.on('data', (chunk) => {
-            totalBytes += chunk.length;
-        });
-
-        await new Promise(resolve => setTimeout(resolve, config.bitrateTestDuration * 1000));
-        response.data.destroy();
-
-        const duration = (performance.now() - start) / 1000;
-        const bitrate = (totalBytes * 8) / (duration * 1024 * 1024); // Convert to Mbps
-
-        logger.info(`Measured bitrate: ${bitrate.toFixed(2)} Mbps`);
-        metrics.transferRate = bitrate;
-    } catch (error) {
-        logger.error(`Bitrate measurement error: ${error.message}`);
-        metrics.transferRate = null;
     }
 }
 
@@ -295,35 +287,6 @@ async function collectNetworkDiagnostics() {
 }
 
 function parseDiagnostics() {
-    if (diagnostics.ping) {
-        logger.info('Parsing ping results');
-        const pingLines = diagnostics.ping.split('\n');
-        const rttLine = pingLines.find(line => line.includes('rtt min/avg/max/mdev'));
-        if (rttLine) {
-            const [min, avg, max, mdev] = rttLine.split('=')[1].trim().split('/').map(parseFloat);
-            metrics.latency = avg;
-            metrics.jitter = mdev;
-            logger.info(`Parsed latency: ${metrics.latency}ms, jitter: ${metrics.jitter}ms`);
-        } else {
-            logger.warn('Could not find RTT line in ping results');
-        }
-        
-        const packetLossLine = pingLines.find(line => line.includes('packet loss'));
-        if (packetLossLine) {
-            const packetLossMatch = packetLossLine.match(/(\d+(?:\.\d+)?)% packet loss/);
-            if (packetLossMatch) {
-                metrics.packetLoss = parseFloat(packetLossMatch[1]);
-                logger.info(`Parsed packet loss: ${metrics.packetLoss}%`);
-            } else {
-                logger.warn('Could not extract packet loss percentage');
-            }
-        } else {
-            logger.warn('Could not find packet loss line in ping results');
-        }
-    } else {
-        logger.warn('No ping results to parse');
-    }
-
     if (diagnostics.curl) {
         logger.info('Parsing curl results');
         const [nameLookup, connect, appConnect, preTransfer, startTransfer, total] = diagnostics.curl.trim().split(',').map(parseFloat);
@@ -381,7 +344,7 @@ async function measureWebPerformance() {
                         largestContentfulPaint: lcpValue,
                         cumulativeLayoutShift: clsValue,
                         timeToFirstByte: navigationEntry.responseStart - navigationEntry.requestStart,
-                    });
+                   });
                 }, 3000);
             });
         });
@@ -393,6 +356,39 @@ async function measureWebPerformance() {
         logger.error(`Error measuring web performance: ${error.message}`);
     } finally {
         await browser.close();
+    }
+}
+
+async function measureLatency() {
+    const hostname = new URL(url).hostname;
+    const pingResult = await safeExec(`ping -c 10 ${hostname}`);
+    
+    if (pingResult) {
+        const pingLines = pingResult.split('\n');
+        const rttLine = pingLines.find(line => line.includes('rtt min/avg/max/mdev'));
+        if (rttLine) {
+            const [min, avg, max, mdev] = rttLine.split('=')[1].trim().split('/').map(parseFloat);
+            metrics.latency = avg;
+            metrics.jitter = mdev;
+            logger.info(`Measured latency: ${metrics.latency}ms, jitter: ${metrics.jitter}ms`);
+        } else {
+            logger.warn('Could not find RTT line in ping results');
+        }
+        
+        const packetLossLine = pingLines.find(line => line.includes('packet loss'));
+        if (packetLossLine) {
+            const packetLossMatch = packetLossLine.match(/(\d+(?:\.\d+)?)% packet loss/);
+            if (packetLossMatch) {
+                metrics.packetLoss = parseFloat(packetLossMatch[1]);
+                logger.info(`Measured packet loss: ${metrics.packetLoss}%`);
+            } else {
+                logger.warn('Could not extract packet loss percentage');
+            }
+        } else {
+            logger.warn('Could not find packet loss line in ping results');
+        }
+    } else {
+        logger.warn('No ping results to parse for latency measurement');
     }
 }
 
