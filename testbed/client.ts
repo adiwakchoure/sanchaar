@@ -6,10 +6,13 @@ import readline from 'readline';
 import { TunnelTool, tunnelTools } from './tools';
 import { performance } from 'perf_hooks';
 
-const SERVER_URL = 'http://localhost:3000';
+// const SERVER_HOST = 'localhost';
+const SERVER_HOST = 'localhost';
+const SERVER_PORT = 3000;
+const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
-const NUM_MEASUREMENTS = 1;
+const FILE_SIZES_MB = [1, 5]; // All sizes in megabytes (MB)
+const NUM_MEASUREMENTS = 10;
 
 const ENABLE_LOGGING = true;
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
@@ -429,17 +432,30 @@ async function performWebTest(url: string): Promise<CurlResult> {
     return [pcapSession, filename];
 }
 
-async function performMeasurements(tunnelTool: TunnelTool, enablePcap: boolean, numMeasurements: number): Promise<RunResult> {
-    const totalStopwatch = new Stopwatch();
-    const setupStopwatch = new Stopwatch();
-    const diagnosticsStopwatch = new Stopwatch();
+async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolean, numMeasurements: number): Promise<RunResult> {
+  const totalStopwatch = new Stopwatch();
+  const setupStopwatch = new Stopwatch();
+  const diagnosticsStopwatch = new Stopwatch();
+
+  totalStopwatch.start();
+  setupStopwatch.start();
+
+  if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
   
-    totalStopwatch.start();
-    setupStopwatch.start();
+    let tunnelUrl = ''; // Initialize tunnelUrl
+  try {
+      const response = await axios.post(`${SERVER_URL}/start-tunnel`, { toolName: tunnelTool.name });
+      tunnelUrl = response.data.url; // Assign the value here
+      console.log(`Tunnel started: ${tunnelUrl}`);
+  } catch (error) {
+      console.error('Failed to start tunnel via server:', error);
+      throw error;
+  }
   
-    if (ENABLE_LOGGING) console.log(`Starting tunnel with ${tunnelTool.name}`);
-    const tunnelUrl = await tunnelTool.start({ port: 3000 });
-    console.log(`Tunnel started: ${tunnelUrl}`);
+  if (!tunnelUrl) {
+      throw new Error('Tunnel URL is empty or invalid');
+  }
+
   
     let pcapSession = null;
     let pcapFilePath = null;
@@ -449,7 +465,7 @@ async function performMeasurements(tunnelTool: TunnelTool, enablePcap: boolean, 
   
     setupStopwatch.stop();
   
-    const url = new URL(tunnelUrl);
+    const url = new URL(tunnelUrl); 
     const domain = url.hostname;
   
     diagnosticsStopwatch.start();
@@ -499,7 +515,14 @@ async function performMeasurements(tunnelTool: TunnelTool, enablePcap: boolean, 
       pcapSession.close();
     }
   
-    await tunnelTool.stop();
+    // await tunnelTool.stop();
+    // Send a request to stop the tunnel on the server
+    try {
+        await axios.post(`${SERVER_URL}/stop-tunnel`, { toolName: tunnelTool.name });
+        console.log('Tunnel stopped successfully');
+    } catch (error) {
+        console.error('Failed to stop tunnel via server:', error);
+    }
   
     const totalDuration = totalStopwatch.getTiming().duration;
     const setupDuration = setupStopwatch.getTiming().duration;
@@ -548,7 +571,7 @@ async function main() {
   
         
     try {
-            const result = await performMeasurements(selectedTool, ENABLE_PCAP, numMeasurements);
+            const result = await performMeasurementsRun(selectedTool, ENABLE_PCAP, numMeasurements);
             const now = new Date();
             const pad = (n: number) => n.toString().padStart(2, '0');
             const date = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}`;
