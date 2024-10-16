@@ -148,59 +148,63 @@ export class CloudflareTunnel extends BaseTunnel {
     }
   }
 
-export class NgrokTunnel extends BaseTunnel {
-  name = 'Ngrok';
-  preSetupCommands = [['echo', 'Running pre-setup command for ngrok']];
-  preStartCommands = [['echo', 'Running pre-start command for ngrok']];
-
-  async launchTunnel({ port = 3000, urlPattern = /https:\/\/[^\s]+/ }: TunnelOptions): Promise<string> {
-    this.process = spawn('ngrok', ['http', port.toString()]);
-
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const options = {
-          hostname: '127.0.0.1',
-          port: 4040,
-          path: '/api/tunnels',
-          method: 'GET'
-        };
-
-        const req = http.request(options, (res) => {
-          let data = '';
-
-          res.on('data', (chunk) => {
-            data += chunk;
-          });
-
-          res.on('end', () => {
-            try {
-              const parsedData = JSON.parse(data);
-              const ngrokUrl = parsedData.tunnels[0]?.public_url;
-
-              if (ngrokUrl && ngrokUrl.match(urlPattern)) {
-                console.log(`ngrok tunnel started with URL: ${ngrokUrl}`);
-                resolve(ngrokUrl);
-              } else {
-                console.error('Could not retrieve ngrok URL.');
-                reject(new Error('Could not retrieve ngrok URL.'));
+  export class NgrokTunnel extends BaseTunnel {
+    name = 'Ngrok';
+    preSetupCommands = [['echo', 'Running pre-setup command for ngrok']];
+    preStartCommands = [['echo', 'Running pre-start command for ngrok']];
+  
+    async launchTunnel({ port = 3000, urlPattern = /https:\/\/[^\s]+/ }: TunnelOptions): Promise<string> {
+      this.process = spawn('ngrok', ['http', port.toString()]);
+  
+      return new Promise((resolve, reject) => {
+        this.process.stderr.on('data', (data: Buffer) => {
+          console.error('Ngrok error:', data.toString());
+        });
+  
+        setTimeout(() => {
+          const options = {
+            hostname: '127.0.0.1',
+            port: 4040,
+            path: '/api/tunnels',
+            method: 'GET'
+          };
+  
+          const req = http.request(options, (res) => {
+            let data = '';
+  
+            res.on('data', (chunk) => {
+              data += chunk;
+            });
+  
+            res.on('end', () => {
+              try {
+                const parsedData = JSON.parse(data);
+                const ngrokUrl = parsedData.tunnels[0]?.public_url;
+  
+                if (ngrokUrl && ngrokUrl.match(urlPattern)) {
+                  console.log(`ngrok tunnel started with URL: ${ngrokUrl}`);
+                  resolve(ngrokUrl);
+                } else {
+                  console.error('Could not retrieve ngrok URL.');
+                  reject(new Error('Could not retrieve ngrok URL.'));
+                }
+              } catch (error) {
+                console.error('Error parsing ngrok response:', error);
+                reject(error);
               }
-            } catch (error) {
-              console.error('Error parsing ngrok response:', error);
-              reject(error);
-            }
+            });
           });
-        });
-
-        req.on('error', (error) => {
-          console.error('Error fetching ngrok URL:', error);
-          reject(error);
-        });
-
-        req.end();
-      }, 5000);
-    });
+  
+          req.on('error', (error) => {
+            console.error('Error fetching ngrok URL:', error);
+            reject(error);
+          });
+  
+          req.end();
+        }, 10000); // Increased delay to 10 seconds
+      });
+    }
   }
-}
 
 export const tunnelTools: TunnelTool[] = [new CloudflareTunnel(), new NgrokTunnel(), new LocalTunnel()];
 
@@ -229,4 +233,4 @@ async function executeTool(toolName: string, options: TunnelOptions = { port: 30
   }
 }
 
-executeTool('LocalTunnel');
+// executeTool('Ngrok');
