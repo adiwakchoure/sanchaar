@@ -9,7 +9,7 @@ let output = '';
 // Capture stdout and stderr
 cloudflared.stdout.on('data', (data) => {
     output += data.toString();
-    // console.log(`STDOUT: ${data.toString()}`);
+    console.log(`STDOUT: ${data.toString()}`);
 });
 
 cloudflared.stderr.on('data', (data) => {
@@ -31,3 +31,6 @@ cloudflared.on('close', (code) => {
 
 // Keep the process running
 process.stdin.resume();
+
+// Tunnel uuid
+// a44ed555-6b0c-4016-a959-ea7e6e69e330

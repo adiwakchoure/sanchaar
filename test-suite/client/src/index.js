@@ -1,7 +1,7 @@
 // config.js
 const config = {
     numRuns: 1,
-    numMeasurements: 3,
+    numMeasurements: 1,
     // fileSizes: ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB'],
     fileSizes: ['100KB', '500KB', '1MB',  '5MB'],
     diagnosticTimeout: 30000,
@@ -66,7 +66,7 @@ async function runTests() {
         const startTime = performance.now();
 
         // Collect diagnostics once
-        await collectNetworkDiagnostics();
+        // await collectNetworkDiagnostics();
 
         for (let i = 0; i < config.numRuns; i++) {
             logger.info(`Starting run ${i + 1} of ${config.numRuns}`);
@@ -98,11 +98,12 @@ async function runTests() {
         const results = formatResults(allMetrics, summaryStats, totalDuration);
 
         // Create the directory if it doesn't exist
-        const resultsDir = path.join('results', toolName);
+        const resultsDir = path.join('../../testbed/results');
+        // const resultsDir = path.join('../../testbed/results', toolName);
         fs.mkdirSync(resultsDir, { recursive: true });
 
         // Save combined results to a file
-        const resultsFile = path.join(resultsDir, `results_${Date.now()}.json`);
+        const resultsFile = path.join(resultsDir, `${Date.now()}_${toolName}.json`);
         fs.writeFileSync(resultsFile, JSON.stringify(results, null, 2));
         logger.info(`All tests completed and results saved to ${resultsFile}`);
     } catch (error) {

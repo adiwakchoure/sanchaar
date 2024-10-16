@@ -1,6 +1,5 @@
 const { spawn } = require('child_process');
 const http = require('http');
-const fetch = require('node-fetch');
 
 // console.log('Starting ngrok...');
 
@@ -8,18 +7,42 @@ const fetch = require('node-fetch');
 const ngrok = spawn('ngrok', ['http', '8000']);
 
 // Wait for ngrok to initialize
-setTimeout(async () => {
+setTimeout(() => {
     try {
-        // Fetch the public URL from ngrok's local API
-        const response = await fetch('http://127.0.0.1:4040/api/tunnels');
-        const data = await response.json();
-        const ngrokUrl = data.tunnels[0]?.public_url;
+        // Fetch the public URL from ngrok's local API using the https module
+        const options = {
+            hostname: '127.0.0.1',
+            port: 4040,
+            path: '/api/tunnels',
+            method: 'GET'
+        };
 
-        if (ngrokUrl) {
-            console.log(`Ngrok public URL: ${ngrokUrl}`);
-        } else {
-            console.error('Could not retrieve ngrok URL.');
-        }
+        const req = http.request(options, (res) => {
+            let data = '';
+
+            // A chunk of data has been received.
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            // The whole response has been received.
+            res.on('end', () => {
+                const parsedData = JSON.parse(data);
+                const ngrokUrl = parsedData.tunnels[0]?.public_url;
+
+                if (ngrokUrl) {
+                    console.log(`Ngrok public URL: ${ngrokUrl}`);
+                } else {
+                    console.error('Could not retrieve ngrok URL.');
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            console.error('Error fetching ngrok URL:', error);
+        });
+
+        req.end();
     } catch (error) {
         console.error('Error fetching ngrok URL:', error);
     }
