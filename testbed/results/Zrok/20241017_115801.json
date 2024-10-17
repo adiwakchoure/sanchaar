@@ -1,0 +1,75 @@
+{
+  "tool": "Zrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> y8nok97v6nyj.share.zrok.io\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 55372\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 4\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;y8nok97v6nyj.share.zrok.io.\tIN\tA\n\n;; ANSWER SECTION:\ny8nok97v6nyj.share.zrok.io. 300\tIN\tA\t52.223.10.144\ny8nok97v6nyj.share.zrok.io. 300\tIN\tA\t35.71.189.214\n\n;; AUTHORITY SECTION:\nzrok.io.\t\t3594\tIN\tNS\tns-342.awsdns-42.com.\nzrok.io.\t\t3594\tIN\tNS\tns-1913.awsdns-47.co.uk.\nzrok.io.\t\t3594\tIN\tNS\tns-629.awsdns-14.net.\nzrok.io.\t\t3594\tIN\tNS\tns-1495.awsdns-58.org.\n\n;; ADDITIONAL SECTION:\nns-342.awsdns-42.com.\t119826\tIN\tA\t205.251.193.86\nns-629.awsdns-14.net.\t8774\tIN\tA\t205.251.194.117\nns-629.awsdns-14.net.\t8611\tIN\tAAAA\t2600:9000:5302:7500::1\n\n;; Query time: 4 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:57:58 IST 2024\n;; MSG SIZE  rcvd: 287\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "y8nok97v6nyj.share.zrok.io.",
+            "type": "A",
+            "ttl": 300,
+            "data": "52.223.10.144"
+          },
+          {
+            "name": "y8nok97v6nyj.share.zrok.io.",
+            "type": "A",
+            "ttl": 300,
+            "data": "35.71.189.214"
+          }
+        ],
+        "queryTime": 4,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 287
+      },
+      "timing": {
+        "duration": 44.44320300000254
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.006764,
+            "tcpConnection": 0.009186,
+            "tlsHandshake": 0.206196,
+            "firstByte": 1.461463,
+            "total": 3.419303
+          },
+          "ttfb": 1.683609,
+          "latency": 0.009186,
+          "sizeDownload": 1048576,
+          "speedDownload": 306663,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 11964.435924000005
+    },
+    "toolSetup": {
+      "duration": 8478.51112000001
+    },
+    "diagnostics": {
+      "duration": 44.58330399999977
+    },
+    "measurements": {
+      "total": {
+        "duration": 3441.257131999999
+      },
+      "average": {
+        "duration": 3441.257131999999
+      }
+    }
+  },
+  "pcapFilePath": null
+}

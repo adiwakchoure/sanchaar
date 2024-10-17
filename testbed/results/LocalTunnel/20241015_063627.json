@@ -1,0 +1,188 @@
+{
+  "tool": "LocalTunnel",
+  "diagnostics": [
+    {
+      "tool": "ping",
+      "rawOutput": "PING mean-vans-greet.loca.lt (193.34.76.44) 56(84) bytes of data.\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=1 ttl=45 time=284 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=2 ttl=45 time=306 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=3 ttl=45 time=270 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=4 ttl=45 time=310 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=5 ttl=45 time=270 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=6 ttl=45 time=272 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=7 ttl=45 time=361 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=8 ttl=45 time=298 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=9 ttl=45 time=272 ms\n64 bytes from 193.34.76.44: icmp_seq=10 ttl=45 time=299 ms\n\n--- mean-vans-greet.loca.lt ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 51391ms\nrtt min/avg/max/mdev = 270.026/294.226/361.482/26.810 ms\n",
+      "parsedOutput": "PING mean-vans-greet.loca.lt (193.34.76.44) 56(84) bytes of data.\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=1 ttl=45 time=284 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=2 ttl=45 time=306 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=3 ttl=45 time=270 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=4 ttl=45 time=310 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=5 ttl=45 time=270 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=6 ttl=45 time=272 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=7 ttl=45 time=361 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=8 ttl=45 time=298 ms\n64 bytes from 193.34.76.44 (193.34.76.44): icmp_seq=9 ttl=45 time=272 ms\n64 bytes from 193.34.76.44: icmp_seq=10 ttl=45 time=299 ms\n\n--- mean-vans-greet.loca.lt ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 51391ms\nrtt min/avg/max/mdev = 270.026/294.226/361.482/26.810 ms\n",
+      "timing": {
+        "duration": 52413.845548
+      }
+    },
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> mean-vans-greet.loca.lt\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37759\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;mean-vans-greet.loca.lt.\tIN\tA\n\n;; ANSWER SECTION:\nmean-vans-greet.loca.lt. 247\tIN\tA\t193.34.76.44\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 06:35:05 IST 2024\n;; MSG SIZE  rcvd: 68\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "mean-vans-greet.loca.lt.",
+            "type": "A",
+            "ttl": 247,
+            "data": "193.34.76.44"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 06",
+        "rcvdSize": 68
+      },
+      "timing": {
+        "duration": 29.14160499999707
+      }
+    },
+    {
+      "tool": "tcptraceroute",
+      "rawOutput": " 1  192.168.1.1  4.626 ms  1.079 ms  1.309 ms\n 2  110.226.143.255  12.129 ms  4.256 ms  4.043 ms\n 3  nsg-corporate-5.210.186.122.airtel.in (122.186.210.5)  4.482 ms  4.499 ms  9.205 ms\n 4  116.119.121.10  133.578 ms  154.205 ms  200.876 ms\n 5  mei-b5-link.ip.twelve99.net (62.115.34.8)  148.156 ms  203.992 ms  240.782 ms\n 6  prs-bb2-link.ip.twelve99.net (62.115.124.56)  168.111 ms  187.780 ms  197.470 ms\n 7  * * *\n 8  * * *\n 9  toro-b2-link.ip.twelve99.net (62.115.123.109)  302.030 ms  306.288 ms  297.339 ms\n10  170.39.230.253  306.015 ms  352.759 ms *\n11  170.39.230.242  270.988 ms  358.846 ms  306.622 ms\n12  170.39.230.184  303.696 ms  256.514 ms  282.754 ms\n13  45.62.209.170  297.878 ms  301.514 ms  304.409 ms\n14  193.34.76.44  270.068 ms  350.771 ms  306.670 ms\n15  193.34.76.44 [open]  302.776 ms  351.463 ms  303.009 ms\n",
+      "parsedOutput": {
+        "hops": [
+          {
+            "hopNumber": 1,
+            "ip": "192.168.1.1",
+            "rtt1": 4.626,
+            "rtt2": null,
+            "rtt3": 1.079
+          },
+          {
+            "hopNumber": 3,
+            "ip": "nsg-corporate-5.210.186.122.airtel.in",
+            "rtt1": null,
+            "rtt2": 4.482,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 4,
+            "ip": "116.119.121.10",
+            "rtt1": 133.578,
+            "rtt2": null,
+            "rtt3": 154.205
+          },
+          {
+            "hopNumber": 5,
+            "ip": "mei-b5-link.ip.twelve99.net",
+            "rtt1": null,
+            "rtt2": 148.156,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 6,
+            "ip": "prs-bb2-link.ip.twelve99.net",
+            "rtt1": null,
+            "rtt2": 168.111,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 7,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 8,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 9,
+            "ip": "toro-b2-link.ip.twelve99.net",
+            "rtt1": null,
+            "rtt2": 302.03,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 10,
+            "ip": "170.39.230.253",
+            "rtt1": 306.015,
+            "rtt2": null,
+            "rtt3": 352.759
+          },
+          {
+            "hopNumber": 11,
+            "ip": "170.39.230.242",
+            "rtt1": 270.988,
+            "rtt2": null,
+            "rtt3": 358.846
+          },
+          {
+            "hopNumber": 12,
+            "ip": "170.39.230.184",
+            "rtt1": 303.696,
+            "rtt2": null,
+            "rtt3": 256.514
+          },
+          {
+            "hopNumber": 13,
+            "ip": "45.62.209.170",
+            "rtt1": 297.878,
+            "rtt2": null,
+            "rtt3": 301.514
+          },
+          {
+            "hopNumber": 14,
+            "ip": "193.34.76.44",
+            "rtt1": 270.068,
+            "rtt2": null,
+            "rtt3": 350.771
+          },
+          {
+            "hopNumber": 15,
+            "ip": "193.34.76.44",
+            "rtt1": null,
+            "rtt2": 302.776,
+            "rtt3": null
+          }
+        ],
+        "destination": "",
+        "port": 0
+      },
+      "timing": {
+        "duration": 77427.337482
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003455,
+            "tcpConnection": 0.264546,
+            "tlsHandshake": 0.98522,
+            "firstByte": 1.59647,
+            "total": 4.197638
+          },
+          "ttfb": 2.849691,
+          "latency": 0.264546,
+          "sizeDownload": 1048576,
+          "speedDownload": 249801,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 136782.756252
+    },
+    "toolSetup": {
+      "duration": 2692.62951
+    },
+    "diagnostics": {
+      "duration": 129872.47337600001
+    },
+    "measurements": {
+      "total": {
+        "duration": 4217.546509000007
+      },
+      "average": {
+        "duration": 4217.546509000007
+      }
+    }
+  },
+  "pcapFilePath": null
+}

@@ -11,10 +11,10 @@ const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
-const NUM_MEASUREMENTS = 1;
+const FILE_SIZES_MB = [1, 10, 100]; // All sizes in megabytes (MB)
+const NUM_MEASUREMENTS = 15;
 
-const ENABLE_LOGGING = true;
+const ENABLE_LOGGING = false;
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
 
 // Note: UNITS
@@ -40,6 +40,7 @@ interface Timing {
     sizeDownload: number; // bytes
     speedDownload: number; // bytes per second
     speedUpload: number; // bytes per second
+    error?: string;
   }
   
   interface TimeSplit {
@@ -70,8 +71,10 @@ interface Timing {
       };
     };
     pcapFilePath?: string;
-  }
-  
+    allDownloadsComplete: boolean;
+    error?: string; 
+ }
+
   interface TcpTracerouteResult {
     hops: TcpTracerouteHop[];
     destination: string;
@@ -341,79 +344,58 @@ async function performWebTest(url: string): Promise<CurlResult> {
     stopwatch.start();
     
     if (ENABLE_LOGGING) {
-        console.log(`Performing file transfer from URL: ${url}`); // Log the URL
+      console.log(`Performing file transfer from URL: ${url}`);
     }
-
-    const curlOutput = await runCommand('curl', [
-      '-w', '\
-      DNS Lookup: %{time_namelookup}s\n\
-      TCP Connection: %{time_connect}s\n\
-      TLS Handshake: %{time_appconnect}s\n\
-      Start Transfer: %{time_starttransfer}s\n\
-      Total Time: %{time_total}s\n\
-      Download Speed: %{speed_download} bytes/sec\n\
-      Upload Speed: %{speed_upload} bytes/sec\n\
-      HTTP Code: %{http_code}\n\
-      Size of Download: %{size_download} bytes\n',
-      '-o', '/dev/null',
-      '-s',
-      url
-    ]);
+  
+    let curlOutput = '';
+    let error: Error | null = null;
+  
+    try {
+      curlOutput = await runCommand('curl', [
+        '-w', '\
+        DNS Lookup: %{time_namelookup}s\n\
+        TCP Connection: %{time_connect}s\n\
+        TLS Handshake: %{time_appconnect}s\n\
+        Start Transfer: %{time_starttransfer}s\n\
+        Total Time: %{time_total}s\n\
+        Download Speed: %{speed_download} bytes/sec\n\
+        Upload Speed: %{speed_upload} bytes/sec\n\
+        HTTP Code: %{http_code}\n\
+        Size of Download: %{size_download} bytes\n',
+        '-C', '-', // Add resume capability
+        '-o', '/dev/null',
+        '-s',
+        url
+      ]);
+    } catch (err) {
+      error = err as Error;
+      if (ENABLE_LOGGING) {
+        console.error(`Error during file transfer: ${error.message}`);
+      }
+    }
+  
     stopwatch.stop();
   
     const parsedOutput = new Curl().parse(curlOutput);
     const actualSize = parsedOutput.sizeDownload;
   
-    if (actualSize !== sizeBytes) {
-      console.warn(`Warning: Expected size ${sizeBytes} bytes, but got ${actualSize} bytes.`);
+    let downloadStatus: 'complete' | 'partial' | 'failed';
+    if (error) {
+      downloadStatus = 'failed';
+    } else if (actualSize < sizeBytes) {
+      downloadStatus = 'partial';
+    } else {
+      downloadStatus = 'complete';
     }
   
-    return parsedOutput;
-}
-
-  function parseCurlOutput(output: string): { timeSplit: TimeSplit, sizeDownload: string, speedDownload: string } {
-    const lines = output.split('\n');
-    const timeSplit: TimeSplit = {
-      dnsLookup: 0,
-      tcpConnection: 0,
-      tlsHandshake: 0,
-      firstByte: 0,
-      download: 0,
-      total: 0
+    return {
+      ...parsedOutput,
+      bytesDownloaded: actualSize,
+      downloadStatus,
+      error: error ? error.message : undefined
     };
-    let sizeDownload = '0';
-    let speedDownload = '0';
-  
-    lines.forEach(line => {
-      const [key, value] = line.split(': ');
-      const timeValue = parseFloat(value);
-      switch (key.trim()) {
-        case 'DNS Lookup':
-          timeSplit.dnsLookup = timeValue;
-          break;
-        case 'TCP Connection':
-          timeSplit.tcpConnection = timeValue;
-          break;
-        case 'TLS Handshake':
-          timeSplit.tlsHandshake = timeValue;
-          break;
-        case 'Start Transfer':
-          timeSplit.firstByte = timeValue;
-          break;
-        case 'Total Time':
-          timeSplit.total = timeValue;
-          break;
-        case 'Download Speed':
-          speedDownload = value.trim();
-          break;
-        case 'Size of Download':
-          sizeDownload = value.trim();
-          break;
-      }
-    });
-  
-    return { timeSplit, sizeDownload, speedDownload };
   }
+
 
   async function startPcapCapture(toolName: string): Promise<[any, string]> {
     if (!ENABLE_PCAP) {
@@ -442,11 +424,13 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
 
   if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
   
-  let tunnelUrl = ''; // Initialize tunnelUrl
+  let tunnelUrl = ''; 
+  let allDownloadsComplete = true;
+
   try {
     const response = await axios.post(`${SERVER_URL}/start-tunnel`, { toolName: tunnelTool.name });
-    tunnelUrl = response.data.url; // Assign the value here
-    console.log(`Tunnel received: ${tunnelUrl}`);
+    tunnelUrl = response.data.url;
+    if (ENABLE_LOGGING) console.log(`Tunnel received: ${tunnelUrl}`);
   } catch (error) {
     console.error('Failed to start tunnel via server:', error);
     throw error;
@@ -456,7 +440,7 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
     throw new Error('Tunnel URL is empty or invalid');
   }
 
-  // Run post-setup commands after the tunnel is started
+  // Run any post-setup commands like auth after the tunnel is started
   if (tunnelTool.postSetupCommands) {
     for (const command of tunnelTool.postSetupCommands) {
       await runCommand(command[0], command.slice(1));
@@ -476,16 +460,18 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   
   diagnosticsStopwatch.start();
   const diagnostics: DiagnosticResult[] = [];
-  // diagnostics.push(await runDiagnosticTool('ping', [domain, '-c', '10']));
+  diagnostics.push(await runDiagnosticTool('ping', [domain, '-c', '10']));
   diagnostics.push(await runDiagnosticTool('dig', [domain]));
-  // diagnostics.push(await runDiagnosticTool('tcptraceroute', [domain]));
+  diagnostics.push(await runDiagnosticTool('tcptraceroute', [domain]));
   
   diagnosticsStopwatch.stop();
   
   const measurements: Measurement[] = [];
   let totalMeasurementDuration = 0;
+  let runError = '';
   
-  for (let i = 0; i < numMeasurements; i++) {
+  try {
+    for (let i = 0; i < numMeasurements; i++) {
     const measurementsStopwatch = new Stopwatch();
     measurementsStopwatch.start();
   
@@ -494,25 +480,35 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   
     // Perform file transfers
     for (const sizeMB of FILE_SIZES_MB) {
-      if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
-      const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
-      const key = `${sizeMB}MB_buffer`;
-      fileTransfers[key] = result; // Store the result directly
-    }
+        if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
+        const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
+        const key = `${sizeMB}MB_buffer`;
+        fileTransfers[key] = result;
+
+        if (result.downloadStatus !== 'complete') {
+          allDownloadsComplete = false;
+        }
+      }
   
     // Perform web test
     // const webTestResult = await performWebTest(`${tunnelUrl}/health`);
     // webTests.push(webTestResult);
   
     measurementsStopwatch.stop();
-    const measurementDuration = measurementsStopwatch.getTiming().duration;
-    totalMeasurementDuration += measurementDuration;
-  
-    measurements.push({
-      measurementNumber: i + 1, // Add measurement number
-      fileTransfers,
-      webTests
-    });
+      const measurementDuration = measurementsStopwatch.getTiming().duration;
+      totalMeasurementDuration += measurementDuration;
+
+      measurements.push({
+        measurementNumber: i + 1,
+        fileTransfers,
+        webTests
+      });
+    }
+  } catch (error) {
+    runError = (error as Error).message;
+    if (ENABLE_LOGGING) {
+      console.error(`Error during measurements run: ${runError}`);
+    }
   }
   
   totalStopwatch.stop();
@@ -524,7 +520,7 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   // Send a request to stop the tunnel on the server
   try {
     await axios.post(`${SERVER_URL}/stop-tunnel`, { toolName: tunnelTool.name });
-    console.log('Tunnel stopped successfully');
+    console.log('Tunnel successfully stopped, run concluded.');
   } catch (error) {
     console.error('Failed to stop tunnel via server:', error);
   }
@@ -537,7 +533,7 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   return {
     tool: tunnelTool.name,
     diagnostics,
-    measurements, // Now an array of Measurement objects
+    measurements,
     durations: {
       total: { duration: totalDuration },
       toolSetup: { duration: setupDuration },
@@ -547,9 +543,12 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
         average: { duration: averageMeasurementDuration }
       }
     },
-    pcapFilePath
+    pcapFilePath,
+    allDownloadsComplete,
+    error: runError
   };
 }
+
 
 async function main() {
   const rl = readline.createInterface({
@@ -561,7 +560,7 @@ async function main() {
   const isAutoMode = modeChoice.toLowerCase() === 'a';
 
   const now = new Date();
-  const timestamp = `${now.getFullYear().toString().slice(-2)}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+  const timestamp = `${now.getFullYear().toString().slice(-2)}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
 
   if (isAutoMode) {
       const resultsDir = `results/${timestamp}`;
@@ -591,8 +590,10 @@ async function main() {
           }
 
           try {
+              const toolResultsDir = `results/${selectedTool.name}`;
+              await fs.mkdir(toolResultsDir, { recursive: true }); // Ensure tool-specific directory exists
               const result = await performMeasurementsRun(selectedTool, ENABLE_PCAP, NUM_MEASUREMENTS);
-              await saveResults('results', selectedTool.name, result);
+              await saveResults(toolResultsDir, timestamp, result); // Save with timestamp as filename
           } catch (error) {
               console.error('An error occurred:', error);
           }
@@ -607,6 +608,7 @@ async function main() {
   rl.close();
   if (ENABLE_LOGGING) console.log('Main function completed');
 }
+
 
 async function saveResults(directory: string, toolName: string, result: RunResult) {
   const filename = `${toolName}.json`;

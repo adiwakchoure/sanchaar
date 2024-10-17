@@ -1,0 +1,87 @@
+{
+  "tool": "DevTunnel",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> xcqf9nmp.inc1.devtunnels.ms\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60723\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;xcqf9nmp.inc1.devtunnels.ms.\tIN\tA\n\n;; ANSWER SECTION:\nxcqf9nmp.inc1.devtunnels.ms. 300 IN\tCNAME\ttunnels-prod-rel-inc1-live-tm.trafficmanager.net.\ntunnels-prod-rel-inc1-live-tm.trafficmanager.net. 300 IN CNAME v3-inc1.cluster.rel.tunnels.api.visualstudio.com.\nv3-inc1.cluster.rel.tunnels.api.visualstudio.com. 1346 IN CNAME\ttunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com.\ntunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com. 9 IN A 20.207.70.99\n\n;; AUTHORITY SECTION:\ncentralindia.cloudapp.azure.com. 150 IN\tNS\tns12-01.azure-dns.info.\ncentralindia.cloudapp.azure.com. 150 IN\tNS\tns11-01.azure-dns.org.\ncentralindia.cloudapp.azure.com. 150 IN\tNS\tns9-01.azure-dns.com.\ncentralindia.cloudapp.azure.com. 150 IN\tNS\tns10-01.azure-dns.net.\n\n;; Query time: 7 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:04:31 IST 2024\n;; MSG SIZE  rcvd: 405\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "xcqf9nmp.inc1.devtunnels.ms.",
+            "type": "CNAME",
+            "ttl": 300,
+            "data": "tunnels-prod-rel-inc1-live-tm.trafficmanager.net."
+          },
+          {
+            "name": "tunnels-prod-rel-inc1-live-tm.trafficmanager.net.",
+            "type": "CNAME",
+            "ttl": 300,
+            "data": "v3-inc1.cluster.rel.tunnels.api.visualstudio.com."
+          },
+          {
+            "name": "v3-inc1.cluster.rel.tunnels.api.visualstudio.com.",
+            "type": "CNAME",
+            "ttl": 1346,
+            "data": "tunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com."
+          },
+          {
+            "name": "tunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com.",
+            "type": "A",
+            "ttl": 9,
+            "data": "20.207.70.99"
+          }
+        ],
+        "queryTime": 7,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 405
+      },
+      "timing": {
+        "duration": 44.468485000004875
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 302,
+          "timeSplit": {
+            "dnsLookup": 0.006915,
+            "tcpConnection": 0.015938,
+            "tlsHandshake": 0.093817,
+            "firstByte": 0.138054,
+            "total": 0.138193
+          },
+          "ttfb": 0.254724,
+          "latency": 0.015938,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 3902.3745340000023
+    },
+    "toolSetup": {
+      "duration": 3691.329801999993
+    },
+    "diagnostics": {
+      "duration": 44.55613500000618
+    },
+    "measurements": {
+      "total": {
+        "duration": 166.4338410000055
+      },
+      "average": {
+        "duration": 166.4338410000055
+      }
+    }
+  },
+  "pcapFilePath": null
+}

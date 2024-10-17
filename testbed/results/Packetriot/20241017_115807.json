@@ -1,0 +1,75 @@
+{
+  "tool": "Packetriot",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> old-sound-23918.pktriot.net\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5521\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 3, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;old-sound-23918.pktriot.net.\tIN\tA\n\n;; ANSWER SECTION:\nold-sound-23918.pktriot.net. 1800 IN\tCNAME\tasia-south-36774.packetriot.net.\nasia-south-36774.packetriot.net. 59 IN\tA\t139.59.36.70\n\n;; AUTHORITY SECTION:\npacketriot.net.\t\t172799\tIN\tNS\tns3.digitalocean.com.\npacketriot.net.\t\t172799\tIN\tNS\tns1.digitalocean.com.\npacketriot.net.\t\t172799\tIN\tNS\tns2.digitalocean.com.\n\n;; ADDITIONAL SECTION:\nns1.digitalocean.com.\t40775\tIN\tA\t173.245.58.51\nns1.digitalocean.com.\t40775\tIN\tAAAA\t2400:cb00:2049:1::adf5:3a33\nns2.digitalocean.com.\t126868\tIN\tA\t173.245.59.41\nns2.digitalocean.com.\t126868\tIN\tAAAA\t2400:cb00:2049:1::adf5:3b29\nns3.digitalocean.com.\t126868\tIN\tA\t198.41.222.173\nns3.digitalocean.com.\t126868\tIN\tAAAA\t2400:cb00:2049:1::c629:dead\n\n;; Query time: 155 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:58:07 IST 2024\n;; MSG SIZE  rcvd: 316\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "old-sound-23918.pktriot.net.",
+            "type": "CNAME",
+            "ttl": 1800,
+            "data": "asia-south-36774.packetriot.net."
+          },
+          {
+            "name": "asia-south-36774.packetriot.net.",
+            "type": "A",
+            "ttl": 59,
+            "data": "139.59.36.70"
+          }
+        ],
+        "queryTime": 155,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 316
+      },
+      "timing": {
+        "duration": 188.9923550000094
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 301,
+          "timeSplit": {
+            "dnsLookup": 0.002845,
+            "tcpConnection": 0.025522,
+            "tlsHandshake": 0,
+            "firstByte": 0.106681,
+            "total": 0.106903
+          },
+          "ttfb": 0.135048,
+          "latency": 0.025522,
+          "sizeDownload": 87,
+          "speedDownload": 813,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 1572.0728780000063
+    },
+    "toolSetup": {
+      "duration": 1253.5139490000001
+    },
+    "diagnostics": {
+      "duration": 189.14747200001148
+    },
+    "measurements": {
+      "total": {
+        "duration": 129.34084700001404
+      },
+      "average": {
+        "duration": 129.34084700001404
+      }
+    }
+  },
+  "pcapFilePath": null
+}

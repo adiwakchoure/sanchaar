@@ -1,0 +1,108 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 1456-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61363\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;1456-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\n1456-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.122.107\n1456-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.182\n1456-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.30.85\n1456-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.98.232\n1456-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.64\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t107740\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t107740\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t107740\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t107740\tIN\tNS\tns-988.awsdns-59.net.\n\n;; Query time: 43 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 03:10:48 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "1456-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "1456-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "1456-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "1456-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "1456-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          }
+        ],
+        "queryTime": 43,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 03",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 76.11736400000063
+      }
+    }
+  ],
+  "measurements": {
+    "fileTransfers": [
+      {
+        "statusCode": 200,
+        "timeSplit": {
+          "dnsLookup": 0.04942,
+          "tcpConnection": 0.056512,
+          "tlsHandshake": 0.119563,
+          "firstByte": 0.197544,
+          "total": 0.926329
+        },
+        "ttfb": 0.423039,
+        "latency": 0.056512,
+        "sizeDownload": 1048576,
+        "speedDownload": 1131969,
+        "speedUpload": 0
+      },
+      {
+        "statusCode": 200,
+        "timeSplit": {
+          "dnsLookup": 0.003138,
+          "tcpConnection": 0.018587,
+          "tlsHandshake": 0.080301,
+          "firstByte": 0.154312,
+          "total": 10.048857
+        },
+        "ttfb": 0.256338,
+        "latency": 0.018587,
+        "sizeDownload": 10485760,
+        "speedDownload": 1043477,
+        "speedUpload": 0
+      }
+    ],
+    "webTests": [],
+    "timing": {
+      "duration": 11028.449537
+    }
+  },
+  "durations": {
+    "total": {
+      "duration": 16147.300606
+    },
+    "toolSetup": {
+      "duration": 5041.953578
+    },
+    "diagnostics": {
+      "duration": 76.80446299999949
+    },
+    "measurements": {
+      "total": {
+        "duration": 11028.449537
+      },
+      "average": {
+        "duration": 11028.449537
+      }
+    }
+  },
+  "pcapFilePath": null
+}

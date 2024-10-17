@@ -1,0 +1,69 @@
+{
+  "tool": "Expose",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> fuht8edmbq.sharedwithexpose.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35739\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;fuht8edmbq.sharedwithexpose.com. IN\tA\n\n;; ANSWER SECTION:\nfuht8edmbq.sharedwithexpose.com. 3600 IN A\t64.225.109.66\n\n;; AUTHORITY SECTION:\nsharedwithexpose.com.\t172798\tIN\tNS\tns2.digitalocean.com.\nsharedwithexpose.com.\t172798\tIN\tNS\tns3.digitalocean.com.\nsharedwithexpose.com.\t172798\tIN\tNS\tns1.digitalocean.com.\n\n;; ADDITIONAL SECTION:\nns1.digitalocean.com.\t40827\tIN\tA\t173.245.58.51\nns1.digitalocean.com.\t40827\tIN\tAAAA\t2400:cb00:2049:1::adf5:3a33\nns2.digitalocean.com.\t126920\tIN\tA\t173.245.59.41\nns2.digitalocean.com.\t126920\tIN\tAAAA\t2400:cb00:2049:1::adf5:3b29\nns3.digitalocean.com.\t126920\tIN\tA\t198.41.222.173\nns3.digitalocean.com.\t126920\tIN\tAAAA\t2400:cb00:2049:1::c629:dead\n\n;; Query time: 80 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:57:16 IST 2024\n;; MSG SIZE  rcvd: 275\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "fuht8edmbq.sharedwithexpose.com.",
+            "type": "A",
+            "ttl": 3600,
+            "data": "64.225.109.66"
+          }
+        ],
+        "queryTime": 80,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 275
+      },
+      "timing": {
+        "duration": 131.7681719999964
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.082705,
+            "tcpConnection": 0.241842,
+            "tlsHandshake": 0.458287,
+            "firstByte": 1.912281,
+            "total": 4.441257
+          },
+          "ttfb": 2.695115,
+          "latency": 0.241842,
+          "sizeDownload": 1048576,
+          "speedDownload": 236098,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 7037.512125000001
+    },
+    "toolSetup": {
+      "duration": 2426.114966000001
+    },
+    "diagnostics": {
+      "duration": 132.04746700000396
+    },
+    "measurements": {
+      "total": {
+        "duration": 4479.268746000002
+      },
+      "average": {
+        "duration": 4479.268746000002
+      }
+    }
+  },
+  "pcapFilePath": null
+}

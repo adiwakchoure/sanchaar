@@ -1,0 +1,183 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "ping",
+      "rawOutput": "PING sanchaar.remedium.world (172.67.170.223) 56(84) bytes of data.\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=1 ttl=59 time=37.8 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=2 ttl=59 time=5.13 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=3 ttl=59 time=3.17 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=4 ttl=59 time=3.12 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=5 ttl=59 time=3.54 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=6 ttl=59 time=2.89 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=7 ttl=59 time=3.59 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=8 ttl=59 time=3.14 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=9 ttl=59 time=3.02 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=10 ttl=59 time=4.45 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9050ms\nrtt min/avg/max/mdev = 2.889/6.988/37.830/10.302 ms\n",
+      "parsedOutput": "PING sanchaar.remedium.world (172.67.170.223) 56(84) bytes of data.\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=1 ttl=59 time=37.8 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=2 ttl=59 time=5.13 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=3 ttl=59 time=3.17 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=4 ttl=59 time=3.12 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=5 ttl=59 time=3.54 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=6 ttl=59 time=2.89 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=7 ttl=59 time=3.59 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=8 ttl=59 time=3.14 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=9 ttl=59 time=3.02 ms\n64 bytes from 172.67.170.223 (172.67.170.223): icmp_seq=10 ttl=59 time=4.45 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9050ms\nrtt min/avg/max/mdev = 2.889/6.988/37.830/10.302 ms\n",
+      "timing": {
+        "duration": 9080.142556
+      }
+    },
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16110\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 13\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 64\tIN\tA\t172.67.170.223\nsanchaar.remedium.world. 64\tIN\tA\t104.21.28.145\n\n;; AUTHORITY SECTION:\nremedium.world.\t\t64\tIN\tNS\tshubhi.ns.cloudflare.com.\nremedium.world.\t\t64\tIN\tNS\teugene.ns.cloudflare.com.\n\n;; ADDITIONAL SECTION:\nshubhi.ns.cloudflare.com. 64\tIN\tA\t172.64.34.63\neugene.ns.cloudflare.com. 64\tIN\tA\t108.162.195.72\nshubhi.ns.cloudflare.com. 64\tIN\tA\t108.162.194.63\nshubhi.ns.cloudflare.com. 64\tIN\tA\t162.159.38.63\nshubhi.ns.cloudflare.com. 64\tIN\tAAAA\t2606:4700:50::a29f:263f\neugene.ns.cloudflare.com. 64\tIN\tAAAA\t2803:f800:50::6ca2:c348\neugene.ns.cloudflare.com. 64\tIN\tAAAA\t2a06:98c1:50::ac40:2348\nshubhi.ns.cloudflare.com. 64\tIN\tAAAA\t2a06:98c1:50::ac40:223f\neugene.ns.cloudflare.com. 64\tIN\tAAAA\t2606:4700:58::a29f:2c48\neugene.ns.cloudflare.com. 64\tIN\tA\t162.159.44.72\neugene.ns.cloudflare.com. 64\tIN\tA\t172.64.35.72\nshubhi.ns.cloudflare.com. 64\tIN\tAAAA\t2803:f800:50::6ca2:c23f\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 13:32:26 IST 2024\n;; MSG SIZE  rcvd: 407\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 64,
+            "data": "172.67.170.223"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 64,
+            "data": "104.21.28.145"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 13",
+        "rcvdSize": 407
+      },
+      "timing": {
+        "duration": 43.22208800000044
+      }
+    },
+    {
+      "tool": "tcptraceroute",
+      "rawOutput": " 1  192.168.1.1  1.329 ms  1.237 ms  0.997 ms\n 2  100.120.0.1.megaegg.ne.jp (1.0.120.100)  2.489 ms  2.750 ms  2.551 ms\n 3  * * *\n 4  106-164-87-103.digitalsatellite.in (103.87.164.106)  4.870 ms  3.833 ms  3.500 ms\n 5  * * *\n 6  * * *\n 7  162.158.226.69  36.641 ms  14.569 ms  16.398 ms\n 8  104.21.28.145 [open]  4.254 ms  3.168 ms  3.985 ms\n",
+      "parsedOutput": {
+        "hops": [
+          {
+            "hopNumber": 1,
+            "ip": "192.168.1.1",
+            "rtt1": 1.329,
+            "rtt2": null,
+            "rtt3": 1.237
+          },
+          {
+            "hopNumber": 3,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 4,
+            "ip": "106-164-87-103.digitalsatellite.in",
+            "rtt1": null,
+            "rtt2": 4.87,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 5,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 6,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 7,
+            "ip": "162.158.226.69",
+            "rtt1": 36.641,
+            "rtt2": null,
+            "rtt3": 14.569
+          },
+          {
+            "hopNumber": 8,
+            "ip": "104.21.28.145",
+            "rtt1": null,
+            "rtt2": 4.254,
+            "rtt3": null
+          }
+        ],
+        "destination": "",
+        "port": 0
+      },
+      "timing": {
+        "duration": 27473.009295999997
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003377,
+            "tcpConnection": 0.007097,
+            "tlsHandshake": 0.085767,
+            "firstByte": 0.131903,
+            "total": 0.245134
+          },
+          "ttfb": 0.22814399999999999,
+          "latency": 0.007097,
+          "sizeDownload": 1048576,
+          "speedDownload": 4277562,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        },
+        "10MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002457,
+            "tcpConnection": 0.00549,
+            "tlsHandshake": 0.078555,
+            "firstByte": 0.145107,
+            "total": 0.996319
+          },
+          "ttfb": 0.231609,
+          "latency": 0.00549,
+          "sizeDownload": 10485760,
+          "speedDownload": 10524500,
+          "speedUpload": 0,
+          "bytesDownloaded": 10485760,
+          "downloadStatus": "complete"
+        },
+        "100MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.004138,
+            "tcpConnection": 0.00835,
+            "tlsHandshake": 0.096951,
+            "firstByte": 0.389334,
+            "total": 10.092584
+          },
+          "ttfb": 0.498773,
+          "latency": 0.00835,
+          "sizeDownload": 104857600,
+          "speedDownload": 10389569,
+          "speedUpload": 0,
+          "bytesDownloaded": 104857600,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 48150.802291
+    },
+    "toolSetup": {
+      "duration": 107.97975500000007
+    },
+    "diagnostics": {
+      "duration": 36598.732963
+    },
+    "measurements": {
+      "total": {
+        "duration": 11443.934874999999
+      },
+      "average": {
+        "duration": 11443.934874999999
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

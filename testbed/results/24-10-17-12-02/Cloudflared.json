@@ -1,0 +1,75 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23905\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 13\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 300\tIN\tA\t172.67.170.223\nsanchaar.remedium.world. 300\tIN\tA\t104.21.28.145\n\n;; AUTHORITY SECTION:\nremedium.world.\t\t3242\tIN\tNS\tshubhi.ns.cloudflare.com.\nremedium.world.\t\t3242\tIN\tNS\teugene.ns.cloudflare.com.\n\n;; ADDITIONAL SECTION:\neugene.ns.cloudflare.com. 138792 IN\tA\t172.64.35.72\neugene.ns.cloudflare.com. 138792 IN\tA\t108.162.195.72\neugene.ns.cloudflare.com. 138792 IN\tA\t162.159.44.72\neugene.ns.cloudflare.com. 138792 IN\tAAAA\t2a06:98c1:50::ac40:2348\neugene.ns.cloudflare.com. 138792 IN\tAAAA\t2606:4700:58::a29f:2c48\neugene.ns.cloudflare.com. 138792 IN\tAAAA\t2803:f800:50::6ca2:c348\nshubhi.ns.cloudflare.com. 42008\tIN\tA\t162.159.38.63\nshubhi.ns.cloudflare.com. 42008\tIN\tA\t172.64.34.63\nshubhi.ns.cloudflare.com. 42008\tIN\tA\t108.162.194.63\nshubhi.ns.cloudflare.com. 42008\tIN\tAAAA\t2a06:98c1:50::ac40:223f\nshubhi.ns.cloudflare.com. 42008\tIN\tAAAA\t2606:4700:50::a29f:263f\nshubhi.ns.cloudflare.com. 42008\tIN\tAAAA\t2803:f800:50::6ca2:c23f\n\n;; Query time: 12 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:02:25 IST 2024\n;; MSG SIZE  rcvd: 407\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.67.170.223"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "104.21.28.145"
+          }
+        ],
+        "queryTime": 12,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 407
+      },
+      "timing": {
+        "duration": 53.61863900000003
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 530,
+          "timeSplit": {
+            "dnsLookup": 0.012958,
+            "tcpConnection": 0.034856,
+            "tlsHandshake": 0.142908,
+            "firstByte": 0.179411,
+            "total": 0.179614
+          },
+          "ttfb": 0.370133,
+          "latency": 0.034856,
+          "sizeDownload": 16,
+          "speedDownload": 89,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 372.0222410000001
+    },
+    "toolSetup": {
+      "duration": 98.0788829999999
+    },
+    "diagnostics": {
+      "duration": 56.67055200000004
+    },
+    "measurements": {
+      "total": {
+        "duration": 217.12083200000006
+      },
+      "average": {
+        "duration": 217.12083200000006
+      }
+    }
+  },
+  "pcapFilePath": null
+}
