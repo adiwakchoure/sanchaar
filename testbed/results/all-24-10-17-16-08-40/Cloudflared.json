@@ -1,0 +1,343 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 22424\n;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 16:08:40 IST 2024\n;; MSG SIZE  rcvd: 52\n\n",
+      "parsedOutput": {
+        "answers": [],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 16",
+        "rcvdSize": 52
+      },
+      "timing": {
+        "duration": 202.52431
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "2MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "3MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "2MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "3MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "2MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "3MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "2MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "3MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "2MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        },
+        "3MB_buffer": {
+          "statusCode": 0,
+          "timeSplit": {
+            "dnsLookup": 0,
+            "tcpConnection": 0,
+            "tlsHandshake": 0,
+            "firstByte": 0,
+            "total": 0
+          },
+          "ttfb": 0,
+          "latency": 0,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "failed",
+          "error": "Command failed with code 6"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 575.1732929999998
+    },
+    "toolSetup": {
+      "duration": 149.50010899999984
+    },
+    "diagnostics": {
+      "duration": 203.38838299999998
+    },
+    "measurements": {
+      "total": {
+        "duration": 220.72979000000032
+      },
+      "average": {
+        "duration": 44.145958000000064
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "errors": []
+}

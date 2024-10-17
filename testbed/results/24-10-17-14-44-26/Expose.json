@@ -1,0 +1,73 @@
+{
+  "tool": "Expose",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> okrmp9r4pd.sharedwithexpose.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54006\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;okrmp9r4pd.sharedwithexpose.com. IN\tA\n\n;; ANSWER SECTION:\nokrmp9r4pd.sharedwithexpose.com. 4502 IN A\t64.225.109.66\n\n;; Query time: 154 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:45:46 IST 2024\n;; MSG SIZE  rcvd: 76\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "okrmp9r4pd.sharedwithexpose.com.",
+            "type": "A",
+            "ttl": 4502,
+            "data": "64.225.109.66"
+          }
+        ],
+        "queryTime": 154,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 76
+      },
+      "timing": {
+        "duration": 192.2027689999959
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 15.060146,
+            "tcpConnection": 15.347908,
+            "tlsHandshake": 15.658255,
+            "firstByte": 18.161215,
+            "total": 20.469596
+          },
+          "ttfb": 64.227524,
+          "latency": 15.347908,
+          "sizeDownload": 1048576,
+          "speedDownload": 51226,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 23028.477625
+    },
+    "toolSetup": {
+      "duration": 2344.018013000008
+    },
+    "diagnostics": {
+      "duration": 192.32966899999883
+    },
+    "measurements": {
+      "total": {
+        "duration": 20492.073231000002
+      },
+      "average": {
+        "duration": 20492.073231000002
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

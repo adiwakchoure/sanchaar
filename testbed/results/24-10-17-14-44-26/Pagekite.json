@@ -1,0 +1,73 @@
+{
+  "tool": "Pagekite",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sun4.pagekite.me\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9297\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sun4.pagekite.me.\t\tIN\tA\n\n;; ANSWER SECTION:\nsun4.pagekite.me.\t377\tIN\tA\t172.105.59.232\n\n;; Query time: 689 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:44:48 IST 2024\n;; MSG SIZE  rcvd: 61\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sun4.pagekite.me.",
+            "type": "A",
+            "ttl": 377,
+            "data": "172.105.59.232"
+          }
+        ],
+        "queryTime": 689,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 61
+      },
+      "timing": {
+        "duration": 729.5822259999986
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 503,
+          "timeSplit": {
+            "dnsLookup": 15.074021,
+            "tcpConnection": 15.155062,
+            "tlsHandshake": 0,
+            "firstByte": 15.277556,
+            "total": 15.278529
+          },
+          "ttfb": 45.506639,
+          "latency": 15.155062,
+          "sizeDownload": 397,
+          "speedDownload": 25,
+          "speedUpload": 0,
+          "bytesDownloaded": 397,
+          "downloadStatus": "partial"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 16038.196890999996
+    },
+    "toolSetup": {
+      "duration": 10.866402999999991
+    },
+    "diagnostics": {
+      "duration": 729.8096320000004
+    },
+    "measurements": {
+      "total": {
+        "duration": 15297.454576
+      },
+      "average": {
+        "duration": 15297.454576
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "error": ""
+}
