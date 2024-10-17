@@ -1,0 +1,79 @@
+{
+  "tool": "Packetriot",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> old-sound-23918.pktriot.net\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9686\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;old-sound-23918.pktriot.net.\tIN\tA\n\n;; ANSWER SECTION:\nold-sound-23918.pktriot.net. 2252 IN\tCNAME\tasia-south-36774.packetriot.net.\nasia-south-36774.packetriot.net. 19 IN\tA\t139.59.36.70\n\n;; Query time: 227 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:47:10 IST 2024\n;; MSG SIZE  rcvd: 114\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "old-sound-23918.pktriot.net.",
+            "type": "CNAME",
+            "ttl": 2252,
+            "data": "asia-south-36774.packetriot.net."
+          },
+          {
+            "name": "asia-south-36774.packetriot.net.",
+            "type": "A",
+            "ttl": 19,
+            "data": "139.59.36.70"
+          }
+        ],
+        "queryTime": 227,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 114
+      },
+      "timing": {
+        "duration": 264.6620220000041
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 301,
+          "timeSplit": {
+            "dnsLookup": 0.002113,
+            "tcpConnection": 0.251658,
+            "tlsHandshake": 0,
+            "firstByte": 0.401638,
+            "total": 0.401762
+          },
+          "ttfb": 0.6554089999999999,
+          "latency": 0.251658,
+          "sizeDownload": 87,
+          "speedDownload": 216,
+          "speedUpload": 0,
+          "bytesDownloaded": 87,
+          "downloadStatus": "partial"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 5900.695015000005
+    },
+    "toolSetup": {
+      "duration": 5214.431345000019
+    },
+    "diagnostics": {
+      "duration": 264.74171000000206
+    },
+    "measurements": {
+      "total": {
+        "duration": 421.453027999989
+      },
+      "average": {
+        "duration": 421.453027999989
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "error": ""
+}

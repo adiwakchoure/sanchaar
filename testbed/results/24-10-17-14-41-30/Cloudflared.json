@@ -1,0 +1,212 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "ping",
+      "rawOutput": "PING sanchaar.remedium.world(2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf)) 56 data bytes\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=1 ttl=54 time=274 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=2 ttl=55 time=167 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=3 ttl=54 time=197 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=4 ttl=55 time=203 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=5 ttl=55 time=159 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=6 ttl=55 time=164 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=7 ttl=55 time=184 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=8 ttl=55 time=181 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=9 ttl=54 time=328 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=10 ttl=55 time=257 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9039ms\nrtt min/avg/max/mdev = 159.016/211.380/328.463/53.517 ms\n",
+      "parsedOutput": "PING sanchaar.remedium.world(2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf)) 56 data bytes\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=1 ttl=54 time=274 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=2 ttl=55 time=167 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=3 ttl=54 time=197 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=4 ttl=55 time=203 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=5 ttl=55 time=159 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=6 ttl=55 time=164 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=7 ttl=55 time=184 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=8 ttl=55 time=181 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=9 ttl=54 time=328 ms\n64 bytes from 2606:4700:3033::ac43:aadf (2606:4700:3033::ac43:aadf): icmp_seq=10 ttl=55 time=257 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9039ms\nrtt min/avg/max/mdev = 159.016/211.380/328.463/53.517 ms\n",
+      "timing": {
+        "duration": 9424.159684999999
+      }
+    },
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39755\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 368\tIN\tA\t104.21.28.145\nsanchaar.remedium.world. 368\tIN\tA\t172.67.170.223\n\n;; Query time: 6 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:41:40 IST 2024\n;; MSG SIZE  rcvd: 84\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 368,
+            "data": "104.21.28.145"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 368,
+            "data": "172.67.170.223"
+          }
+        ],
+        "queryTime": 6,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 84
+      },
+      "timing": {
+        "duration": 45.24575399999958
+      }
+    },
+    {
+      "tool": "tcptraceroute",
+      "rawOutput": " 1  172.20.10.1  2.748 ms  5.276 ms  2.620 ms\n 2  * * *\n 3  * * *\n 4  * * *\n 5  * * *\n 6  * * *\n 7  * * *\n 8  * * *\n 9  * * *\n10  * * *\n11  * * *\n12  * * *\n13  * * *\n14  * * *\n15  * * *\n16  * * *\n17  172.67.170.223 [open]  187.445 ms * *\n",
+      "parsedOutput": {
+        "hops": [
+          {
+            "hopNumber": 1,
+            "ip": "172.20.10.1",
+            "rtt1": 2.748,
+            "rtt2": null,
+            "rtt3": 5.276
+          },
+          {
+            "hopNumber": 3,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 4,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 5,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 6,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 7,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 8,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 9,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 10,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 11,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 12,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 13,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 14,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 15,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 16,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 17,
+            "ip": "172.67.170.223",
+            "rtt1": null,
+            "rtt2": 187.445,
+            "rtt3": null
+          }
+        ],
+        "destination": "",
+        "port": 0
+      },
+      "timing": {
+        "duration": 142035.72698600002
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.009908,
+            "tcpConnection": 0.276641,
+            "tlsHandshake": 0.478829,
+            "firstByte": 1.522133,
+            "total": 2.605017
+          },
+          "ttfb": 2.2875110000000003,
+          "latency": 0.276641,
+          "sizeDownload": 1048576,
+          "speedDownload": 402521,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 154211.07261
+    },
+    "toolSetup": {
+      "duration": 73.05975700000045
+    },
+    "diagnostics": {
+      "duration": 151506.90709800003
+    },
+    "measurements": {
+      "total": {
+        "duration": 2631.0141240000085
+      },
+      "average": {
+        "duration": 2631.0141240000085
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

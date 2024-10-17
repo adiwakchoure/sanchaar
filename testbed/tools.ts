@@ -982,4 +982,63 @@ async function executeTool(toolName: string, options: TunnelOptions = { port: 30
   }
 }
 
-// executeTool('Btunnel');
+async function main() {
+  const args = process.argv.slice(2);
+  const autoMode = args.includes('--auto');
+
+  if (autoMode) {
+    console.log('Running in auto mode...');
+    for (const tool of tunnelTools) {
+      try {
+        console.log(`Testing ${tool.name}...`);
+        const url = await tool.start(); 
+        console.log(`${tool.name} launched successfully: ${url}`);
+        await tool.stop();
+      } catch (error) {
+        console.error(`${tool.name} failed:`, error);
+      }
+    }
+  } else {
+    console.log('Available tools:');
+    tunnelTools.forEach((tool, index) => console.log(`${index + 1}. ${tool.name}`));
+
+    const readline = require('readline').createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    readline.question('Enter the number of the tool to test (or "all" to test all): ', async (input) => {
+      if (input.toLowerCase() === 'all') {
+        // Run all tests (similar to auto mode)
+        for (const tool of tunnelTools) {
+          try {
+            console.log(`Testing ${tool.name}...`);
+            const url = await tool.start();
+            console.log(`${tool.name} launched successfully: ${url}`);
+            await tool.stop();
+          } catch (error) {
+            console.error(`${tool.name} failed:`, error);
+          }
+        }
+      } else {
+        const toolIndex = parseInt(input) - 1;
+        if (toolIndex >= 0 && toolIndex < tunnelTools.length) {
+          const tool = tunnelTools[toolIndex];
+          try {
+            console.log(`Testing ${tool.name}...`);
+            const url = await tool.start();
+            console.log(`${tool.name} launched successfully: ${url}`);
+            await tool.stop();
+          } catch (error) {
+            console.error(`${tool.name} failed:`, error);
+          }
+        } else {
+          console.log('Invalid input.');
+        }
+      }
+      readline.close();
+    });
+  }
+}
+
+// main();

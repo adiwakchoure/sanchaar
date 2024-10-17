@@ -1,0 +1,91 @@
+{
+  "tool": "LocalhostRun",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 0f0219458932ac.lhr.life\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3491\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;0f0219458932ac.lhr.life.\tIN\tA\n\n;; ANSWER SECTION:\n0f0219458932ac.lhr.life. 375\tIN\tCNAME\tdd.localhost.run.\ndd.localhost.run.\t77\tIN\tA\t3.208.46.244\ndd.localhost.run.\t77\tIN\tA\t3.234.18.192\ndd.localhost.run.\t77\tIN\tA\t54.172.225.3\n\n;; Query time: 1038 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:47:59 IST 2024\n;; MSG SIZE  rcvd: 130\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "0f0219458932ac.lhr.life.",
+            "type": "CNAME",
+            "ttl": 375,
+            "data": "dd.localhost.run."
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 77,
+            "data": "3.208.46.244"
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 77,
+            "data": "3.234.18.192"
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 77,
+            "data": "54.172.225.3"
+          }
+        ],
+        "queryTime": 1038,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 130
+      },
+      "timing": {
+        "duration": 1078.0624940000125
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 15.075099,
+            "tcpConnection": 15.353051,
+            "tlsHandshake": 15.765486,
+            "firstByte": 16.950951,
+            "total": 21.389294
+          },
+          "ttfb": 63.144587,
+          "latency": 15.353051,
+          "sizeDownload": 1048576,
+          "speedDownload": 49023,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 40027.808471
+    },
+    "toolSetup": {
+      "duration": 17535.087755999994
+    },
+    "diagnostics": {
+      "duration": 1078.1256969999813
+    },
+    "measurements": {
+      "total": {
+        "duration": 21414.552553999994
+      },
+      "average": {
+        "duration": 21414.552553999994
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

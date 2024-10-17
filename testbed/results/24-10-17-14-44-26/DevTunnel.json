@@ -1,0 +1,91 @@
+{
+  "tool": "DevTunnel",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 0fwzx5np.inc1.devtunnels.ms\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21607\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;0fwzx5np.inc1.devtunnels.ms.\tIN\tA\n\n;; ANSWER SECTION:\n0fwzx5np.inc1.devtunnels.ms. 377 IN\tCNAME\ttunnels-prod-rel-inc1-live-tm.trafficmanager.net.\ntunnels-prod-rel-inc1-live-tm.trafficmanager.net. 369 IN CNAME v3-inc1.cluster.rel.tunnels.api.visualstudio.com.\nv3-inc1.cluster.rel.tunnels.api.visualstudio.com. 4468 IN CNAME\ttunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com.\ntunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com. 15 IN\tA 20.207.70.99\n\n;; Query time: 911 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:50:09 IST 2024\n;; MSG SIZE  rcvd: 271\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "0fwzx5np.inc1.devtunnels.ms.",
+            "type": "CNAME",
+            "ttl": 377,
+            "data": "tunnels-prod-rel-inc1-live-tm.trafficmanager.net."
+          },
+          {
+            "name": "tunnels-prod-rel-inc1-live-tm.trafficmanager.net.",
+            "type": "CNAME",
+            "ttl": 369,
+            "data": "v3-inc1.cluster.rel.tunnels.api.visualstudio.com."
+          },
+          {
+            "name": "v3-inc1.cluster.rel.tunnels.api.visualstudio.com.",
+            "type": "CNAME",
+            "ttl": 4468,
+            "data": "tunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com."
+          },
+          {
+            "name": "tunnels-prod-rel-inc1-v3-cluster.centralindia.cloudapp.azure.com.",
+            "type": "A",
+            "ttl": 15,
+            "data": "20.207.70.99"
+          }
+        ],
+        "queryTime": 911,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 271
+      },
+      "timing": {
+        "duration": 950.0652439999976
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 302,
+          "timeSplit": {
+            "dnsLookup": 15.069979,
+            "tcpConnection": 15.146636,
+            "tlsHandshake": 15.283687,
+            "firstByte": 15.396638,
+            "total": 15.396747
+          },
+          "ttfb": 60.89694,
+          "latency": 15.146636,
+          "sizeDownload": 0,
+          "speedDownload": 0,
+          "speedUpload": 0,
+          "bytesDownloaded": 0,
+          "downloadStatus": "partial"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 60792.507710000034
+    },
+    "toolSetup": {
+      "duration": 44418.119619000005
+    },
+    "diagnostics": {
+      "duration": 950.2363550000009
+    },
+    "measurements": {
+      "total": {
+        "duration": 15424.112485999998
+      },
+      "average": {
+        "duration": 15424.112485999998
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "error": ""
+}

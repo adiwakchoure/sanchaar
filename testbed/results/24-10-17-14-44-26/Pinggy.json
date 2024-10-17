@@ -1,0 +1,79 @@
+{
+  "tool": "Pinggy",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> rnpzd-2409-40c0-104b-b87c-c5ac-625a-71b7-a35.a.free.pinggy.link\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 14002\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;rnpzd-2409-40c0-104b-b87c-c5ac-625a-71b7-a35.a.free.pinggy.link. IN A\n\n;; ANSWER SECTION:\nrnpzd-2409-40c0-104b-b87c-c5ac-625a-71b7-a35.a.free.pinggy.link. 15 IN CNAME lin.ap.5.a.pinggy.click.\nlin.ap.5.a.pinggy.click. 752\tIN\tA\t45.118.134.87\n\n;; Query time: 2282 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:46:23 IST 2024\n;; MSG SIZE  rcvd: 145\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "rnpzd-2409-40c0-104b-b87c-c5ac-625a-71b7-a35.a.free.pinggy.link.",
+            "type": "CNAME",
+            "ttl": 15,
+            "data": "lin.ap.5.a.pinggy.click."
+          },
+          {
+            "name": "lin.ap.5.a.pinggy.click.",
+            "type": "A",
+            "ttl": 752,
+            "data": "45.118.134.87"
+          }
+        ],
+        "queryTime": 2282,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 145
+      },
+      "timing": {
+        "duration": 2315.330937999999
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.005277,
+            "tcpConnection": 0.084965,
+            "tlsHandshake": 0.257689,
+            "firstByte": 0.708897,
+            "total": 1.982297
+          },
+          "ttfb": 1.0568279999999999,
+          "latency": 0.084965,
+          "sizeDownload": 1048576,
+          "speedDownload": 528970,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 8369.904575000008
+    },
+    "toolSetup": {
+      "duration": 4052.1207270000014
+    },
+    "diagnostics": {
+      "duration": 2315.471458
+    },
+    "measurements": {
+      "total": {
+        "duration": 2002.2298379999993
+      },
+      "average": {
+        "duration": 2002.2298379999993
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

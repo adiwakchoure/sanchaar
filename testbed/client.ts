@@ -11,8 +11,8 @@ const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1, 10, 100]; // All sizes in megabytes (MB)
-const NUM_MEASUREMENTS = 15;
+const FILE_SIZES_MB = [1, 2, 3]; // All sizes in megabytes (MB)
+const NUM_MEASUREMENTS = 5;
 
 const ENABLE_LOGGING = false;
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
@@ -60,7 +60,7 @@ interface Timing {
   interface RunResult {
     tool: string;
     diagnostics: DiagnosticResult[];
-    measurements: Measurement[]; // Array of Measurement objects
+    measurements: Measurement[];
     durations: {
       total: Timing;
       toolSetup: Timing;
@@ -72,8 +72,8 @@ interface Timing {
     };
     pcapFilePath?: string;
     allDownloadsComplete: boolean;
-    error?: string; 
- }
+    errors: { stage: string; error: string }[];
+  }
 
   interface TcpTracerouteResult {
     hops: TcpTracerouteHop[];
@@ -422,113 +422,173 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   totalStopwatch.start();
   setupStopwatch.start();
 
-  if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
-  
   let tunnelUrl = ''; 
   let allDownloadsComplete = true;
+  let errors: { stage: string; error: string }[] = [];
 
+  // Tunnel Setup Stage
+  if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
   try {
     const response = await axios.post(`${SERVER_URL}/start-tunnel`, { toolName: tunnelTool.name });
     tunnelUrl = response.data.url;
     if (ENABLE_LOGGING) console.log(`Tunnel received: ${tunnelUrl}`);
   } catch (error) {
-    console.error('Failed to start tunnel via server:', error);
-    throw error;
+    errors.push({ stage: 'Tunnel Setup', error: `Failed to start tunnel: ${(error as Error).message}` });
   }
   
   if (!tunnelUrl) {
-    throw new Error('Tunnel URL is empty or invalid');
+    errors.push({ stage: 'Tunnel Setup', error: 'Tunnel URL is empty or invalid' });
   }
 
-  // Run any post-setup commands like auth after the tunnel is started
+  // Post-setup Commands Stage
   if (tunnelTool.postSetupCommands) {
     for (const command of tunnelTool.postSetupCommands) {
-      await runCommand(command[0], command.slice(1));
+      try {
+        await runCommand(command[0], command.slice(1));
+      } catch (error) {
+        errors.push({ stage: 'Post-setup Commands', error: `Failed to run command ${command[0]}: ${(error as Error).message}` });
+      }
     }
   }
 
+  // PCAP Capture Setup Stage
   let pcapSession = null;
   let pcapFilePath = null;
   if (enablePcap) {
-    [pcapSession, pcapFilePath] = await startPcapCapture(tunnelTool.name);
+    try {
+      [pcapSession, pcapFilePath] = await startPcapCapture(tunnelTool.name);
+    } catch (error) {
+      errors.push({ stage: 'PCAP Setup', error: `Failed to start PCAP capture: ${(error as Error).message}` });
+    }
   }
   
   setupStopwatch.stop();
   
-  const url = new URL(tunnelUrl); 
-  const domain = url.hostname;
-  
+  // Diagnostics Stage
   diagnosticsStopwatch.start();
   const diagnostics: DiagnosticResult[] = [];
-  diagnostics.push(await runDiagnosticTool('ping', [domain, '-c', '10']));
-  diagnostics.push(await runDiagnosticTool('dig', [domain]));
-  diagnostics.push(await runDiagnosticTool('tcptraceroute', [domain]));
-  
+  if (tunnelUrl) {
+    const url = new URL(tunnelUrl); 
+    const domain = url.hostname;
+    try {
+      diagnostics.push(await runDiagnosticTool('dig', [domain]));
+    } catch (error) {
+      errors.push({ stage: 'Diagnostics', error: `Failed to run dig: ${(error as Error).message}` });
+      diagnostics.push({
+        tool: 'dig',
+        rawOutput: '',
+        parsedOutput: null,
+        timing: { duration: 0 },
+        error: (error as Error).message
+      });
+    }
+  } else {
+    errors.push({ stage: 'Diagnostics', error: 'Skipped diagnostics due to missing tunnel URL' });
+  }
   diagnosticsStopwatch.stop();
   
+  
+  // Measurements Stage
   const measurements: Measurement[] = [];
   let totalMeasurementDuration = 0;
-  let runError = '';
+
+  // Create a progress bar for the measurements
+  const measurementsProgressBar = new cliProgress.SingleBar(
+    {
+      format: `Measurements for ${tunnelTool.name} | {bar} | {percentage}% | {value}/{total} Runs`,
+      barCompleteChar: '\u2588',
+      barIncompleteChar: '\u2591',
+      hideCursor: true
+    },
+    cliProgress.Presets.shades_classic
+  );
+
+  measurementsProgressBar.start(numMeasurements, 0);
   
-  try {
-    for (let i = 0; i < numMeasurements; i++) {
+  for (let i = 0; i < numMeasurements; i++) {
     const measurementsStopwatch = new Stopwatch();
     measurementsStopwatch.start();
   
     const fileTransfers: { [key: string]: CurlResult } = {};
     const webTests: WebTestResult[] = [];
   
-    // Perform file transfers
-    for (const sizeMB of FILE_SIZES_MB) {
+    if (tunnelUrl) {
+      // Perform file transfers
+      for (const sizeMB of FILE_SIZES_MB) {
         if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
-        const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
-        const key = `${sizeMB}MB_buffer`;
-        fileTransfers[key] = result;
+        try {
+          const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
+          const key = `${sizeMB}MB_buffer`;
+          fileTransfers[key] = result;
 
-        if (result.downloadStatus !== 'complete') {
+          if (result.downloadStatus !== 'complete') {
+            allDownloadsComplete = false;
+          }
+        } catch (error) {
+          errors.push({ stage: 'File Transfer', error: `Failed to download ${sizeMB}MB file: ${(error as Error).message}` });
+          fileTransfers[`${sizeMB}MB_buffer`] = {
+            statusCode: 0,
+            timeSplit: { dnsLookup: 0, tcpConnection: 0, tlsHandshake: 0, firstByte: 0, total: 0 },
+            ttfb: 0,
+            latency: 0,
+            sizeDownload: 0,
+            speedDownload: 0,
+            speedUpload: 0,
+            error: (error as Error).message,
+            downloadStatus: 'failed'
+          };
           allDownloadsComplete = false;
         }
       }
-  
-    // Perform web test
-    // const webTestResult = await performWebTest(`${tunnelUrl}/health`);
-    // webTests.push(webTestResult);
+
+      // Perform web test (if implemented)
+      // try {
+      //   const webTestResult = await performWebTest(`${tunnelUrl}/health`);
+      //   webTests.push(webTestResult);
+      // } catch (error) {
+      //   errors.push({ stage: 'Web Test', error: `Failed to perform web test: ${(error as Error).message}` });
+      // }
+    } else {
+      errors.push({ stage: 'Measurements', error: 'Skipped file transfers and web tests due to missing tunnel URL' });
+    }
   
     measurementsStopwatch.stop();
-      const measurementDuration = measurementsStopwatch.getTiming().duration;
-      totalMeasurementDuration += measurementDuration;
+    const measurementDuration = measurementsStopwatch.getTiming().duration;
+    totalMeasurementDuration += measurementDuration;
 
-      measurements.push({
-        measurementNumber: i + 1,
-        fileTransfers,
-        webTests
-      });
-    }
-  } catch (error) {
-    runError = (error as Error).message;
-    if (ENABLE_LOGGING) {
-      console.error(`Error during measurements run: ${runError}`);
-    }
+    measurements.push({
+      measurementNumber: i + 1,
+      fileTransfers,
+      webTests
+    });
+    measurementsProgressBar.update(i + 1);
   }
-  
+
+  measurementsProgressBar.stop();
+
   totalStopwatch.stop();
   
+  // Cleanup Stage
   if (pcapSession) {
-    pcapSession.close();
+    try {
+      pcapSession.close();
+    } catch (error) {
+      errors.push({ stage: 'PCAP Cleanup', error: `Failed to close PCAP session: ${(error as Error).message}` });
+    }
   }
   
-  // Send a request to stop the tunnel on the server
+  // Stop Tunnel Stage
   try {
     await axios.post(`${SERVER_URL}/stop-tunnel`, { toolName: tunnelTool.name });
-    console.log('Tunnel successfully stopped, run concluded.');
+    if (ENABLE_LOGGING) console.log('Tunnel successfully stopped, run concluded.');
   } catch (error) {
-    console.error('Failed to stop tunnel via server:', error);
+    errors.push({ stage: 'Tunnel Cleanup', error: `Failed to stop tunnel: ${(error as Error).message}` });
   }
   
   const totalDuration = totalStopwatch.getTiming().duration;
   const setupDuration = setupStopwatch.getTiming().duration;
   const diagnosticsDuration = diagnosticsStopwatch.getTiming().duration;
-  const averageMeasurementDuration = totalMeasurementDuration / numMeasurements; // Calculate average duration
+  const averageMeasurementDuration = measurements.length > 0 ? totalMeasurementDuration / measurements.length : 0;
   
   return {
     tool: tunnelTool.name,
@@ -545,70 +605,190 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
     },
     pcapFilePath,
     allDownloadsComplete,
-    error: runError
+    errors
   };
 }
 
+const cliProgress = require('cli-progress');
 
 async function main() {
   const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
+    input: process.stdin,
+    output: process.stdout,
   });
 
-  const modeChoice = await new Promise<string>((resolve) => rl.question('Choose mode: auto (a) or tool-wise (t): ', resolve));
+  const modeChoice = await new Promise<string>((resolve) =>
+    rl.question('Choose mode: auto (a) or tool-wise (t): ', resolve)
+  );
   const isAutoMode = modeChoice.toLowerCase() === 'a';
 
   const now = new Date();
-  const timestamp = `${now.getFullYear().toString().slice(-2)}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
+  const timestamp = `${now.getFullYear().toString().slice(-2)}-${String(
+    now.getMonth() + 1
+  ).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(
+    now.getHours()
+  ).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(
+    now.getSeconds()
+  ).padStart(2,  
+ '0')}`;
 
   if (isAutoMode) {
-      const resultsDir = `results/${timestamp}`;
-      await fs.mkdir(resultsDir, { recursive: true }); // Create the results directory
+    const resultsDir = `results/all-${timestamp}`;
+    await fs.mkdir(resultsDir, { recursive: true });
 
-      for (const tool of tunnelTools) {
-          try {
-              const result = await performMeasurementsRun(tool, ENABLE_PCAP, NUM_MEASUREMENTS);
-              await saveResults(resultsDir, tool.name, result);
-          } catch (error) {
-              console.error(`An error occurred with tool ${tool.name}:`, error);
-          }
+    const executionTimes = [];
+
+    const progressBar = new cliProgress.SingleBar(
+      {
+        format:
+          'Progress | {bar} | {percentage}% | {value}/{total} Tools | Fastest: {fastest}s | Slowest: {slowest}s',
+        barCompleteChar: '\u2588',
+        barIncompleteChar: '\u2591',
+        hideCursor: true,
+      },
+      cliProgress.Presets.shades_classic
+    );
+
+    progressBar.start(tunnelTools.length, 0, {
+      fastest: 0,
+      slowest: 0,
+    });
+
+    let fastestTime = Number.MAX_SAFE_INTEGER;
+    let slowestTime = 0;
+
+    for (let i = 0; i < tunnelTools.length; i++) {
+      const tool = tunnelTools[i];
+      const startTime = new Date().getTime();
+
+      const toolProgressBar = new cliProgress.SingleBar(
+        {
+          format: `${tool.name} | {bar} | {percentage}% | ETA: {eta}s | {stage}`,
+          barCompleteChar: '\u2588',
+          barIncompleteChar: '\u2591',
+          hideCursor: true,
+        },
+        cliProgress.Presets.shades_classic
+      );
+
+      toolProgressBar.start(100, 0, { stage: 'Starting' });
+
+      try {
+        const result = await performMeasurementsRun(
+          tool,
+          ENABLE_PCAP,
+          NUM_MEASUREMENTS
+        );
+
+        toolProgressBar.update(20, { stage: 'Diagnostics' });
+        toolProgressBar.update(60, { stage: 'Measurements' });
+        toolProgressBar.update(80, { stage: 'Cleanup' });
+        toolProgressBar.update(100, { stage: 'Completed' });
+
+        await saveResults(resultsDir, tool.name, result);
+      } catch (error) {
+        toolProgressBar.stop();
+        console.error(`An error occurred with tool ${tool.name}:`, error);
       }
+
+      toolProgressBar.stop();
+
+      const endTime = new Date().getTime();
+      const executionTime = (endTime - startTime) / 1000;
+
+      executionTimes.push({ tool: tool.name, time: executionTime });
+
+      if (executionTime < fastestTime) fastestTime = executionTime;
+      if (executionTime > slowestTime) slowestTime = executionTime;
+
+      progressBar.update(i + 1, {
+        fastest: fastestTime.toFixed(2),
+        slowest: slowestTime.toFixed(2),
+      });
+    }
+
+    progressBar.stop();
+
+    const fastestTool = executionTimes.reduce((prev, curr) =>
+      prev.time < curr.time ? prev : curr
+    );
+    const slowestTool = executionTimes.reduce((prev, curr) =>
+      prev.time > curr.time ? prev : curr
+    );
+
+    console.log(
+      `\nFastest tool: ${fastestTool.tool} (${fastestTool.time.toFixed(
+        2
+      )} seconds)`
+    );
+    console.log(
+      `Slowest tool: ${slowestTool.tool} (${slowestTool.time.toFixed(
+        2
+      )} seconds)`
+    );
   } else {
-      while (true) {
-          console.log('Available tunneling tools:');
-          tunnelTools.forEach((tool, index) => {
-              console.log(`${index + 1}. ${tool.name}`);
-          });
+    while (true) {
+      console.log('Available tunneling tools:');
+      tunnelTools.forEach((tool, index) => {
+        console.log(`${index + 1}. ${tool.name}`);
+      });
 
-          const choice = await new Promise<string>((resolve) => rl.question('Choose a tunneling tool (number): ', resolve));
-          const selectedTool = tunnelTools[parseInt(choice) - 1];
+      const choice = await new Promise<string>((resolve) =>
+        rl.question('Choose a tunneling tool (number): ', resolve)
+      );
+      const selectedTool = tunnelTools[parseInt(choice) - 1];
 
-          if (!selectedTool) {
-              console.log('Invalid choice. Please try again.');
-              continue;
-          }
-
-          try {
-              const toolResultsDir = `results/${selectedTool.name}`;
-              await fs.mkdir(toolResultsDir, { recursive: true }); // Ensure tool-specific directory exists
-              const result = await performMeasurementsRun(selectedTool, ENABLE_PCAP, NUM_MEASUREMENTS);
-              await saveResults(toolResultsDir, timestamp, result); // Save with timestamp as filename
-          } catch (error) {
-              console.error('An error occurred:', error);
-          }
-
-          const continueChoice = await new Promise<string>((resolve) => rl.question('Do you want to continue with another tool? (y/n): ', resolve));
-          if (continueChoice.toLowerCase() !== 'y') {
-              break;
-          }
+      if (!selectedTool) {
+        console.log('Invalid choice. Please try again.');
+        continue;
       }
+
+      const toolProgressBar = new cliProgress.SingleBar(
+        {
+          format: `${selectedTool.name} | {bar} | {percentage}% | ETA: {eta}s | {stage}`,
+          barCompleteChar: '\u2588',
+          barIncompleteChar: '\u2591',
+          hideCursor: true,
+        },
+        cliProgress.Presets.shades_classic
+      );
+
+      toolProgressBar.start(100, 0, { stage: 'Starting' });
+
+      try {
+        const toolResultsDir = `results/${selectedTool.name}`;
+        await fs.mkdir(toolResultsDir, { recursive: true });
+        const result = await performMeasurementsRun(
+          selectedTool,
+          ENABLE_PCAP,
+          NUM_MEASUREMENTS
+        );
+
+        toolProgressBar.update(20, { stage: 'Diagnostics' });
+        toolProgressBar.update(60, { stage: 'Measurements' });
+        toolProgressBar.update(80, { stage: 'Cleanup' });
+        toolProgressBar.update(100, { stage: 'Completed' });
+
+        await saveResults(toolResultsDir, timestamp, result);
+      } catch (error) {
+        toolProgressBar.stop();
+        console.error('An error occurred:', error);
+      }
+
+      toolProgressBar.stop();
+
+      const continueChoice = await new Promise<string>((resolve) =>
+        rl.question('Do you want to continue with another tool? (y/n): ', resolve)
+      );
+      if (continueChoice.toLowerCase() !== 'y') {
+        break;
+      }
+    }
   }
 
   rl.close();
   if (ENABLE_LOGGING) console.log('Main function completed');
 }
-
 
 async function saveResults(directory: string, toolName: string, result: RunResult) {
   const filename = `${toolName}.json`;

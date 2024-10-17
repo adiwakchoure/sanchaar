@@ -1,0 +1,73 @@
+{
+  "tool": "Beeceptor",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> qt027beaccc548e1769b9e443273.free.beeceptor.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29323\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;qt027beaccc548e1769b9e443273.free.beeceptor.com. IN A\n\n;; ANSWER SECTION:\nqt027beaccc548e1769b9e443273.free.beeceptor.com. 2252 IN A 159.89.140.122\n\n;; Query time: 168 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 14:49:00 IST 2024\n;; MSG SIZE  rcvd: 92\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "qt027beaccc548e1769b9e443273.free.beeceptor.com.",
+            "type": "A",
+            "ttl": 2252,
+            "data": "159.89.140.122"
+          }
+        ],
+        "queryTime": 168,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 14",
+        "rcvdSize": 92
+      },
+      "timing": {
+        "duration": 204.25658399995882
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 15.074962,
+            "tcpConnection": 15.441748,
+            "tlsHandshake": 15.853938,
+            "firstByte": 22.023306,
+            "total": 23.834505
+          },
+          "ttfb": 68.39395400000001,
+          "latency": 15.441748,
+          "sizeDownload": 1048576,
+          "speedDownload": 43994,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 63175.94717499998
+    },
+    "toolSetup": {
+      "duration": 39111.50094999999
+    },
+    "diagnostics": {
+      "duration": 204.46519700001227
+    },
+    "measurements": {
+      "total": {
+        "duration": 23859.94464100001
+      },
+      "average": {
+        "duration": 23859.94464100001
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "error": ""
+}

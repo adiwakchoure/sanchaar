@@ -1,5 +1,3 @@
-// server.ts
-
 import express from 'express';
 import { TunnelTool, tunnelTools } from './tools';
 import fs from 'fs/promises';
@@ -23,8 +21,9 @@ app.post('/start-tunnel', async (req, res) => {
   const tool = tunnelTools.find(t => t.name === toolName);
 
   if (!tool) {
-    if (ENABLE_LOGGING) console.log(`Invalid tool name: ${toolName}`);
-    return res.status(400).json({ error: 'Invalid tool name' });
+    const error = `Invalid tool name: ${toolName}`;
+    if (ENABLE_LOGGING) console.log(error);
+    return res.status(400).json({ error });
   }
 
   try {
@@ -37,18 +36,25 @@ app.post('/start-tunnel', async (req, res) => {
     if (ENABLE_LOGGING) console.log(`Tunnel started successfully with URL: ${url}`);
     res.json({ url });
   } catch (error) {
-    console.error('Failed to start tunnel:', error);
-    res.status(500).json({ error: 'Failed to start tunnel' });
+    const errorMessage = `Failed to start tunnel: ${(error as Error).message}`;
+    console.error(errorMessage);
+    res.status(500).json({ error: errorMessage });
   }
 });
 
 app.post('/stop-tunnel', async (req, res) => {
   if (ENABLE_LOGGING) console.log('Received request to stop tunnel');
   if (activeTunnel) {
-    await activeTunnel.stop();
-    activeTunnel = null;
-    if (ENABLE_LOGGING) console.log('Tunnel stopped successfully');
-    res.json({ message: 'Tunnel stopped' });
+    try {
+      await activeTunnel.stop();
+      activeTunnel = null;
+      if (ENABLE_LOGGING) console.log('Tunnel stopped successfully');
+      res.json({ message: 'Tunnel stopped' });
+    } catch (error) {
+      const errorMessage = `Failed to stop tunnel: ${(error as Error).message}`;
+      console.error(errorMessage);
+      res.status(500).json({ error: errorMessage });
+    }
   } else {
     if (ENABLE_LOGGING) console.log('No active tunnel to stop');
     res.status(400).json({ error: 'No active tunnel' });
@@ -58,9 +64,15 @@ app.post('/stop-tunnel', async (req, res) => {
 app.get('/download/:fileSize', (req, res) => {
   const fileSize = parseInt(req.params.fileSize);
   if (ENABLE_LOGGING) console.log(`Received download request for file size: ${fileSize} bytes`);
-  const buffer = Buffer.alloc(fileSize, 'x');
-  res.send(buffer);
-  if (ENABLE_LOGGING) console.log(`Sent ${fileSize} bytes of data`);
+  try {
+    const buffer = Buffer.alloc(fileSize, 'x');
+    res.send(buffer);
+    if (ENABLE_LOGGING) console.log(`Sent ${fileSize} bytes of data`);
+  } catch (error) {
+    const errorMessage = `Failed to send file: ${(error as Error).message}`;
+    console.error(errorMessage);
+    res.status(500).json({ error: errorMessage });
+  }
 });
 
 app.get('/health', (req, res) => {
@@ -70,10 +82,16 @@ app.get('/health', (req, res) => {
 
 app.get('/diagnostics', (req, res) => {
   if (ENABLE_LOGGING) console.log('Received diagnostics request');
-  res.set('Content-Type', 'application/json');
-  res.set('X-Diagnostics', 'true');
-  res.send(JSON.stringify({ message: 'Diagnostics data' }));
-  if (ENABLE_LOGGING) console.log('Sent diagnostics data');
+  try {
+    res.set('Content-Type', 'application/json');
+    res.set('X-Diagnostics', 'true');
+    res.send(JSON.stringify({ message: 'Diagnostics data' }));
+    if (ENABLE_LOGGING) console.log('Sent diagnostics data');
+  } catch (error) {
+    const errorMessage = `Failed to send diagnostics: ${(error as Error).message}`;
+    console.error(errorMessage);
+    res.status(500).json({ error: errorMessage });
+  }
 });
 
 app.post('/upload-test', (req, res) => {
@@ -96,8 +114,9 @@ app.post('/upload-test', (req, res) => {
   });
 
   req.on('error', (err) => {
-    console.error('Error receiving file data:', err);
-    res.status(500).json({ error: 'Error receiving file data' });
+    const errorMessage = `Error receiving file data: ${err.message}`;
+    console.error(errorMessage);
+    res.status(500).json({ error: errorMessage });
   });
 });
 
@@ -111,15 +130,19 @@ async function startPcapCapture() {
     if (ENABLE_LOGGING) console.log('Closing existing PCAP session');
     pcapSession.close();
   }
-  const date = new Date().toISOString().split('T')[0];
-  const filename = `capture_${date}.pcap`;
-  if (ENABLE_LOGGING) console.log(`Creating new PCAP session, saving to file: ${filename}`);
-  pcapSession = pcap.createSession('eth0', '');
-  const writeStream = fs.createWriteStream(filename);
-  pcapSession.on('packet', (rawPacket: any) => {
-    writeStream.write(rawPacket.buf);
-  });
-  if (ENABLE_LOGGING) console.log('PCAP capture started');
+  try {
+    const date = new Date().toISOString().split('T')[0];
+    const filename = `capture_${date}.pcap`;
+    if (ENABLE_LOGGING) console.log(`Creating new PCAP session, saving to file: ${filename}`);
+    pcapSession = pcap.createSession('eth0', '');
+    const writeStream = fs.createWriteStream(filename);
+    pcapSession.on('packet', (rawPacket: any) => {
+      writeStream.write(rawPacket.buf);
+    });
+    if (ENABLE_LOGGING) console.log('PCAP capture started');
+  } catch (error) {
+    console.error(`Failed to start PCAP capture: ${(error as Error).message}`);
+  }
 }
 
 async function saveMeasurementResults(results: any) {
@@ -129,9 +152,13 @@ async function saveMeasurementResults(results: any) {
   const time = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
   const filename = `results_${date}_${time}.json`;
 
-  if (ENABLE_LOGGING) console.log(`Saving measurement results to file: ${filename}`);
-  await fs.writeFile(filename, JSON.stringify(results, null, 2));
-  if (ENABLE_LOGGING) console.log('Measurement results saved successfully');
+  try {
+    if (ENABLE_LOGGING) console.log(`Saving measurement results to file: ${filename}`);
+    await fs.writeFile(filename, JSON.stringify(results, null, 2));
+    if (ENABLE_LOGGING) console.log('Measurement results saved successfully');
+  } catch (error) {
+    console.error(`Failed to save measurement results: ${(error as Error).message}`);
+  }
 }
 
 app.listen(PORT, () => {
