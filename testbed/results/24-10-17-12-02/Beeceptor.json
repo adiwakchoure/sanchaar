@@ -1,0 +1,69 @@
+{
+  "tool": "Beeceptor",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> qt676b6c463ad973b8cb5213372e.free.beeceptor.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24406\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;qt676b6c463ad973b8cb5213372e.free.beeceptor.com. IN A\n\n;; ANSWER SECTION:\nqt676b6c463ad973b8cb5213372e.free.beeceptor.com. 1800 IN A 159.89.140.122\n\n;; AUTHORITY SECTION:\nbeeceptor.com.\t\t98963\tIN\tNS\tns2.digitalocean.com.\nbeeceptor.com.\t\t98963\tIN\tNS\tns3.digitalocean.com.\nbeeceptor.com.\t\t98963\tIN\tNS\tns1.digitalocean.com.\n\n;; ADDITIONAL SECTION:\nns1.digitalocean.com.\t40403\tIN\tA\t173.245.58.51\nns1.digitalocean.com.\t40403\tIN\tAAAA\t2400:cb00:2049:1::adf5:3a33\nns2.digitalocean.com.\t126496\tIN\tA\t173.245.59.41\nns2.digitalocean.com.\t126496\tIN\tAAAA\t2400:cb00:2049:1::adf5:3b29\nns3.digitalocean.com.\t126496\tIN\tA\t198.41.222.173\nns3.digitalocean.com.\t126496\tIN\tAAAA\t2400:cb00:2049:1::c629:dead\n\n;; Query time: 72 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:04:20 IST 2024\n;; MSG SIZE  rcvd: 291\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "qt676b6c463ad973b8cb5213372e.free.beeceptor.com.",
+            "type": "A",
+            "ttl": 1800,
+            "data": "159.89.140.122"
+          }
+        ],
+        "queryTime": 72,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 291
+      },
+      "timing": {
+        "duration": 124.13748100001249
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.092029,
+            "tcpConnection": 0.319298,
+            "tlsHandshake": 0.637357,
+            "firstByte": 2.695281,
+            "total": 6.677509
+          },
+          "ttfb": 3.743965,
+          "latency": 0.319298,
+          "sizeDownload": 1048576,
+          "speedDownload": 157031,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 9638.921243000004
+    },
+    "toolSetup": {
+      "duration": 2801.8070739999966
+    },
+    "diagnostics": {
+      "duration": 124.26417300000321
+    },
+    "measurements": {
+      "total": {
+        "duration": 6712.800061000002
+      },
+      "average": {
+        "duration": 6712.800061000002
+      }
+    }
+  },
+  "pcapFilePath": null
+}

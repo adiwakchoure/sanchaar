@@ -1,0 +1,123 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> e32c-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22724\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;e32c-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\ne32c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.30.85\ne32c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.98.232\ne32c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.122.107\ne32c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.182\ne32c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.64\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t163168\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t163168\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t163168\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t163168\tIN\tNS\tns-988.awsdns-59.net.\n\n;; Query time: 41 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 03:11:30 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "e32c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "e32c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "e32c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "e32c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "e32c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          }
+        ],
+        "queryTime": 41,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 03",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 76.50651999999991
+      }
+    }
+  ],
+  "measurements": {
+    "fileTransfers": [
+      {
+        "statusCode": 200,
+        "timeSplit": {
+          "dnsLookup": 0.018651,
+          "tcpConnection": 0.028533,
+          "tlsHandshake": 0.097907,
+          "firstByte": 0.177609,
+          "total": 3.981783
+        },
+        "ttfb": 0.3227,
+        "latency": 0.028533,
+        "sizeDownload": 5242880,
+        "speedDownload": 1316716,
+        "speedUpload": 0
+      },
+      {
+        "statusCode": 200,
+        "timeSplit": {
+          "dnsLookup": 0.002726,
+          "tcpConnection": 0.011488,
+          "tlsHandshake": 0.074763,
+          "firstByte": 0.171759,
+          "total": 5.455518
+        },
+        "ttfb": 0.26073599999999997,
+        "latency": 0.011488,
+        "sizeDownload": 5242880,
+        "speedDownload": 961023,
+        "speedUpload": 0
+      },
+      {
+        "statusCode": 200,
+        "timeSplit": {
+          "dnsLookup": 0.002598,
+          "tcpConnection": 0.010548,
+          "tlsHandshake": 0.081984,
+          "firstByte": 0.201215,
+          "total": 10.30576
+        },
+        "ttfb": 0.296345,
+        "latency": 0.010548,
+        "sizeDownload": 5242880,
+        "speedDownload": 508732,
+        "speedUpload": 0
+      }
+    ],
+    "webTests": [],
+    "timing": {
+      "duration": 19828.7627
+    }
+  },
+  "durations": {
+    "total": {
+      "duration": 24953.955435000003
+    },
+    "toolSetup": {
+      "duration": 5047.582301
+    },
+    "diagnostics": {
+      "duration": 77.31353599999966
+    },
+    "measurements": {
+      "total": {
+        "duration": 19828.7627
+      },
+      "average": {
+        "duration": 6609.587566666666
+      }
+    }
+  },
+  "pcapFilePath": null
+}

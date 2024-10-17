@@ -1,0 +1,69 @@
+{
+  "tool": "Pagekite",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sun4.pagekite.me\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24259\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 5, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sun4.pagekite.me.\t\tIN\tA\n\n;; ANSWER SECTION:\nsun4.pagekite.me.\t300\tIN\tA\t172.105.59.232\n\n;; AUTHORITY SECTION:\npagekite.me.\t\t3600\tIN\tNS\tns4.pagekite.net.\npagekite.me.\t\t3600\tIN\tNS\tns6.pagekite.net.\npagekite.me.\t\t3600\tIN\tNS\tns5.pagekite.net.\npagekite.me.\t\t3600\tIN\tNS\tns2.pagekite.net.\npagekite.me.\t\t3600\tIN\tNS\tns3.pagekite.net.\n\n;; Query time: 303 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:56:41 IST 2024\n;; MSG SIZE  rcvd: 163\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sun4.pagekite.me.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.105.59.232"
+          }
+        ],
+        "queryTime": 303,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 163
+      },
+      "timing": {
+        "duration": 359.2190520000004
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 503,
+          "timeSplit": {
+            "dnsLookup": 0.142534,
+            "tcpConnection": 0.145577,
+            "tlsHandshake": 0,
+            "firstByte": 0.164013,
+            "total": 0.164196
+          },
+          "ttfb": 0.45212399999999997,
+          "latency": 0.145577,
+          "sizeDownload": 397,
+          "speedDownload": 2417,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 572.0866350000033
+    },
+    "toolSetup": {
+      "duration": 19.664511999999377
+    },
+    "diagnostics": {
+      "duration": 359.3850650000022
+    },
+    "measurements": {
+      "total": {
+        "duration": 192.96554099999776
+      },
+      "average": {
+        "duration": 192.96554099999776
+      }
+    }
+  },
+  "pcapFilePath": null
+}

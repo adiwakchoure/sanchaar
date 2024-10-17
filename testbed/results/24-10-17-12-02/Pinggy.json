@@ -1,0 +1,75 @@
+{
+  "tool": "Pinggy",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> rntem-150-242-205-172.a.free.pinggy.link\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53604\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 5\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;rntem-150-242-205-172.a.free.pinggy.link. IN A\n\n;; ANSWER SECTION:\nrntem-150-242-205-172.a.free.pinggy.link. 10 IN\tCNAME lin.ap.4.a.pinggy.click.\nlin.ap.4.a.pinggy.click. 598\tIN\tA\t172.105.114.192\n\n;; AUTHORITY SECTION:\npinggy.click.\t\t542\tIN\tNS\tns-1772.awsdns-29.co.uk.\npinggy.click.\t\t542\tIN\tNS\tns-275.awsdns-34.com.\npinggy.click.\t\t542\tIN\tNS\tns-1312.awsdns-36.org.\npinggy.click.\t\t542\tIN\tNS\tns-740.awsdns-28.net.\n\n;; ADDITIONAL SECTION:\nns-740.awsdns-28.net.\t8895\tIN\tA\t205.251.194.228\nns-740.awsdns-28.net.\t137440\tIN\tAAAA\t2600:9000:5302:e400::1\nns-275.awsdns-34.com.\t4228\tIN\tA\t205.251.193.19\nns-275.awsdns-34.com.\t4071\tIN\tAAAA\t2600:9000:5301:1300::1\n\n;; Query time: 79 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:03:23 IST 2024\n;; MSG SIZE  rcvd: 350\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "rntem-150-242-205-172.a.free.pinggy.link.",
+            "type": "CNAME",
+            "ttl": 10,
+            "data": "lin.ap.4.a.pinggy.click."
+          },
+          {
+            "name": "lin.ap.4.a.pinggy.click.",
+            "type": "A",
+            "ttl": 598,
+            "data": "172.105.114.192"
+          }
+        ],
+        "queryTime": 79,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 350
+      },
+      "timing": {
+        "duration": 128.68364400000428
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.00439,
+            "tcpConnection": 0.066834,
+            "tlsHandshake": 0.19246,
+            "firstByte": 0.385005,
+            "total": 1.938534
+          },
+          "ttfb": 0.6486890000000001,
+          "latency": 0.066834,
+          "sizeDownload": 1048576,
+          "speedDownload": 540911,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 4689.748604
+    },
+    "toolSetup": {
+      "duration": 2590.327301999998
+    },
+    "diagnostics": {
+      "duration": 128.86718599999585
+    },
+    "measurements": {
+      "total": {
+        "duration": 1970.4722630000033
+      },
+      "average": {
+        "duration": 1970.4722630000033
+      }
+    }
+  },
+  "pcapFilePath": null
+}

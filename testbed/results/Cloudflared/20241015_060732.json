@@ -1,0 +1,138 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "ping",
+      "rawOutput": "PING sanchaar.remedium.world (104.21.28.145) 56(84) bytes of data.\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=1 ttl=59 time=104 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=2 ttl=59 time=177 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=3 ttl=59 time=101 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=4 ttl=59 time=116 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=5 ttl=59 time=274 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=6 ttl=59 time=297 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=7 ttl=59 time=319 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=8 ttl=59 time=136 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=9 ttl=59 time=148 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=10 ttl=59 time=107 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9015ms\nrtt min/avg/max/mdev = 101.102/177.801/318.710/81.305 ms\n",
+      "parsedOutput": "PING sanchaar.remedium.world (104.21.28.145) 56(84) bytes of data.\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=1 ttl=59 time=104 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=2 ttl=59 time=177 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=3 ttl=59 time=101 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=4 ttl=59 time=116 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=5 ttl=59 time=274 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=6 ttl=59 time=297 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=7 ttl=59 time=319 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=8 ttl=59 time=136 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=9 ttl=59 time=148 ms\n64 bytes from 104.21.28.145 (104.21.28.145): icmp_seq=10 ttl=59 time=107 ms\n\n--- sanchaar.remedium.world ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9015ms\nrtt min/avg/max/mdev = 101.102/177.801/318.710/81.305 ms\n",
+      "timing": {
+        "duration": 9145.590119
+      }
+    },
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54539\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 15\tIN\tA\t104.21.28.145\nsanchaar.remedium.world. 15\tIN\tA\t172.67.170.223\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 06:06:59 IST 2024\n;; MSG SIZE  rcvd: 84\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 15,
+            "data": "104.21.28.145"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 15,
+            "data": "172.67.170.223"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 06",
+        "rcvdSize": 84
+      },
+      "timing": {
+        "duration": 28.050036999999065
+      }
+    },
+    {
+      "tool": "tcptraceroute",
+      "rawOutput": " 1  192.168.1.1  5.381 ms  4.660 ms  9.574 ms\n 2  110.226.143.255  18.533 ms  7.295 ms  4.445 ms\n 3  nsg-corporate-9.210.186.122.airtel.in (122.186.210.9)  7.040 ms  4.924 ms  4.656 ms\n 4  182.79.189.122  103.781 ms  105.863 ms  104.089 ms\n 5  162.158.20.18  132.008 ms  139.551 ms  104.117 ms\n 6  162.158.20.31  107.002 ms  109.011 ms  101.355 ms\n 7  172.67.170.223 [open]  117.603 ms  104.049 ms  142.230 ms\n",
+      "parsedOutput": {
+        "hops": [
+          {
+            "hopNumber": 1,
+            "ip": "192.168.1.1",
+            "rtt1": 5.381,
+            "rtt2": null,
+            "rtt3": 4.66
+          },
+          {
+            "hopNumber": 3,
+            "ip": "nsg-corporate-9.210.186.122.airtel.in",
+            "rtt1": null,
+            "rtt2": 7.04,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 4,
+            "ip": "182.79.189.122",
+            "rtt1": 103.781,
+            "rtt2": null,
+            "rtt3": 105.863
+          },
+          {
+            "hopNumber": 5,
+            "ip": "162.158.20.18",
+            "rtt1": 132.008,
+            "rtt2": null,
+            "rtt3": 139.551
+          },
+          {
+            "hopNumber": 6,
+            "ip": "162.158.20.31",
+            "rtt1": 107.002,
+            "rtt2": null,
+            "rtt3": 109.011
+          },
+          {
+            "hopNumber": 7,
+            "ip": "172.67.170.223",
+            "rtt1": null,
+            "rtt2": 117.603,
+            "rtt3": null
+          }
+        ],
+        "destination": "",
+        "port": 0
+      },
+      "timing": {
+        "duration": 31840.013323
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.018563,
+            "tcpConnection": 0.123982,
+            "tlsHandshake": 0.30755,
+            "firstByte": 0.753973,
+            "total": 1.326788
+          },
+          "ttfb": 1.204068,
+          "latency": 0.123982,
+          "sizeDownload": 1048576,
+          "speedDownload": 790311,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 42377.903989000006
+    },
+    "toolSetup": {
+      "duration": 9.74056500000006
+    },
+    "diagnostics": {
+      "duration": 41015.712612999996
+    },
+    "measurements": {
+      "total": {
+        "duration": 1352.3140619999976
+      },
+      "average": {
+        "duration": 1352.3140619999976
+      }
+    }
+  },
+  "pcapFilePath": null
+}

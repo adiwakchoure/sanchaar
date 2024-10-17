@@ -1,0 +1,69 @@
+{
+  "tool": "Tunwg",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> rly6xz5euuh6j4o6.l.tunwg.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41798\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 13\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;rly6xz5euuh6j4o6.l.tunwg.com.\tIN\tA\n\n;; ANSWER SECTION:\nrly6xz5euuh6j4o6.l.tunwg.com. 300 IN\tA\t172.245.226.167\n\n;; AUTHORITY SECTION:\ntunwg.com.\t\t172799\tIN\tNS\tfattouche.ns.cloudflare.com.\ntunwg.com.\t\t172799\tIN\tNS\taida.ns.cloudflare.com.\n\n;; ADDITIONAL SECTION:\naida.ns.cloudflare.com.\t135597\tIN\tA\t172.64.32.58\naida.ns.cloudflare.com.\t135597\tIN\tA\t173.245.58.58\naida.ns.cloudflare.com.\t135597\tIN\tA\t108.162.192.58\naida.ns.cloudflare.com.\t135597\tIN\tAAAA\t2a06:98c1:50::ac40:203a\naida.ns.cloudflare.com.\t135597\tIN\tAAAA\t2606:4700:50::adf5:3a3a\naida.ns.cloudflare.com.\t135597\tIN\tAAAA\t2803:f800:50::6ca2:c03a\nfattouche.ns.cloudflare.com. 20227 IN\tA\t172.64.35.48\nfattouche.ns.cloudflare.com. 20227 IN\tA\t108.162.195.48\nfattouche.ns.cloudflare.com. 20227 IN\tA\t162.159.44.48\nfattouche.ns.cloudflare.com. 20227 IN\tAAAA\t2606:4700:58::a29f:2c30\nfattouche.ns.cloudflare.com. 20227 IN\tAAAA\t2803:f800:50::6ca2:c330\nfattouche.ns.cloudflare.com. 20227 IN\tAAAA\t2a06:98c1:50::ac40:2330\n\n;; Query time: 6 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:58:03 IST 2024\n;; MSG SIZE  rcvd: 394\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "rly6xz5euuh6j4o6.l.tunwg.com.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.245.226.167"
+          }
+        ],
+        "queryTime": 6,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 394
+      },
+      "timing": {
+        "duration": 49.368393000011565
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.029325,
+            "tcpConnection": 0.274634,
+            "tlsHandshake": 1.10294,
+            "firstByte": 1.606929,
+            "total": 3.098564
+          },
+          "ttfb": 3.013828,
+          "latency": 0.274634,
+          "sizeDownload": 1048576,
+          "speedDownload": 338407,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 4595.027747
+    },
+    "toolSetup": {
+      "duration": 1419.388433
+    },
+    "diagnostics": {
+      "duration": 49.56080500000098
+    },
+    "measurements": {
+      "total": {
+        "duration": 3126.0143249999965
+      },
+      "average": {
+        "duration": 3126.0143249999965
+      }
+    }
+  },
+  "pcapFilePath": null
+}

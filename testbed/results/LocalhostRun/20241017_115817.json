@@ -1,0 +1,87 @@
+{
+  "tool": "LocalhostRun",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 9e468a82b30d8d.lhr.life\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51462\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 4, ADDITIONAL: 4\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;9e468a82b30d8d.lhr.life.\tIN\tA\n\n;; ANSWER SECTION:\n9e468a82b30d8d.lhr.life. 300\tIN\tCNAME\tdd.localhost.run.\ndd.localhost.run.\t60\tIN\tA\t3.208.46.244\ndd.localhost.run.\t60\tIN\tA\t3.234.18.192\ndd.localhost.run.\t60\tIN\tA\t54.172.225.3\n\n;; AUTHORITY SECTION:\nlocalhost.run.\t\t3598\tIN\tNS\tns-743.awsdns-28.net.\nlocalhost.run.\t\t3598\tIN\tNS\tns-1051.awsdns-03.org.\nlocalhost.run.\t\t3598\tIN\tNS\tns-1718.awsdns-22.co.uk.\nlocalhost.run.\t\t3598\tIN\tNS\tns-479.awsdns-59.com.\n\n;; ADDITIONAL SECTION:\nns-479.awsdns-59.com.\t140604\tIN\tA\t205.251.193.223\nns-479.awsdns-59.com.\t140463\tIN\tAAAA\t2600:9000:5301:df00::1\nns-743.awsdns-28.net.\t22843\tIN\tA\t205.251.194.231\n\n;; Query time: 50 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:58:14 IST 2024\n;; MSG SIZE  rcvd: 330\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "9e468a82b30d8d.lhr.life.",
+            "type": "CNAME",
+            "ttl": 300,
+            "data": "dd.localhost.run."
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.208.46.244"
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.234.18.192"
+          },
+          {
+            "name": "dd.localhost.run.",
+            "type": "A",
+            "ttl": 60,
+            "data": "54.172.225.3"
+          }
+        ],
+        "queryTime": 50,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 330
+      },
+      "timing": {
+        "duration": 97.05438499999582
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.007533,
+            "tcpConnection": 0.201849,
+            "tlsHandshake": 0.48239,
+            "firstByte": 1.403951,
+            "total": 2.832965
+          },
+          "ttfb": 2.095723,
+          "latency": 0.201849,
+          "sizeDownload": 1048576,
+          "speedDownload": 370133,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 5279.582683999994
+    },
+    "toolSetup": {
+      "duration": 2319.1100489999953
+    },
+    "diagnostics": {
+      "duration": 97.27172999999311
+    },
+    "measurements": {
+      "total": {
+        "duration": 2863.1409120000026
+      },
+      "average": {
+        "duration": 2863.1409120000026
+      }
+    }
+  },
+  "pcapFilePath": null
+}

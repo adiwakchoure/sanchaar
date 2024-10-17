@@ -1,0 +1,75 @@
+{
+  "tool": "Zrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> l607pq56fvht.share.zrok.io\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44520\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 4\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;l607pq56fvht.share.zrok.io.\tIN\tA\n\n;; ANSWER SECTION:\nl607pq56fvht.share.zrok.io. 300\tIN\tA\t52.223.10.144\nl607pq56fvht.share.zrok.io. 300\tIN\tA\t35.71.189.214\n\n;; AUTHORITY SECTION:\nzrok.io.\t\t3240\tIN\tNS\tns-1495.awsdns-58.org.\nzrok.io.\t\t3240\tIN\tNS\tns-1913.awsdns-47.co.uk.\nzrok.io.\t\t3240\tIN\tNS\tns-629.awsdns-14.net.\nzrok.io.\t\t3240\tIN\tNS\tns-342.awsdns-42.com.\n\n;; ADDITIONAL SECTION:\nns-342.awsdns-42.com.\t119472\tIN\tA\t205.251.193.86\nns-629.awsdns-14.net.\t8420\tIN\tA\t205.251.194.117\nns-629.awsdns-14.net.\t8257\tIN\tAAAA\t2600:9000:5302:7500::1\n\n;; Query time: 5 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:03:51 IST 2024\n;; MSG SIZE  rcvd: 287\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "l607pq56fvht.share.zrok.io.",
+            "type": "A",
+            "ttl": 300,
+            "data": "52.223.10.144"
+          },
+          {
+            "name": "l607pq56fvht.share.zrok.io.",
+            "type": "A",
+            "ttl": 300,
+            "data": "35.71.189.214"
+          }
+        ],
+        "queryTime": 5,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 287
+      },
+      "timing": {
+        "duration": 48.405564000000595
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.006254,
+            "tcpConnection": 0.008477,
+            "tlsHandshake": 0.203427,
+            "firstByte": 1.510365,
+            "total": 3.493473
+          },
+          "ttfb": 1.728523,
+          "latency": 0.008477,
+          "sizeDownload": 1048576,
+          "speedDownload": 300152,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 9915.890394000002
+    },
+    "toolSetup": {
+      "duration": 6337.806851999994
+    },
+    "diagnostics": {
+      "duration": 48.68038800000795
+    },
+    "measurements": {
+      "total": {
+        "duration": 3529.295109999992
+      },
+      "average": {
+        "duration": 3529.295109999992
+      }
+    }
+  },
+  "pcapFilePath": null
+}

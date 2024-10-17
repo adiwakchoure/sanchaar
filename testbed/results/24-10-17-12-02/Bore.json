@@ -1,0 +1,69 @@
+{
+  "tool": "Bore",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> bore.pub\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45754\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;bore.pub.\t\t\tIN\tA\n\n;; ANSWER SECTION:\nbore.pub.\t\t3222\tIN\tA\t159.223.171.199\n\n;; AUTHORITY SECTION:\nbore.pub.\t\t3222\tIN\tNS\tns3.digitalocean.com.\nbore.pub.\t\t3222\tIN\tNS\tns1.digitalocean.com.\nbore.pub.\t\t3222\tIN\tNS\tns2.digitalocean.com.\n\n;; ADDITIONAL SECTION:\nns3.digitalocean.com.\t3222\tIN\tAAAA\t2400:cb00:2049:1::c629:dead\nns1.digitalocean.com.\t3222\tIN\tA\t173.245.58.51\nns3.digitalocean.com.\t3222\tIN\tA\t198.41.222.173\nns2.digitalocean.com.\t3222\tIN\tA\t173.245.59.41\nns1.digitalocean.com.\t3222\tIN\tAAAA\t2400:cb00:2049:1::adf5:3a33\nns2.digitalocean.com.\t3222\tIN\tAAAA\t2400:cb00:2049:1::adf5:3b29\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:03:01 IST 2024\n;; MSG SIZE  rcvd: 255\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "bore.pub.",
+            "type": "A",
+            "ttl": 3222,
+            "data": "159.223.171.199"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 255
+      },
+      "timing": {
+        "duration": 49.14958099999785
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003502,
+            "tcpConnection": 0.196789,
+            "tlsHandshake": 0,
+            "firstByte": 1.057451,
+            "total": 5.771158
+          },
+          "ttfb": 1.257742,
+          "latency": 0.196789,
+          "sizeDownload": 1048576,
+          "speedDownload": 181692,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 6377.184414999996
+    },
+    "toolSetup": {
+      "duration": 524.3952650000065
+    },
+    "diagnostics": {
+      "duration": 49.57924300000013
+    },
+    "measurements": {
+      "total": {
+        "duration": 5803.1172279999955
+      },
+      "average": {
+        "duration": 5803.1172279999955
+      }
+    }
+  },
+  "pcapFilePath": null
+}

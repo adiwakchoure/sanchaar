@@ -1,0 +1,40 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> lecture-collectible-wishlist-raise.trycloudflare.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 19060\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;lecture-collectible-wishlist-raise.trycloudflare.com. IN A\n\n;; Query time: 15 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 03:41:29 IST 2024\n;; MSG SIZE  rcvd: 81\n\n",
+      "parsedOutput": {
+        "answers": [],
+        "queryTime": 15,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 03",
+        "rcvdSize": 81
+      },
+      "timing": {
+        "duration": 60.22219500000028
+      }
+    }
+  ],
+  "measurements": [],
+  "durations": {
+    "total": {
+      "duration": 5377.200462
+    },
+    "toolSetup": {
+      "duration": 5316.44447
+    },
+    "diagnostics": {
+      "duration": 60.69096999999965
+    },
+    "measurements": {
+      "total": {
+        "duration": 0
+      },
+      "average": {
+        "duration": null
+      }
+    }
+  },
+  "pcapFilePath": null
+}

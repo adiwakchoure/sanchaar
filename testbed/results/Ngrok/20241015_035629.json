@@ -1,0 +1,198 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "ping",
+      "rawOutput": "PING 5676-110-226-183-126.ngrok-free.app (3.6.98.232) 56(84) bytes of data.\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=1 ttl=117 time=7.29 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=2 ttl=117 time=18.3 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=3 ttl=117 time=8.39 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=4 ttl=117 time=9.40 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=5 ttl=117 time=25.2 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=6 ttl=117 time=10.6 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=7 ttl=117 time=10.9 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=8 ttl=117 time=6.89 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=9 ttl=117 time=14.9 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=10 ttl=117 time=30.8 ms\n\n--- 5676-110-226-183-126.ngrok-free.app ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9010ms\nrtt min/avg/max/mdev = 6.893/14.262/30.762/7.712 ms\n",
+      "parsedOutput": "PING 5676-110-226-183-126.ngrok-free.app (3.6.98.232) 56(84) bytes of data.\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=1 ttl=117 time=7.29 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=2 ttl=117 time=18.3 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=3 ttl=117 time=8.39 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=4 ttl=117 time=9.40 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=5 ttl=117 time=25.2 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=6 ttl=117 time=10.6 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=7 ttl=117 time=10.9 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=8 ttl=117 time=6.89 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=9 ttl=117 time=14.9 ms\n64 bytes from ec2-3-6-98-232.ap-south-1.compute.amazonaws.com (3.6.98.232): icmp_seq=10 ttl=117 time=30.8 ms\n\n--- 5676-110-226-183-126.ngrok-free.app ping statistics ---\n10 packets transmitted, 10 received, 0% packet loss, time 9010ms\nrtt min/avg/max/mdev = 6.893/14.262/30.762/7.712 ms\n",
+      "timing": {
+        "duration": 9079.714088999997
+      }
+    },
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 5676-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24433\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;5676-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\n5676-110-226-183-126.ngrok-free.app. 50\tIN A\t3.6.122.107\n5676-110-226-183-126.ngrok-free.app. 50\tIN A\t3.6.98.232\n5676-110-226-183-126.ngrok-free.app. 50\tIN A\t3.6.115.182\n5676-110-226-183-126.ngrok-free.app. 50\tIN A\t3.6.30.85\n5676-110-226-183-126.ngrok-free.app. 50\tIN A\t3.6.115.64\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t50\tIN\tNS\tns-988.awsdns-59.net.\nngrok-free.app.\t\t50\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t50\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t50\tIN\tNS\tns-9.awsdns-01.com.\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 03:55:08 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "5676-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 50,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "5676-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 50,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "5676-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 50,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "5676-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 50,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "5676-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 50,
+            "data": "3.6.115.64"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 03",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 32.800452999999834
+      }
+    },
+    {
+      "tool": "tcptraceroute",
+      "rawOutput": " 1  192.168.1.1  46.378 ms  0.915 ms  1.126 ms\n 2  110.226.143.255  23.483 ms  5.057 ms  5.329 ms\n 3  nsg-corporate-9.210.186.122.airtel.in (122.186.210.9)  11.994 ms  5.019 ms  6.399 ms\n 4  116.119.73.209  7.831 ms  5.519 ms  4.984 ms\n 5  * * *\n 6  * * *\n 7  * * *\n 8  * * *\n 9  * * *\n10  * * *\n11  * * *\n12  * * *\n13  ec2-3-6-115-64.ap-south-1.compute.amazonaws.com (3.6.115.64) [open]  38.862 ms  6.931 ms  7.165 ms\n",
+      "parsedOutput": {
+        "hops": [
+          {
+            "hopNumber": 1,
+            "ip": "192.168.1.1",
+            "rtt1": 46.378,
+            "rtt2": null,
+            "rtt3": 0.915
+          },
+          {
+            "hopNumber": 3,
+            "ip": "nsg-corporate-9.210.186.122.airtel.in",
+            "rtt1": null,
+            "rtt2": 11.994,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 4,
+            "ip": "116.119.73.209",
+            "rtt1": 7.831,
+            "rtt2": null,
+            "rtt3": 5.519
+          },
+          {
+            "hopNumber": 5,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 6,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 7,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 8,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 9,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 10,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 11,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 12,
+            "ip": "*",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": null
+          },
+          {
+            "hopNumber": 13,
+            "ip": "ec2-3-6-115-64.ap-south-1.compute.amazonaws.com",
+            "rtt1": null,
+            "rtt2": null,
+            "rtt3": 38.862
+          }
+        ],
+        "destination": "",
+        "port": 0
+      },
+      "timing": {
+        "duration": 77605.53939199999
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.035344,
+            "tcpConnection": 0.061528,
+            "tlsHandshake": 0.13052,
+            "firstByte": 0.351986,
+            "total": 3.446295
+          },
+          "ttfb": 0.579378,
+          "latency": 0.061528,
+          "sizeDownload": 1048576,
+          "speedDownload": 304261,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 95239.763004
+    },
+    "toolSetup": {
+      "duration": 5046.551477999999
+    },
+    "diagnostics": {
+      "duration": 86720.116141
+    },
+    "measurements": {
+      "total": {
+        "duration": 3472.9335629999987
+      },
+      "average": {
+        "duration": 3472.9335629999987
+      }
+    }
+  },
+  "pcapFilePath": null
+}

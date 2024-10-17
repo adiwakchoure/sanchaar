@@ -1,0 +1,75 @@
+{
+  "tool": "Localxpose",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> hcspfukrhy.loclx.io\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35399\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 3\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;hcspfukrhy.loclx.io.\t\tIN\tA\n\n;; ANSWER SECTION:\nhcspfukrhy.loclx.io.\t60\tIN\tCNAME\tus.loclx.io.\nus.loclx.io.\t\t299\tIN\tA\t45.55.35.48\n\n;; AUTHORITY SECTION:\nloclx.io.\t\t3261\tIN\tNS\tns-439.awsdns-54.com.\nloclx.io.\t\t3261\tIN\tNS\tns-1945.awsdns-51.co.uk.\nloclx.io.\t\t3261\tIN\tNS\tns-1212.awsdns-23.org.\nloclx.io.\t\t3261\tIN\tNS\tns-847.awsdns-41.net.\n\n;; ADDITIONAL SECTION:\nns-847.awsdns-41.net.\t35706\tIN\tA\t205.251.195.79\nns-439.awsdns-54.com.\t121615\tIN\tA\t205.251.193.183\n\n;; Query time: 6 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 12:03:12 IST 2024\n;; MSG SIZE  rcvd: 253\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "hcspfukrhy.loclx.io.",
+            "type": "CNAME",
+            "ttl": 60,
+            "data": "us.loclx.io."
+          },
+          {
+            "name": "us.loclx.io.",
+            "type": "A",
+            "ttl": 299,
+            "data": "45.55.35.48"
+          }
+        ],
+        "queryTime": 6,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 12",
+        "rcvdSize": 253
+      },
+      "timing": {
+        "duration": 51.51474700000108
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.007538,
+            "tcpConnection": 0.225391,
+            "tlsHandshake": 0,
+            "firstByte": 1.458714,
+            "total": 2.123414
+          },
+          "ttfb": 1.691643,
+          "latency": 0.225391,
+          "sizeDownload": 89935,
+          "speedDownload": 42353,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 6802.598100999996
+    },
+    "toolSetup": {
+      "duration": 4592.933563999999
+    },
+    "diagnostics": {
+      "duration": 51.76973700000235
+    },
+    "measurements": {
+      "total": {
+        "duration": 2157.8230729999996
+      },
+      "average": {
+        "duration": 2157.8230729999996
+      }
+    }
+  },
+  "pcapFilePath": null
+}

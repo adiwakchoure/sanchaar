@@ -1,0 +1,180 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> e25d-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35561\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;e25d-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\ne25d-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.30.85\ne25d-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.98.232\ne25d-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.122.107\ne25d-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.64\ne25d-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.182\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t106082\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t106082\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t106082\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t106082\tIN\tNS\tns-988.awsdns-59.net.\n\n;; Query time: 22 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 15 03:38:26 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "e25d-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "e25d-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "e25d-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "e25d-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          },
+          {
+            "name": "e25d-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          }
+        ],
+        "queryTime": 22,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 15 03",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 56.92309699999896
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.030534,
+            "tcpConnection": 0.049652,
+            "tlsHandshake": 0.123113,
+            "firstByte": 0.256036,
+            "total": 4.336971
+          },
+          "ttfb": 0.459335,
+          "latency": 0.049652,
+          "sizeDownload": 1048576,
+          "speedDownload": 241776,
+          "speedUpload": 0
+        },
+        "5MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.00208,
+            "tcpConnection": 0.010297,
+            "tlsHandshake": 0.082998,
+            "firstByte": 0.241409,
+            "total": 19.012031
+          },
+          "ttfb": 0.33678400000000003,
+          "latency": 0.010297,
+          "sizeDownload": 5242880,
+          "speedDownload": 275766,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002598,
+            "tcpConnection": 0.01097,
+            "tlsHandshake": 0.077343,
+            "firstByte": 0.168704,
+            "total": 4.570308
+          },
+          "ttfb": 0.259615,
+          "latency": 0.01097,
+          "sizeDownload": 1048576,
+          "speedDownload": 229432,
+          "speedUpload": 0
+        },
+        "5MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002476,
+            "tcpConnection": 0.041693,
+            "tlsHandshake": 0.093232,
+            "firstByte": 0.2723,
+            "total": 9.570978
+          },
+          "ttfb": 0.409701,
+          "latency": 0.041693,
+          "sizeDownload": 5242880,
+          "speedDownload": 547789,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002178,
+            "tcpConnection": 0.031417,
+            "tlsHandshake": 0.083847,
+            "firstByte": 0.283813,
+            "total": 2.329574
+          },
+          "ttfb": 0.401255,
+          "latency": 0.031417,
+          "sizeDownload": 1048576,
+          "speedDownload": 450114,
+          "speedUpload": 0
+        },
+        "5MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002699,
+            "tcpConnection": 0.009756,
+            "tlsHandshake": 0.097961,
+            "firstByte": 0.216141,
+            "total": 4.228114
+          },
+          "ttfb": 0.326557,
+          "latency": 0.009756,
+          "sizeDownload": 5242880,
+          "speedDownload": 1240004,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 49327.49469400001
+    },
+    "toolSetup": {
+      "duration": 5066.699106
+    },
+    "diagnostics": {
+      "duration": 57.63087000000087
+    },
+    "measurements": {
+      "total": {
+        "duration": 44202.946603000004
+      },
+      "average": {
+        "duration": 14734.315534333335
+      }
+    }
+  },
+  "pcapFilePath": null
+}

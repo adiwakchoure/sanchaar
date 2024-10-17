@@ -1,0 +1,93 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 5cf9-150-242-205-172.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39863\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;5cf9-150-242-205-172.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\n5cf9-150-242-205-172.ngrok-free.app. 60\tIN A\t3.6.122.107\n5cf9-150-242-205-172.ngrok-free.app. 60\tIN A\t3.6.98.232\n5cf9-150-242-205-172.ngrok-free.app. 60\tIN A\t3.6.115.182\n5cf9-150-242-205-172.ngrok-free.app. 60\tIN A\t3.6.30.85\n5cf9-150-242-205-172.ngrok-free.app. 60\tIN A\t3.6.115.64\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t10800\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t10800\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t10800\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t10800\tIN\tNS\tns-988.awsdns-59.net.\n\n;; ADDITIONAL SECTION:\nns-9.awsdns-01.com.\t134407\tIN\tA\t205.251.192.9\nns-9.awsdns-01.com.\t94722\tIN\tAAAA\t2600:9000:5300:900::1\nns-1311.awsdns-35.org.\t165266\tIN\tA\t205.251.197.31\nns-1311.awsdns-35.org.\t92680\tIN\tAAAA\t2600:9000:5305:1f00::1\nns-988.awsdns-59.net.\t122572\tIN\tA\t205.251.195.220\nns-988.awsdns-59.net.\t122204\tIN\tAAAA\t2600:9000:5303:dc00::1\n\n;; Query time: 13 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:56:37 IST 2024\n;; MSG SIZE  rcvd: 414\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "5cf9-150-242-205-172.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "5cf9-150-242-205-172.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "5cf9-150-242-205-172.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "5cf9-150-242-205-172.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "5cf9-150-242-205-172.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          }
+        ],
+        "queryTime": 13,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 414
+      },
+      "timing": {
+        "duration": 63.766052000000855
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.015016,
+            "tcpConnection": 0.018872,
+            "tlsHandshake": 0.131227,
+            "firstByte": 0.182425,
+            "total": 0.320214
+          },
+          "ttfb": 0.34754,
+          "latency": 0.018872,
+          "sizeDownload": 1048576,
+          "speedDownload": 3274610,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 10489.612357
+    },
+    "toolSetup": {
+      "duration": 10071.780682
+    },
+    "diagnostics": {
+      "duration": 65.3626179999992
+    },
+    "measurements": {
+      "total": {
+        "duration": 352.2626059999984
+      },
+      "average": {
+        "duration": 352.2626059999984
+      }
+    }
+  },
+  "pcapFilePath": null
+}

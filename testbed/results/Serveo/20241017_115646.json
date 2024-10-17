@@ -1,0 +1,69 @@
+{
+  "tool": "Serveo",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> b3af9fdcc0cb8cf71e584096a6dc25de.serveo.net\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1495\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 7\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;b3af9fdcc0cb8cf71e584096a6dc25de.serveo.net. IN\tA\n\n;; ANSWER SECTION:\nb3af9fdcc0cb8cf71e584096a6dc25de.serveo.net. 3600 IN A 138.68.79.95\n\n;; AUTHORITY SECTION:\nserveo.net.\t\t172798\tIN\tNS\tns3.digitalocean.com.\nserveo.net.\t\t172798\tIN\tNS\tns1.digitalocean.com.\nserveo.net.\t\t172798\tIN\tNS\tns2.digitalocean.com.\n\n;; ADDITIONAL SECTION:\nns1.digitalocean.com.\t40859\tIN\tA\t173.245.58.51\nns1.digitalocean.com.\t40859\tIN\tAAAA\t2400:cb00:2049:1::adf5:3a33\nns2.digitalocean.com.\t126952\tIN\tA\t173.245.59.41\nns2.digitalocean.com.\t126952\tIN\tAAAA\t2400:cb00:2049:1::adf5:3b29\nns3.digitalocean.com.\t126952\tIN\tA\t198.41.222.173\nns3.digitalocean.com.\t126952\tIN\tAAAA\t2400:cb00:2049:1::c629:dead\n\n;; Query time: 79 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Thu Oct 17 11:56:44 IST 2024\n;; MSG SIZE  rcvd: 290\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "b3af9fdcc0cb8cf71e584096a6dc25de.serveo.net.",
+            "type": "A",
+            "ttl": 3600,
+            "data": "138.68.79.95"
+          }
+        ],
+        "queryTime": 79,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Thu Oct 17 11",
+        "rcvdSize": 290
+      },
+      "timing": {
+        "duration": 127.71152599999914
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.067801,
+            "tcpConnection": 0.194677,
+            "tlsHandshake": 0.408262,
+            "firstByte": 1.067174,
+            "total": 2.795895
+          },
+          "ttfb": 1.737914,
+          "latency": 0.194677,
+          "sizeDownload": 1048576,
+          "speedDownload": 375041,
+          "speedUpload": 0
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 5401.482388
+    },
+    "toolSetup": {
+      "duration": 2438.7361489999967
+    },
+    "diagnostics": {
+      "duration": 128.2297460000009
+    },
+    "measurements": {
+      "total": {
+        "duration": 2834.3819089999997
+      },
+      "average": {
+        "duration": 2834.3819089999997
+      }
+    }
+  },
+  "pcapFilePath": null
+}
