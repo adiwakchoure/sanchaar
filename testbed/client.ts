@@ -11,8 +11,8 @@ const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1, 5]; // All sizes in megabytes (MB)
-const NUM_MEASUREMENTS = 10;
+const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
+const NUM_MEASUREMENTS = 1;
 
 const ENABLE_LOGGING = true;
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
@@ -423,7 +423,7 @@ async function performWebTest(url: string): Promise<CurlResult> {
     if (ENABLE_LOGGING) console.log('Starting PCAP capture');
     const date = new Date().toISOString().split('T')[0];
     const filename = `client_capture_${toolName}_${date}.pcap`;
-    const pcapSession = pcap.createSession('eth0', '');
+    const pcapSession = pcap.createSession('wlp2s0', '');
     const writeStream = fs.createWriteStream(filename);
     pcapSession.on('packet', (rawPacket: any) => {
     writeStream.write(rawPacket.buf);
@@ -442,162 +442,178 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
 
   if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
   
-    let tunnelUrl = ''; // Initialize tunnelUrl
+  let tunnelUrl = ''; // Initialize tunnelUrl
   try {
-      const response = await axios.post(`${SERVER_URL}/start-tunnel`, { toolName: tunnelTool.name });
-      tunnelUrl = response.data.url; // Assign the value here
-      console.log(`Tunnel started: ${tunnelUrl}`);
+    const response = await axios.post(`${SERVER_URL}/start-tunnel`, { toolName: tunnelTool.name });
+    tunnelUrl = response.data.url; // Assign the value here
+    console.log(`Tunnel received: ${tunnelUrl}`);
   } catch (error) {
-      console.error('Failed to start tunnel via server:', error);
-      throw error;
+    console.error('Failed to start tunnel via server:', error);
+    throw error;
   }
   
   if (!tunnelUrl) {
-      throw new Error('Tunnel URL is empty or invalid');
+    throw new Error('Tunnel URL is empty or invalid');
   }
 
-  
-    let pcapSession = null;
-    let pcapFilePath = null;
-    if (enablePcap) {
-      [pcapSession, pcapFilePath] = await startPcapCapture(tunnelTool.name);
+  // Run post-setup commands after the tunnel is started
+  if (tunnelTool.postSetupCommands) {
+    for (const command of tunnelTool.postSetupCommands) {
+      await runCommand(command[0], command.slice(1));
     }
-  
-    setupStopwatch.stop();
-  
-    const url = new URL(tunnelUrl); 
-    const domain = url.hostname;
-  
-    diagnosticsStopwatch.start();
-    const diagnostics: DiagnosticResult[] = [];
-    diagnostics.push(await runDiagnosticTool('ping', [domain, '-c', '10']));
-    diagnostics.push(await runDiagnosticTool('dig', [domain]));
-    diagnostics.push(await runDiagnosticTool('tcptraceroute', [domain]));
-    
-    diagnosticsStopwatch.stop();
-  
-    const measurements: Measurement[] = [];
-    let totalMeasurementDuration = 0;
-  
-    for (let i = 0; i < numMeasurements; i++) {
-      const measurementsStopwatch = new Stopwatch();
-      measurementsStopwatch.start();
-  
-      const fileTransfers: { [key: string]: CurlResult } = {};
-      const webTests: WebTestResult[] = [];
-  
-      // Perform file transfers
-      for (const sizeMB of FILE_SIZES_MB) {
-        if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
-        const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
-        const key = `${sizeMB}MB_buffer`;
-        fileTransfers[key] = result; // Store the result directly
-      }
-  
-      // Perform web test
-      // const webTestResult = await performWebTest(`${tunnelUrl}/health`);
-      // webTests.push(webTestResult);
-  
-      measurementsStopwatch.stop();
-      const measurementDuration = measurementsStopwatch.getTiming().duration;
-      totalMeasurementDuration += measurementDuration;
-  
-      measurements.push({
-        measurementNumber: i + 1, // Add measurement number
-        fileTransfers,
-        webTests
-      });
-    }
-  
-    totalStopwatch.stop();
-  
-    if (pcapSession) {
-      pcapSession.close();
-    }
-  
-    // await tunnelTool.stop();
-    // Send a request to stop the tunnel on the server
-    try {
-        await axios.post(`${SERVER_URL}/stop-tunnel`, { toolName: tunnelTool.name });
-        console.log('Tunnel stopped successfully');
-    } catch (error) {
-        console.error('Failed to stop tunnel via server:', error);
-    }
-  
-    const totalDuration = totalStopwatch.getTiming().duration;
-    const setupDuration = setupStopwatch.getTiming().duration;
-    const diagnosticsDuration = diagnosticsStopwatch.getTiming().duration;
-    const averageMeasurementDuration = totalMeasurementDuration / numMeasurements; // Calculate average duration
-  
-    return {
-      tool: tunnelTool.name,
-      diagnostics,
-      measurements, // Now an array of Measurement objects
-      durations: {
-        total: { duration: totalDuration },
-        toolSetup: { duration: setupDuration },
-        diagnostics: { duration: diagnosticsDuration },
-        measurements: {
-          total: { duration: totalMeasurementDuration },
-          average: { duration: averageMeasurementDuration }
-        }
-      },
-      pcapFilePath
-    };
   }
+
+  let pcapSession = null;
+  let pcapFilePath = null;
+  if (enablePcap) {
+    [pcapSession, pcapFilePath] = await startPcapCapture(tunnelTool.name);
+  }
+  
+  setupStopwatch.stop();
+  
+  const url = new URL(tunnelUrl); 
+  const domain = url.hostname;
+  
+  diagnosticsStopwatch.start();
+  const diagnostics: DiagnosticResult[] = [];
+  // diagnostics.push(await runDiagnosticTool('ping', [domain, '-c', '10']));
+  diagnostics.push(await runDiagnosticTool('dig', [domain]));
+  // diagnostics.push(await runDiagnosticTool('tcptraceroute', [domain]));
+  
+  diagnosticsStopwatch.stop();
+  
+  const measurements: Measurement[] = [];
+  let totalMeasurementDuration = 0;
+  
+  for (let i = 0; i < numMeasurements; i++) {
+    const measurementsStopwatch = new Stopwatch();
+    measurementsStopwatch.start();
+  
+    const fileTransfers: { [key: string]: CurlResult } = {};
+    const webTests: WebTestResult[] = [];
+  
+    // Perform file transfers
+    for (const sizeMB of FILE_SIZES_MB) {
+      if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
+      const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
+      const key = `${sizeMB}MB_buffer`;
+      fileTransfers[key] = result; // Store the result directly
+    }
+  
+    // Perform web test
+    // const webTestResult = await performWebTest(`${tunnelUrl}/health`);
+    // webTests.push(webTestResult);
+  
+    measurementsStopwatch.stop();
+    const measurementDuration = measurementsStopwatch.getTiming().duration;
+    totalMeasurementDuration += measurementDuration;
+  
+    measurements.push({
+      measurementNumber: i + 1, // Add measurement number
+      fileTransfers,
+      webTests
+    });
+  }
+  
+  totalStopwatch.stop();
+  
+  if (pcapSession) {
+    pcapSession.close();
+  }
+  
+  // Send a request to stop the tunnel on the server
+  try {
+    await axios.post(`${SERVER_URL}/stop-tunnel`, { toolName: tunnelTool.name });
+    console.log('Tunnel stopped successfully');
+  } catch (error) {
+    console.error('Failed to stop tunnel via server:', error);
+  }
+  
+  const totalDuration = totalStopwatch.getTiming().duration;
+  const setupDuration = setupStopwatch.getTiming().duration;
+  const diagnosticsDuration = diagnosticsStopwatch.getTiming().duration;
+  const averageMeasurementDuration = totalMeasurementDuration / numMeasurements; // Calculate average duration
+  
+  return {
+    tool: tunnelTool.name,
+    diagnostics,
+    measurements, // Now an array of Measurement objects
+    durations: {
+      total: { duration: totalDuration },
+      toolSetup: { duration: setupDuration },
+      diagnostics: { duration: diagnosticsDuration },
+      measurements: {
+        total: { duration: totalMeasurementDuration },
+        average: { duration: averageMeasurementDuration }
+      }
+    },
+    pcapFilePath
+  };
+}
 
 async function main() {
-    const rl = readline.createInterface({
+  const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
-    });
-  
-    while (true) {
-      console.log('Available tunneling tools:');
-      tunnelTools.forEach((tool, index) => {
-        console.log(`${index + 1}. ${tool.name}`);
-      });
-  
-      const choice = await new Promise<string>((resolve) => rl.question('Choose a tunneling tool (number): ', resolve));
-      const selectedTool = tunnelTools[parseInt(choice) - 1];
-  
-      if (!selectedTool) {
-        console.log('Invalid choice. Please try again.');
-        continue;
-      }
+  });
 
-    //   const numMeasurements = await new Promise<number>((resolve) => rl.question('Enter the number of measurements: ', (answer) => resolve(parseInt(answer))));
-      const numMeasurements = NUM_MEASUREMENTS;
-  
-        
-    try {
-            const result = await performMeasurementsRun(selectedTool, ENABLE_PCAP, numMeasurements);
-            const now = new Date();
-            const pad = (n: number) => n.toString().padStart(2, '0');
-            const date = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}`;
-            const time = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-        
-            const filename = `${date}_${time}.json`;
-            const results_filepath = `results`;
-            const tool_results = `${results_filepath}/${selectedTool.name}`;
-        
-            await fs.mkdir(tool_results, { recursive: true }); // Ensure the correct path is created
-        
-            await fs.writeFile(`${tool_results}/${filename}`, JSON.stringify(result, null, 2));
-            if (ENABLE_LOGGING) console.log(`Results saved to ${tool_results}/${filename}`);
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-  
-  
-      const continueChoice = await new Promise<string>((resolve) => rl.question('Do you want to continue with another tool? (y/n): ', resolve));
-      if (continueChoice.toLowerCase() !== 'y') {
-        break;
+  const modeChoice = await new Promise<string>((resolve) => rl.question('Choose mode: auto (a) or tool-wise (t): ', resolve));
+  const isAutoMode = modeChoice.toLowerCase() === 'a';
+
+  const now = new Date();
+  const timestamp = `${now.getFullYear().toString().slice(-2)}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+
+  if (isAutoMode) {
+      const resultsDir = `results/${timestamp}`;
+      await fs.mkdir(resultsDir, { recursive: true }); // Create the results directory
+
+      for (const tool of tunnelTools) {
+          try {
+              const result = await performMeasurementsRun(tool, ENABLE_PCAP, NUM_MEASUREMENTS);
+              await saveResults(resultsDir, tool.name, result);
+          } catch (error) {
+              console.error(`An error occurred with tool ${tool.name}:`, error);
+          }
       }
-    }
-  
-    rl.close();
-    if (ENABLE_LOGGING) console.log('Main function completed');
- }
-  
-main();
+  } else {
+      while (true) {
+          console.log('Available tunneling tools:');
+          tunnelTools.forEach((tool, index) => {
+              console.log(`${index + 1}. ${tool.name}`);
+          });
+
+          const choice = await new Promise<string>((resolve) => rl.question('Choose a tunneling tool (number): ', resolve));
+          const selectedTool = tunnelTools[parseInt(choice) - 1];
+
+          if (!selectedTool) {
+              console.log('Invalid choice. Please try again.');
+              continue;
+          }
+
+          try {
+              const result = await performMeasurementsRun(selectedTool, ENABLE_PCAP, NUM_MEASUREMENTS);
+              await saveResults('results', selectedTool.name, result);
+          } catch (error) {
+              console.error('An error occurred:', error);
+          }
+
+          const continueChoice = await new Promise<string>((resolve) => rl.question('Do you want to continue with another tool? (y/n): ', resolve));
+          if (continueChoice.toLowerCase() !== 'y') {
+              break;
+          }
+      }
+  }
+
+  rl.close();
+  if (ENABLE_LOGGING) console.log('Main function completed');
+}
+
+async function saveResults(directory: string, toolName: string, result: RunResult) {
+  const filename = `${toolName}.json`;
+  const filePath = `${directory}/${filename}`;
+
+  await fs.writeFile(filePath, JSON.stringify(result, null, 2));
+  if (ENABLE_LOGGING) console.log(`Results saved to ${filePath}`);
+}
+
+main()
