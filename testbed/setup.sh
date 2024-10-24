@@ -81,3 +81,10 @@ ephemeral
 ngtor
 # openport
 # playit
+
+wget https://github.com/raaz714/btunnel-releases/releases/latest/download/bored-tunnel-client_Linux_x86_64.tar.gz
+tar -xvf bored-tunnel-client_Linux_x86_64.tar.gz
+
+R3_REGISTRATION_CODE="C6AAE201-29E3-556C-A830-E614C6BCCCB6" sh -c "$(curl -L https://downloads.remote.it/remoteit/install_agent.sh)"
+
+cargo install onionpipe

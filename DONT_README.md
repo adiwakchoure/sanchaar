@@ -4,7 +4,7 @@
 - Web Rendering vs CURL for CSR and SSR
 - Results visualiser tool for json parsing / Table View
 - File Upload speed
-- Filetypes w/ integrity checking - pdf, binaries (exe and more), jpeg, normal vs zip
+- Filetypes w/ integrity checking - pdf, binaries (exe and more), jpeg, text file vs zip
 - Make sure ot handle partial file downloads and subeuent fairlure flags etc
 - Ping for the RP's digged static IP as well!
 
@@ -128,3 +128,38 @@ UI ideas
 
 ![alt text](image.png)
 
+
+
+
+
+# TODOS
+- clean up wg-quick process
+
+
+TODO
+- 530 status pcap check
+- Node.js factors / server side status code checks
+- paris 
+
+Analysis Scripts 
+- http status codes per tool
+
+Save curl files
+
+Add hash comparisons as well as filesize checks
+
+Record notes on free vs paid experience (tool by tool setup)
+
+Playwright vs Selenium for browser testing (good reasons)
+
+Graphs
+
+Classification Table
+
+Setup time system side as well as just server side
+
+What is an efficient way toget TTFB (current curl formula may not be it)
+
+Exact numbers for what is what, how many each category
+
+Preliminary graphs
