@@ -11,7 +11,7 @@ const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1, 2, 3]; // All sizes in megabytes (MB)
+const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
 const NUM_MEASUREMENTS = 5;
 
 const ENABLE_LOGGING = false;

@@ -1,0 +1,165 @@
+{
+  "tool": "Serveo",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> f17efa6babe4e0e04a44f972a845e7cd.serveo.net\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22612\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;f17efa6babe4e0e04a44f972a845e7cd.serveo.net. IN\tA\n\n;; ANSWER SECTION:\nf17efa6babe4e0e04a44f972a845e7cd.serveo.net. 3600 IN A 138.68.79.95\n\n;; Query time: 70 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Mon Oct 28 17:06:47 IST 2024\n;; MSG SIZE  rcvd: 88\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "f17efa6babe4e0e04a44f972a845e7cd.serveo.net.",
+            "type": "A",
+            "ttl": 3600,
+            "data": "138.68.79.95"
+          }
+        ],
+        "queryTime": 70,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Mon Oct 28 17",
+        "rcvdSize": 88
+      },
+      "timing": {
+        "duration": 108.85199700000521
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.167208,
+            "tcpConnection": 0.371178,
+            "tlsHandshake": 0.696792,
+            "firstByte": 1.503371,
+            "total": 4.162929
+          },
+          "ttfb": 2.738549,
+          "latency": 0.371178,
+          "sizeDownload": 1048576,
+          "speedDownload": 251884,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003617,
+            "tcpConnection": 0.183244,
+            "tlsHandshake": 0.49236,
+            "firstByte": 1.098423,
+            "total": 2.649495
+          },
+          "ttfb": 1.777644,
+          "latency": 0.183244,
+          "sizeDownload": 1048576,
+          "speedDownload": 395764,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.004494,
+            "tcpConnection": 0.161921,
+            "tlsHandshake": 0.477595,
+            "firstByte": 0.878337,
+            "total": 2.369002
+          },
+          "ttfb": 1.522347,
+          "latency": 0.161921,
+          "sizeDownload": 1048576,
+          "speedDownload": 442623,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003489,
+            "tcpConnection": 0.134805,
+            "tlsHandshake": 0.432809,
+            "firstByte": 0.815521,
+            "total": 4.224698
+          },
+          "ttfb": 1.386624,
+          "latency": 0.134805,
+          "sizeDownload": 1048576,
+          "speedDownload": 248201,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003412,
+            "tcpConnection": 0.173088,
+            "tlsHandshake": 0.390919,
+            "firstByte": 0.993727,
+            "total": 3.964139
+          },
+          "ttfb": 1.561146,
+          "latency": 0.173088,
+          "sizeDownload": 1048576,
+          "speedDownload": 264515,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 19873.921499000004
+    },
+    "toolSetup": {
+      "duration": 2262.115920999997
+    },
+    "diagnostics": {
+      "duration": 109.07004100000631
+    },
+    "measurements": {
+      "total": {
+        "duration": 17500.787243000006
+      },
+      "average": {
+        "duration": 3500.1574486000013
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": []
+}

@@ -1,0 +1,171 @@
+{
+  "tool": "Pinggy",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> rnnkm-110-226-183-126.a.free.pinggy.link\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35059\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;rnnkm-110-226-183-126.a.free.pinggy.link. IN A\n\n;; ANSWER SECTION:\nrnnkm-110-226-183-126.a.free.pinggy.link. 10 IN\tCNAME lin.ap.5.a.pinggy.click.\nlin.ap.5.a.pinggy.click. 304\tIN\tA\t45.118.134.87\n\n;; Query time: 173 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Mon Oct 28 17:08:20 IST 2024\n;; MSG SIZE  rcvd: 122\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "rnnkm-110-226-183-126.a.free.pinggy.link.",
+            "type": "CNAME",
+            "ttl": 10,
+            "data": "lin.ap.5.a.pinggy.click."
+          },
+          {
+            "name": "lin.ap.5.a.pinggy.click.",
+            "type": "A",
+            "ttl": 304,
+            "data": "45.118.134.87"
+          }
+        ],
+        "queryTime": 173,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Mon Oct 28 17",
+        "rcvdSize": 122
+      },
+      "timing": {
+        "duration": 208.03219299999182
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002355,
+            "tcpConnection": 0.068097,
+            "tlsHandshake": 0.205336,
+            "firstByte": 0.437787,
+            "total": 0.887714
+          },
+          "ttfb": 0.713575,
+          "latency": 0.068097,
+          "sizeDownload": 1048576,
+          "speedDownload": 1181209,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.003109,
+            "tcpConnection": 0.060835,
+            "tlsHandshake": 0.268169,
+            "firstByte": 0.440155,
+            "total": 1.38505
+          },
+          "ttfb": 0.772268,
+          "latency": 0.060835,
+          "sizeDownload": 1048576,
+          "speedDownload": 757067,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002528,
+            "tcpConnection": 0.069938,
+            "tlsHandshake": 0.292055,
+            "firstByte": 0.443227,
+            "total": 0.961452
+          },
+          "ttfb": 0.8077479999999999,
+          "latency": 0.069938,
+          "sizeDownload": 1048576,
+          "speedDownload": 1090617,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002091,
+            "tcpConnection": 0.059822,
+            "tlsHandshake": 0.224378,
+            "firstByte": 0.452337,
+            "total": 1.138005
+          },
+          "ttfb": 0.7386280000000001,
+          "latency": 0.059822,
+          "sizeDownload": 1048576,
+          "speedDownload": 921415,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "1MB_buffer": {
+          "statusCode": 200,
+          "timeSplit": {
+            "dnsLookup": 0.002694,
+            "tcpConnection": 0.060481,
+            "tlsHandshake": 0.19147,
+            "firstByte": 0.499517,
+            "total": 2.095921
+          },
+          "ttfb": 0.754162,
+          "latency": 0.060481,
+          "sizeDownload": 1048576,
+          "speedDownload": 500293,
+          "speedUpload": 0,
+          "bytesDownloaded": 1048576,
+          "downloadStatus": "complete"
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 9630.854759000009
+    },
+    "toolSetup": {
+      "duration": 2820.2560109999904
+    },
+    "diagnostics": {
+      "duration": 208.18779900000663
+    },
+    "measurements": {
+      "total": {
+        "duration": 6600.449735000002
+      },
+      "average": {
+        "duration": 1320.0899470000004
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": []
+}

@@ -946,41 +946,41 @@ export const tunnelTools: TunnelTool[] = [
   new LoopholeTunnel(),
   new PinggyTunnel(),
   new TailscaleTunnel(),
-  new TunnelPyjamas(),
+  // new TunnelPyjamas(),
   new ZrokTunnel(),
   new TunwgTunnel(),
   new PacketriotTunnel(),
-  new BoreDigitalTunnel(),
+  // new BoreDigitalTunnel(),
   new LocalhostRunTunnel(),
   new BeeceptorTunnel(),
   new DevTunnel(),
   new Btunnel()
 ]
 
-async function executeTool(toolName: string, options: TunnelOptions = { port: 3000, urlPattern: /https:\/\/[^\s]+/ }) {
-  const tool = tunnelTools.find(t => t.name === toolName);
-  if (!tool) {
-    console.error(`Tool ${toolName} not found.`);
-    return;
-  }
+// async function executeTool(toolName: string, options: TunnelOptions = { port: 3000, urlPattern: /https:\/\/[^\s]+/ }) {
+//   const tool = tunnelTools.find(t => t.name === toolName);
+//   if (!tool) {
+//     console.error(`Tool ${toolName} not found.`);
+//     return;
+//   }
 
-  try {
-    const url = await tool.start(options);
-    console.log(`Executing ${tool.name} Tunnel URL: ${url}`);
+//   try {
+//     const url = await tool.start(options);
+//     console.log(`Executing ${tool.name} Tunnel URL: ${url}`);
 
-    console.log('Press any key to stop the tunnel...');
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    process.stdin.on('data', async () => {
-      await tool.stop();
-      process.stdin.setRawMode(false);
-      process.stdin.pause();
-      console.log('Tunnel stopped.');
-    });
-  } catch (error) {
-    console.error(`Failed to execute tool ${toolName}:`, error);
-  }
-}
+//     console.log('Press any key to stop the tunnel...');
+//     process.stdin.setRawMode(true);
+//     process.stdin.resume();
+//     process.stdin.on('data', async () => {
+//       await tool.stop();
+//       process.stdin.setRawMode(false);
+//       process.stdin.pause();
+//       console.log('Tunnel stopped.');
+//     });
+//   } catch (error) {
+//     console.error(`Failed to execute tool ${toolName}:`, error);
+//   }
+// }
 
 async function main() {
   const args = process.argv.slice(2);
@@ -1042,4 +1042,40 @@ async function main() {
 }
 
 // main();
-executeTool("BoreDigital");
+// executeTool("BoreDigital");
+
+
+async function executeTool(tool: TunnelTool, options: TunnelOptions = { port: 3000, urlPattern: /https:\/\/[^\s]+/ }): Promise<boolean> {
+  try {
+    const url = await tool.start(options);
+    console.log(`✓ ${tool.name} - URL: ${url}`);
+    await tool.stop();
+    return true;
+  } catch (error) {
+    console.error(`✗ ${tool.name} - Error: ${error.message}`);
+    return false;
+  }
+}
+
+async function runAllTools() {
+  let successCount = 0;
+  let failCount = 0;
+
+  for (const tool of tunnelTools) {
+    const success = await executeTool(tool);
+    if (success) {
+      successCount++;
+    } else {
+      failCount++;
+    }
+  }
+
+  console.log('\nResults:');
+  console.log(`✓ Successful: ${successCount}`);
+  console.log(`✗ Failed: ${failCount}`);
+  console.log(`Total tools: ${tunnelTools.length}`);
+}
+
+// runAllTools();
+
+// executeTool(new BoreDigitalTunnel());

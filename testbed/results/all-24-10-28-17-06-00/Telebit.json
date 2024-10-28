@@ -1,0 +1,90 @@
+{
+  "tool": "Telebit",
+  "diagnostics": [],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 10089.484651000006
+    },
+    "toolSetup": {
+      "duration": 10087.858674999996
+    },
+    "diagnostics": {
+      "duration": 0.0013959999923827127
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.011525000008987263
+      },
+      "average": {
+        "duration": 0.0023050000017974526
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "Tunnel Setup",
+      "error": "Failed to start tunnel: Request failed with status code 500"
+    },
+    {
+      "stage": "Tunnel Setup",
+      "error": "Tunnel URL is empty or invalid"
+    },
+    {
+      "stage": "Diagnostics",
+      "error": "Skipped diagnostics due to missing tunnel URL"
+    },
+    {
+      "stage": "Measurements",
+      "error": "Skipped file transfers and web tests due to missing tunnel URL"
+    },
+    {
+      "stage": "Measurements",
+      "error": "Skipped file transfers and web tests due to missing tunnel URL"
+    },
+    {
+      "stage": "Measurements",
+      "error": "Skipped file transfers and web tests due to missing tunnel URL"
+    },
+    {
+      "stage": "Measurements",
+      "error": "Skipped file transfers and web tests due to missing tunnel URL"
+    },
+    {
+      "stage": "Measurements",
+      "error": "Skipped file transfers and web tests due to missing tunnel URL"
+    },
+    {
+      "stage": "Tunnel Cleanup",
+      "error": "Failed to stop tunnel: Request failed with status code 400"
+    }
+  ]
+}

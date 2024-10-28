@@ -49,7 +49,7 @@ def create_csv(results, output_file):
         for row in results:
             writer.writerow(row)
 
-def create_duration_graphs(results):
+def create_duration_graphs(results, output_dir):
     df = pd.DataFrame(results)
     
     fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(15, 20))
@@ -67,10 +67,10 @@ def create_duration_graphs(results):
     ax3.set_ylabel('Duration (ms)')
     
     plt.tight_layout()
-    plt.savefig('duration_graphs.png')
+    plt.savefig(os.path.join(output_dir, 'duration_graphs.png'))
     plt.close()
 
-def create_speed_graph(results):
+def create_speed_graph(results, output_dir):
     df = pd.DataFrame(results)
     
     plt.figure(figsize=(15, 10))
@@ -78,21 +78,24 @@ def create_speed_graph(results):
     plt.title('Average Download Speed by Tool')
     plt.ylabel('Speed (bytes/second)')
     plt.tight_layout()
-    plt.savefig('speed_graph.png')
+    plt.savefig(os.path.join(output_dir, 'speed_graph.png'))
     plt.close()
 
 def main():
     directory = input("Enter the directory path containing JSON files: ")
+    parsed_directory = os.path.join(directory, 'parsed')
+    os.makedirs(parsed_directory, exist_ok=True)
+    
     results = process_directory(directory)
     
-    csv_output = os.path.join(directory, 'network_measurements.csv')
+    csv_output = os.path.join(parsed_directory, 'network_measurements.csv')
     create_csv(results, csv_output)
     print(f"CSV file created: {csv_output}")
     
-    create_duration_graphs(results)
+    create_duration_graphs(results, parsed_directory)
     print("Duration graphs created: duration_graphs.png")
     
-    create_speed_graph(results)
+    create_speed_graph(results, parsed_directory)
     print("Speed graph created: speed_graph.png")
 
 if __name__ == "__main__":
