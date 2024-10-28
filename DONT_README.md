@@ -139,7 +139,7 @@ UI ideas
 TODO
 - 530 status pcap check
 - Node.js factors / server side status code checks
-- paris 
+- paris traceroute no need
 
 Analysis Scripts 
 - http status codes per tool
@@ -152,7 +152,7 @@ Record notes on free vs paid experience (tool by tool setup)
 
 Playwright vs Selenium for browser testing (good reasons)
 
-Graphs
+Graphs - ttfb download time throughput
 
 Classification Table
 
@@ -163,3 +163,14 @@ What is an efficient way toget TTFB (current curl formula may not be it)
 Exact numbers for what is what, how many each category
 
 Preliminary graphs
+
+COUNTS
+
+---
+
+STATS
+
+Total List: 85
+Working: 20
+Limitless: 
+Gateway tools:
