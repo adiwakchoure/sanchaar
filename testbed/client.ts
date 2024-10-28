@@ -5,6 +5,9 @@ import pcap from 'pcap';
 import readline from 'readline';
 import { TunnelTool, tunnelTools } from './tools';
 import { performance } from 'perf_hooks';
+import crypto from 'crypto';
+import path from 'path';
+import os from 'os';
 
 // const SERVER_HOST = 'localhost';
 const SERVER_HOST = 'localhost';
@@ -53,7 +56,7 @@ interface Timing {
   
   interface Measurement {
     measurementNumber: number;
-    fileTransfers: { [key: string]: CurlResult };
+    fileTransfers: { [key: string]: FileTransferResult };
     webTests: WebTestResult[];
   }
   
@@ -102,6 +105,26 @@ interface Timing {
     type: string;
     ttl: number;
     data: string;
+  }
+
+  // Add these new interfaces at the top with the other interfaces
+  interface FileMetadata {
+    filename: string;
+    size: number;
+    hash: string;
+    contentType: string;
+    timestamp: string;
+  }
+
+  interface FileTransferResult {
+    filename: string;
+    originalMetadata: FileMetadata;
+    receivedMetadata: FileMetadata;
+    transferSuccess: boolean;
+    hashMatch: boolean;
+    metadataMatch: boolean;
+    transferStats: CurlResult;
+    error?: string;
   }
 
 class Stopwatch {
@@ -338,20 +361,34 @@ async function performWebTest(url: string): Promise<CurlResult> {
     return new Curl().parse(curlOutput);
   }
 
-  async function performFileTransfer(url: string, sizeMB: number): Promise<CurlResult> {
-    const sizeBytes = Math.round(sizeMB * 1024 * 1024); // Convert MB to bytes
-    const stopwatch = new Stopwatch();
-    stopwatch.start();
+  const TEMP_DIR = path.join(os.tmpdir(), 'tunnel-testbed');
+
+  // Add this function to calculate file hash
+  async function calculateFileHash(filePath: string): Promise<string> {
+    const fileBuffer = await fs.readFile(filePath);
+    return crypto.createHash('sha256').update(fileBuffer).digest('hex');
+  }
+
+  // Add this function to ensure temp directory exists
+  async function ensureTempDir() {
+    await fs.mkdir(TEMP_DIR, { recursive: true });
+  }
+
+  // Replace performFileTransfer with this new version
+  async function performFileTransfer(url: string, filename: string): Promise<FileTransferResult> {
+    const tempFilePath = path.join(TEMP_DIR, `${Date.now()}-${filename}`);
     
     if (ENABLE_LOGGING) {
       console.log(`Performing file transfer from URL: ${url}`);
+      console.log(`Saving to temporary file: ${tempFilePath}`);
     }
-  
-    let curlOutput = '';
-    let error: Error | null = null;
-  
+
     try {
-      curlOutput = await runCommand('curl', [
+      // Ensure temp directory exists
+      await ensureTempDir();
+
+      // Perform the download
+      const curlOutput = await runCommand('curl', [
         '-w', '\
         DNS Lookup: %{time_namelookup}s\n\
         TCP Connection: %{time_connect}s\n\
@@ -362,38 +399,69 @@ async function performWebTest(url: string): Promise<CurlResult> {
         Upload Speed: %{speed_upload} bytes/sec\n\
         HTTP Code: %{http_code}\n\
         Size of Download: %{size_download} bytes\n',
-        '-C', '-', // Add resume capability
-        '-o', '/dev/null',
+        '-D', '-',
+        '-o', tempFilePath,
         '-s',
         url
       ]);
-    } catch (err) {
-      error = err as Error;
-      if (ENABLE_LOGGING) {
-        console.error(`Error during file transfer: ${error.message}`);
-      }
+
+      // Parse curl result
+      const transferStats = new Curl().parse(curlOutput);
+
+      // Get original metadata from response headers
+      const originalMetadata: FileMetadata = JSON.parse(
+        curlOutput.match(/X-File-Metadata: (.+)/)?.[1] || '{}'
+      );
+
+      // Calculate received file metadata
+      const receivedMetadata = {
+        filename,
+        size: (await fs.stat(tempFilePath)).size,
+        hash: await calculateFileHash(tempFilePath),
+        contentType: originalMetadata.contentType,
+        timestamp: new Date().toISOString()
+      };
+
+      // Clean up temp file
+      await fs.unlink(tempFilePath);
+
+      const hashMatch = originalMetadata.hash === receivedMetadata.hash;
+      const metadataMatch = originalMetadata.size === receivedMetadata.size;
+
+      return {
+        filename,
+        originalMetadata,
+        receivedMetadata,
+        transferSuccess: transferStats.statusCode === 200,
+        hashMatch,
+        metadataMatch,
+        transferStats
+      };
+    } catch (error) {
+      // Clean up temp file in case of error
+      try {
+        await fs.unlink(tempFilePath);
+      } catch {} // Ignore cleanup errors
+
+      return {
+        filename,
+        originalMetadata: {} as FileMetadata,
+        receivedMetadata: {} as FileMetadata,
+        transferSuccess: false,
+        hashMatch: false,
+        metadataMatch: false,
+        transferStats: {
+          statusCode: 0,
+          timeSplit: { dnsLookup: 0, tcpConnection: 0, tlsHandshake: 0, firstByte: 0, total: 0 },
+          ttfb: 0,
+          latency: 0,
+          sizeDownload: 0,
+          speedDownload: 0,
+          speedUpload: 0
+        },
+        error: (error as Error).message
+      };
     }
-  
-    stopwatch.stop();
-  
-    const parsedOutput = new Curl().parse(curlOutput);
-    const actualSize = parsedOutput.sizeDownload;
-  
-    let downloadStatus: 'complete' | 'partial' | 'failed';
-    if (error) {
-      downloadStatus = 'failed';
-    } else if (actualSize < sizeBytes) {
-      downloadStatus = 'partial';
-    } else {
-      downloadStatus = 'complete';
-    }
-  
-    return {
-      ...parsedOutput,
-      bytesDownloaded: actualSize,
-      downloadStatus,
-      error: error ? error.message : undefined
-    };
   }
 
 
@@ -505,51 +573,42 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
 
   measurementsProgressBar.start(numMeasurements, 0);
   
+  // Get list of files to transfer
+  let availableFiles: FileMetadata[] = [];
+  try {
+    const response = await axios.get(`${SERVER_URL}/files`);
+    availableFiles = response.data;
+  } catch (error) {
+    errors.push({ stage: 'File List', error: `Failed to get file list: ${(error as Error).message}` });
+  }
+
   for (let i = 0; i < numMeasurements; i++) {
     const measurementsStopwatch = new Stopwatch();
     measurementsStopwatch.start();
   
-    const fileTransfers: { [key: string]: CurlResult } = {};
+    const fileTransfers: { [key: string]: FileTransferResult } = {};
     const webTests: WebTestResult[] = [];
   
-    if (tunnelUrl) {
-      // Perform file transfers
-      for (const sizeMB of FILE_SIZES_MB) {
-        if (ENABLE_LOGGING) console.log(`Downloading file of size ${sizeMB} MB`);
+    if (tunnelUrl && availableFiles.length > 0) {
+      for (const fileMetadata of availableFiles) {
         try {
-          const result = await performFileTransfer(`${tunnelUrl}/download/${sizeMB * 1024 * 1024}`, sizeMB);
-          const key = `${sizeMB}MB_buffer`;
-          fileTransfers[key] = result;
+          const result = await performFileTransfer(
+            `${tunnelUrl}/download/${fileMetadata.filename}`,
+            fileMetadata.filename
+          );
+          fileTransfers[fileMetadata.filename] = result;
 
-          if (result.downloadStatus !== 'complete') {
+          if (!result.transferSuccess || !result.hashMatch || !result.metadataMatch) {
             allDownloadsComplete = false;
           }
         } catch (error) {
-          errors.push({ stage: 'File Transfer', error: `Failed to download ${sizeMB}MB file: ${(error as Error).message}` });
-          fileTransfers[`${sizeMB}MB_buffer`] = {
-            statusCode: 0,
-            timeSplit: { dnsLookup: 0, tcpConnection: 0, tlsHandshake: 0, firstByte: 0, total: 0 },
-            ttfb: 0,
-            latency: 0,
-            sizeDownload: 0,
-            speedDownload: 0,
-            speedUpload: 0,
-            error: (error as Error).message,
-            downloadStatus: 'failed'
-          };
+          errors.push({ 
+            stage: 'File Transfer', 
+            error: `Failed to download ${fileMetadata.filename}: ${(error as Error).message}` 
+          });
           allDownloadsComplete = false;
         }
       }
-
-      // Perform web test (if implemented)
-      // try {
-      //   const webTestResult = await performWebTest(`${tunnelUrl}/health`);
-      //   webTests.push(webTestResult);
-      // } catch (error) {
-      //   errors.push({ stage: 'Web Test', error: `Failed to perform web test: ${(error as Error).message}` });
-      // }
-    } else {
-      errors.push({ stage: 'Measurements', error: 'Skipped file transfers and web tests due to missing tunnel URL' });
     }
   
     measurementsStopwatch.stop();
@@ -631,6 +690,9 @@ async function main() {
     now.getSeconds()
   ).padStart(2,  
  '0')}`;
+
+  // Create temp directory
+  await ensureTempDir();
 
   if (isAutoMode) {
     const resultsDir = `results/all-${timestamp}`;
@@ -784,6 +846,13 @@ async function main() {
         break;
       }
     }
+  }
+
+  // Clean up temp directory at the end
+  try {
+    await fs.rm(TEMP_DIR, { recursive: true, force: true });
+  } catch (error) {
+    console.error('Failed to clean up temp directory:', error);
   }
 
   rl.close();

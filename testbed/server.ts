@@ -3,6 +3,9 @@ import { TunnelTool, tunnelTools } from './tools';
 import fs from 'fs/promises';
 import pcap from 'pcap';
 import http from 'http';
+import crypto from 'crypto';
+import path from 'path';
+import mime from 'mime-types';
 
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
 const ENABLE_LOGGING = true; // Set this to false to disable logging
@@ -61,17 +64,49 @@ app.post('/stop-tunnel', async (req, res) => {
   }
 });
 
-app.get('/download/:fileSize', (req, res) => {
-  const fileSize = parseInt(req.params.fileSize);
-  if (ENABLE_LOGGING) console.log(`Received download request for file size: ${fileSize} bytes`);
+app.get('/download/:filename', async (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(INPUT_FILES_DIR, filename);
+
+  if (ENABLE_LOGGING) console.log(`Received download request for file: ${filename}`);
+
   try {
-    const buffer = Buffer.alloc(fileSize, 'x');
-    res.send(buffer);
-    if (ENABLE_LOGGING) console.log(`Sent ${fileSize} bytes of data`);
+    // Check if file exists
+    await fs.access(filePath);
+    
+    // Get file metadata
+    const metadata = await getFileMetadata(filePath);
+    
+    // Set response headers
+    res.set({
+      'Content-Type': metadata.contentType,
+      'X-File-Metadata': JSON.stringify(metadata)
+    });
+
+    // Stream the file
+    const fileStream = fs.createReadStream(filePath);
+    fileStream.pipe(res);
+
+    if (ENABLE_LOGGING) console.log(`Sending file ${filename} (${metadata.size} bytes)`);
   } catch (error) {
     const errorMessage = `Failed to send file: ${(error as Error).message}`;
     console.error(errorMessage);
     res.status(500).json({ error: errorMessage });
+  }
+});
+
+app.get('/files', async (req, res) => {
+  try {
+    const files = await fs.readdir(INPUT_FILES_DIR);
+    const filesMetadata = await Promise.all(
+      files.map(async (filename) => {
+        const filePath = path.join(INPUT_FILES_DIR, filename);
+        return await getFileMetadata(filePath);
+      })
+    );
+    res.json(filesMetadata);
+  } catch (error) {
+    res.status(500).json({ error: `Failed to list files: ${error.message}` });
   }
 });
 
@@ -168,3 +203,26 @@ app.listen(PORT, () => {
     setInterval(startPcapCapture, 24 * 60 * 60 * 1000);
   }
 });
+
+// Add these at the top with other constants
+const INPUT_FILES_DIR = path.join(__dirname, 'input_files');
+
+// Add this function to calculate file hash
+async function calculateFileHash(filePath: string): Promise<string> {
+  const fileBuffer = await fs.readFile(filePath);
+  return crypto.createHash('sha256').update(fileBuffer).digest('hex');
+}
+
+// Add this function to get file metadata
+async function getFileMetadata(filePath: string): Promise<FileMetadata> {
+  const stats = await fs.stat(filePath);
+  const hash = await calculateFileHash(filePath);
+  
+  return {
+    filename: path.basename(filePath),
+    size: stats.size,
+    hash,
+    contentType: mime.lookup(filePath) || 'application/octet-stream',
+    timestamp: stats.mtime.toISOString()
+  };
+}
