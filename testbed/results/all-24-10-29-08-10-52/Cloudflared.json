@@ -1,0 +1,86 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48798\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 300\tIN\tA\t172.67.170.223\nsanchaar.remedium.world. 300\tIN\tA\t104.21.28.145\n\n;; Query time: 14 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:10:52 IST 2024\n;; MSG SIZE  rcvd: 84\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.67.170.223"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "104.21.28.145"
+          }
+        ],
+        "queryTime": 14,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 84
+      },
+      "timing": {
+        "duration": 45.77724999999987
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 177.59152600000016
+    },
+    "toolSetup": {
+      "duration": 82.29659399999991
+    },
+    "diagnostics": {
+      "duration": 46.72297400000002
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.011524000000235901
+      },
+      "average": {
+        "duration": 0.0023048000000471802
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "toolName": "Telebit",
+    "measurementNumber": 1,
+    "timestamp": 844508.770866,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20082.341173999943,
+    "setupDuration": 10081.241668000002,
+    "diagnosticsDuration": 0.02060299995355308,
+    "measurementDuration": 0.03261500003281981,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Telebit",
+    "measurementNumber": 2,
+    "timestamp": 844508.83477,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20082.341173999943,
+    "setupDuration": 10081.241668000002,
+    "diagnosticsDuration": 0.02060299995355308,
+    "measurementDuration": 0.03261500003281981,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Telebit",
+    "measurementNumber": 3,
+    "timestamp": 844508.893855,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20082.341173999943,
+    "setupDuration": 10081.241668000002,
+    "diagnosticsDuration": 0.02060299995355308,
+    "measurementDuration": 0.03261500003281981,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Telebit",
+    "measurementNumber": 4,
+    "timestamp": 844508.908592,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20082.341173999943,
+    "setupDuration": 10081.241668000002,
+    "diagnosticsDuration": 0.02060299995355308,
+    "measurementDuration": 0.03261500003281981,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Telebit",
+    "measurementNumber": 5,
+    "timestamp": 844508.923468,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20082.341173999943,
+    "setupDuration": 10081.241668000002,
+    "diagnosticsDuration": 0.02060299995355308,
+    "measurementDuration": 0.03261500003281981,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  }
+]

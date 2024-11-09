@@ -1,0 +1,80 @@
+{
+  "tool": "Bore",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> bore.pub\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4289\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;bore.pub.\t\t\tIN\tA\n\n;; ANSWER SECTION:\nbore.pub.\t\t1115\tIN\tA\t159.223.171.199\n\n;; Query time: 0 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:18 IST 2024\n;; MSG SIZE  rcvd: 53\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "bore.pub.",
+            "type": "A",
+            "ttl": 1115,
+            "data": "159.223.171.199"
+          }
+        ],
+        "queryTime": 0,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 53
+      },
+      "timing": {
+        "duration": 39.10187099999894
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 473.09754500000054
+    },
+    "toolSetup": {
+      "duration": 428.016682999998
+    },
+    "diagnostics": {
+      "duration": 39.234779999998864
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.013758999997662613
+      },
+      "average": {
+        "duration": 0.002751799999532523
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

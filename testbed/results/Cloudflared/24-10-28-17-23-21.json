@@ -1,0 +1,226 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20740\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 300\tIN\tA\t172.67.170.223\nsanchaar.remedium.world. 300\tIN\tA\t104.21.28.145\n\n;; Query time: 34 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Mon Oct 28 17:23:25 IST 2024\n;; MSG SIZE  rcvd: 84\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.67.170.223"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "104.21.28.145"
+          }
+        ],
+        "queryTime": 34,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Mon Oct 28 17",
+        "rcvdSize": 84
+      },
+      "timing": {
+        "duration": 69.7957980000001
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 16,
+            "hash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timestamp": "2024-10-28T11:53:26.722Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "transferStats": {
+            "statusCode": 530,
+            "timeSplit": {
+              "dnsLookup": 0.138618,
+              "tcpConnection": 0.286129,
+              "tlsHandshake": 0.510862,
+              "firstByte": 0.696404,
+              "total": 0.697217
+            },
+            "ttfb": 1.6320130000000002,
+            "latency": 0.286129,
+            "sizeDownload": 16,
+            "speedDownload": 22,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 16,
+            "hash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timestamp": "2024-10-28T11:53:27.169Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "transferStats": {
+            "statusCode": 530,
+            "timeSplit": {
+              "dnsLookup": 0.002579,
+              "tcpConnection": 0.103382,
+              "tlsHandshake": 0.296343,
+              "firstByte": 0.410323,
+              "total": 0.410729
+            },
+            "ttfb": 0.812627,
+            "latency": 0.103382,
+            "sizeDownload": 16,
+            "speedDownload": 38,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 91,
+            "hash": "a5d5b16100953ee9d7d36857910ab4f48077b8de431d476e87dc800aa6798a4e",
+            "timestamp": "2024-10-28T11:53:27.978Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "transferStats": {
+            "statusCode": 500,
+            "timeSplit": {
+              "dnsLookup": 0.002573,
+              "tcpConnection": 0.108679,
+              "tlsHandshake": 0.307534,
+              "firstByte": 0.777258,
+              "total": 0.777745
+            },
+            "ttfb": 1.196044,
+            "latency": 0.108679,
+            "sizeDownload": 91,
+            "speedDownload": 117,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 91,
+            "hash": "a5d5b16100953ee9d7d36857910ab4f48077b8de431d476e87dc800aa6798a4e",
+            "timestamp": "2024-10-28T11:53:28.868Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "transferStats": {
+            "statusCode": 500,
+            "timeSplit": {
+              "dnsLookup": 0.002094,
+              "tcpConnection": 0.103465,
+              "tlsHandshake": 0.351774,
+              "firstByte": 0.858176,
+              "total": 0.858568
+            },
+            "ttfb": 1.315509,
+            "latency": 0.103465,
+            "sizeDownload": 91,
+            "speedDownload": 105,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 91,
+            "hash": "a5d5b16100953ee9d7d36857910ab4f48077b8de431d476e87dc800aa6798a4e",
+            "timestamp": "2024-10-28T11:53:29.766Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "transferStats": {
+            "statusCode": 500,
+            "timeSplit": {
+              "dnsLookup": 0.002494,
+              "tcpConnection": 0.108638,
+              "tlsHandshake": 0.379841,
+              "firstByte": 0.867178,
+              "total": 0.867456
+            },
+            "ttfb": 1.3581509999999999,
+            "latency": 0.108638,
+            "sizeDownload": 91,
+            "speedDownload": 104,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 3968.2707100000007
+    },
+    "toolSetup": {
+      "duration": 118.94691599999987
+    },
+    "diagnostics": {
+      "duration": 70.86639500000001
+    },
+    "measurements": {
+      "total": {
+        "duration": 3767.236412000003
+      },
+      "average": {
+        "duration": 753.4472824000006
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "errors": []
+}

@@ -1,0 +1,659 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 420c-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62808\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;420c-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\n420c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.122.107\n420c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.30.85\n420c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.98.232\n420c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.182\n420c-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.64\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t172616\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t172616\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t172616\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t172616\tIN\tNS\tns-988.awsdns-59.net.\n\n;; Query time: 14 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:05:44 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "420c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "420c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "420c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          },
+          {
+            "name": "420c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "420c-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          }
+        ],
+        "queryTime": 14,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 47.96325700000307
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "EXPENDITURE_BUDGET_2024-2025.pdf": {
+          "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+            "size": 7107764,
+            "hash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timestamp": "2024-10-29T02:35:47.921Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002961,
+              "tcpConnection": 0.008859,
+              "tlsHandshake": 0.069344,
+              "firstByte": 0.166838,
+              "total": 2.681888
+            },
+            "ttfb": 0.248002,
+            "latency": 0.008859,
+            "sizeDownload": 7107764,
+            "speedDownload": 2650283,
+            "speedUpload": 0
+          }
+        },
+        "image.jpg": {
+          "filename": "image.jpg",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "image.jpg",
+            "size": 2459645,
+            "hash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timestamp": "2024-10-29T02:35:49.394Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002824,
+              "tcpConnection": 0.009293,
+              "tlsHandshake": 0.06188,
+              "firstByte": 0.126139,
+              "total": 1.319226
+            },
+            "ttfb": 0.20013599999999998,
+            "latency": 0.009293,
+            "sizeDownload": 2459645,
+            "speedDownload": 1864460,
+            "speedUpload": 0
+          }
+        },
+        "malicious.zip": {
+          "filename": "malicious.zip",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "malicious.zip",
+            "size": 6572980,
+            "hash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timestamp": "2024-10-29T02:35:53.703Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.00186,
+              "tcpConnection": 0.008146,
+              "tlsHandshake": 0.059703,
+              "firstByte": 0.141234,
+              "total": 4.130169
+            },
+            "ttfb": 0.210943,
+            "latency": 0.008146,
+            "sizeDownload": 6572980,
+            "speedDownload": 1591455,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "EXPENDITURE_BUDGET_2024-2025.pdf": {
+          "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+            "size": 7107764,
+            "hash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timestamp": "2024-10-29T02:35:57.177Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.0032,
+              "tcpConnection": 0.009751,
+              "tlsHandshake": 0.059859,
+              "firstByte": 0.148974,
+              "total": 3.272043
+            },
+            "ttfb": 0.22178399999999998,
+            "latency": 0.009751,
+            "sizeDownload": 7107764,
+            "speedDownload": 2172270,
+            "speedUpload": 0
+          }
+        },
+        "image.jpg": {
+          "filename": "image.jpg",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "image.jpg",
+            "size": 2459645,
+            "hash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timestamp": "2024-10-29T02:35:58.980Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002433,
+              "tcpConnection": 0.008678,
+              "tlsHandshake": 0.067877,
+              "firstByte": 0.155057,
+              "total": 1.654554
+            },
+            "ttfb": 0.234045,
+            "latency": 0.008678,
+            "sizeDownload": 2459645,
+            "speedDownload": 1486590,
+            "speedUpload": 0
+          }
+        },
+        "malicious.zip": {
+          "filename": "malicious.zip",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "malicious.zip",
+            "size": 6572980,
+            "hash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timestamp": "2024-10-29T02:36:02.507Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.00159,
+              "tcpConnection": 0.007864,
+              "tlsHandshake": 0.057091,
+              "firstByte": 0.116256,
+              "total": 3.344435
+            },
+            "ttfb": 0.182801,
+            "latency": 0.007864,
+            "sizeDownload": 6572980,
+            "speedDownload": 1965348,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "EXPENDITURE_BUDGET_2024-2025.pdf": {
+          "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+            "size": 7107764,
+            "hash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timestamp": "2024-10-29T02:36:06.046Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.00218,
+              "tcpConnection": 0.008705,
+              "tlsHandshake": 0.066075,
+              "firstByte": 0.129783,
+              "total": 3.284687
+            },
+            "ttfb": 0.206743,
+            "latency": 0.008705,
+            "sizeDownload": 7107764,
+            "speedDownload": 2163909,
+            "speedUpload": 0
+          }
+        },
+        "image.jpg": {
+          "filename": "image.jpg",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "image.jpg",
+            "size": 2459645,
+            "hash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timestamp": "2024-10-29T02:36:07.475Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002973,
+              "tcpConnection": 0.009577,
+              "tlsHandshake": 0.059362,
+              "firstByte": 0.114191,
+              "total": 1.25955
+            },
+            "ttfb": 0.18610300000000002,
+            "latency": 0.009577,
+            "sizeDownload": 2459645,
+            "speedDownload": 1952796,
+            "speedUpload": 0
+          }
+        },
+        "malicious.zip": {
+          "filename": "malicious.zip",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "malicious.zip",
+            "size": 6572980,
+            "hash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timestamp": "2024-10-29T02:36:10.993Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.001906,
+              "tcpConnection": 0.008576,
+              "tlsHandshake": 0.060399,
+              "firstByte": 0.119129,
+              "total": 3.35939
+            },
+            "ttfb": 0.19001,
+            "latency": 0.008576,
+            "sizeDownload": 6572980,
+            "speedDownload": 1956599,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "EXPENDITURE_BUDGET_2024-2025.pdf": {
+          "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+            "size": 7107764,
+            "hash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timestamp": "2024-10-29T02:36:15.736Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.003619,
+              "tcpConnection": 0.010043,
+              "tlsHandshake": 0.071332,
+              "firstByte": 0.132283,
+              "total": 4.59336
+            },
+            "ttfb": 0.21727700000000003,
+            "latency": 0.010043,
+            "sizeDownload": 7107764,
+            "speedDownload": 1547399,
+            "speedUpload": 0
+          }
+        },
+        "image.jpg": {
+          "filename": "image.jpg",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "image.jpg",
+            "size": 2459645,
+            "hash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timestamp": "2024-10-29T02:36:17.560Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002236,
+              "tcpConnection": 0.008612,
+              "tlsHandshake": 0.059138,
+              "firstByte": 0.11959,
+              "total": 1.68865
+            },
+            "ttfb": 0.18957600000000002,
+            "latency": 0.008612,
+            "sizeDownload": 2459645,
+            "speedDownload": 1456574,
+            "speedUpload": 0
+          }
+        },
+        "malicious.zip": {
+          "filename": "malicious.zip",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "malicious.zip",
+            "size": 6572980,
+            "hash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timestamp": "2024-10-29T02:36:24.006Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002556,
+              "tcpConnection": 0.010016,
+              "tlsHandshake": 0.075503,
+              "firstByte": 0.142798,
+              "total": 6.263915
+            },
+            "ttfb": 0.230873,
+            "latency": 0.010016,
+            "sizeDownload": 6572980,
+            "speedDownload": 1049340,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "EXPENDITURE_BUDGET_2024-2025.pdf": {
+          "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "EXPENDITURE_BUDGET_2024-2025.pdf",
+            "size": 7107764,
+            "hash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timestamp": "2024-10-29T02:36:29.487Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "6ec918ddbf2b102248a704e520b5145a2dcaf5ba8a834fb551851bf3844535d1",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.001689,
+              "tcpConnection": 0.007666,
+              "tlsHandshake": 0.135207,
+              "firstByte": 0.363918,
+              "total": 5.065628
+            },
+            "ttfb": 0.50848,
+            "latency": 0.007666,
+            "sizeDownload": 7107764,
+            "speedDownload": 1403135,
+            "speedUpload": 0
+          }
+        },
+        "image.jpg": {
+          "filename": "image.jpg",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "image.jpg",
+            "size": 2459645,
+            "hash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timestamp": "2024-10-29T02:36:30.953Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "276b69d5fe76b5cf7f501bcaeb724aba11337ae38c4788cc51036de4f1839171",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.00232,
+              "tcpConnection": 0.008535,
+              "tlsHandshake": 0.062581,
+              "firstByte": 0.134411,
+              "total": 1.318481
+            },
+            "ttfb": 0.207847,
+            "latency": 0.008535,
+            "sizeDownload": 2459645,
+            "speedDownload": 1865514,
+            "speedUpload": 0
+          }
+        },
+        "malicious.zip": {
+          "filename": "malicious.zip",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "malicious.zip",
+            "size": 6572980,
+            "hash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timestamp": "2024-10-29T02:36:34.564Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "cfe337bc4ae69bd0cf7e7ddbdeba51969e8afb9331a926bd9ab3f2394fba5ff4",
+            "timeTaken": 0
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.003177,
+              "tcpConnection": 0.00975,
+              "tlsHandshake": 0.064736,
+              "firstByte": 0.13191,
+              "total": 3.422684
+            },
+            "ttfb": 0.209573,
+            "latency": 0.00975,
+            "sizeDownload": 6572980,
+            "speedDownload": 1920416,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 59784.285781
+    },
+    "toolSetup": {
+      "duration": 10067.262865000004
+    },
+    "diagnostics": {
+      "duration": 48.776001000005635
+    },
+    "measurements": {
+      "total": {
+        "duration": 49628.13229800001
+      },
+      "average": {
+        "duration": 9925.626459600002
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "errors": []
+}

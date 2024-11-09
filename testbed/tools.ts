@@ -1,6 +1,7 @@
-import { spawn } from 'child_process';
+import { spawn, exec, ChildProcess } from 'child_process';
 import http from 'http';
 import axios from 'axios';
+import fs from 'fs';
 
 export interface TunnelTool {
   name: string;
@@ -286,7 +287,7 @@ export class PagekiteTunnel extends BaseTunnel {
     preStartCommands = [];
   
     async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
-      this.process = spawn('~/telebit', ['http', port.toString()], { shell: true });
+      this.process = spawn('pnpm', ['dlx', 'telebit', 'http', port.toString()], { shell: true });
   
       return new Promise((resolve, reject) => {
         this.process.stdout.on('data', (data: Buffer) => {
@@ -509,7 +510,7 @@ export class PagekiteTunnel extends BaseTunnel {
     preStartCommands = [];
   
     async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
-      this.process = spawn('sudo', ['tailscale', 'funnel', port.toString()], { shell: true });
+      this.process = spawn('tailscale', ['funnel', port.toString()], { shell: true });
   
       return new Promise((resolve, reject) => {
         const urlRegex = /(https:\/\/[^\s]+\.ts\.net\/)/;
@@ -546,44 +547,70 @@ export class PagekiteTunnel extends BaseTunnel {
     name = 'TunnelPyjamas';
     preSetupCommands = [];
     preStartCommands = [];
-  
+    private wgProcess: ChildProcess | null = null;
+
     async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
       return new Promise((resolve, reject) => {
-        const tryStartTunnel = () => {
-          const wgProcess = spawn('wg-quick', ['up', './tunnel.conf'], { shell: true });
-  
+        // Download new tunnel configuration
+        exec(`curl https://tunnel.pyjam.as/${port} > tunnel.conf`, (error, stdout, stderr) => {
+          if (error) {
+            reject(new Error(`Failed to download tunnel configuration: ${stderr}`));
+            return;
+          }
+
+          // Secure the tunnel.conf file
+          fs.chmodSync('./tunnel.conf', 0o600);
+
+          // Bring up the tunnel
+          this.wgProcess = spawn('sudo', ['wg-quick', 'up', './tunnel.conf'], { shell: true });
+
           const urlRegex = /on (https:\/\/[^\s]+) ✨/;
-  
+
           const handleOutput = (data: Buffer) => {
             const output = data.toString();
             const urlMatch = output.match(urlRegex);
-  
+
             if (urlMatch) {
-              const pyjamasUrl = urlMatch[1];
+              let pyjamasUrl = urlMatch[1];
+              if (pyjamasUrl.endsWith('/')) {
+                pyjamasUrl = pyjamasUrl.slice(0, -1);
+              }
               console.log(`TunnelPyjamas URL: ${pyjamasUrl}`);
               resolve(pyjamasUrl);
             }
           };
-  
-          wgProcess.stdout.on('data', handleOutput);
-          wgProcess.stderr.on('data', handleOutput);
-  
-          wgProcess.on('close', (code) => {
-            console.log(`wg-quick process exited with code ${code}`);
+
+          this.wgProcess.stdout.on('data', handleOutput);
+          this.wgProcess.stderr.on('data', (data: Buffer) => {
+            console.error(`wg-quick error: ${data.toString()}`);
+          });
+
+          this.wgProcess.on('close', (code) => {
             if (code !== 0) {
-              console.log('Attempting to bring down the tunnel and retry...');
-              spawn('wg-quick', ['down', './tunnel.conf'], { shell: true }).on('close', () => {
-                tryStartTunnel();
-              });
+              reject(new Error('Failed to start TunnelPyjamas Tunnel'));
             }
           });
-  
+
           setTimeout(() => {
             reject(new Error('Timeout: Failed to start TunnelPyjamas Tunnel'));
-          }, 10000); // Set a reasonable timeout
-        };
-  
-        tryStartTunnel();
+          }, 20000); // Consider increasing the timeout
+        });
+      });
+    }
+
+    async stop(): Promise<void> {
+      return new Promise((resolve, reject) => {
+        console.log(`Bringing down ${this.name} tunnel.`);
+        exec('sudo wg-quick down ./tunnel.conf', (error, stdout, stderr) => {
+          if (error) {
+            console.error(`Failed to bring down tunnel: ${stderr}`);
+            reject(new Error(`Failed to bring down tunnel: ${stderr}`));
+            return;
+          }
+          console.log(`Stopped ${this.name} tunnel.`);
+          fs.unlinkSync('./tunnel.conf');
+          resolve();
+        });
       });
     }
   }
@@ -806,7 +833,7 @@ export class DevTunnel extends BaseTunnel {
 
   async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
       return new Promise((resolve, reject) => {
-          this.devtunnel = spawn('devtunnel', ['host', '-p', port.toString()]);
+          this.devtunnel = spawn('devtunnel', ['host', '-p', port.toString(), '--allow-anonymous']);
 
           let urlPrinted = false;
           const urlRegex = /https:\/\/[a-z0-9-]+\.inc1\.devtunnels\.ms(:\d+)?(?!-inspect)/;
@@ -933,11 +960,270 @@ export class BeeceptorTunnel extends BaseTunnel {
   }
 }
 
+export class OpenportTunnel extends BaseTunnel {
+  name = 'Openport';
+  preSetupCommands = [];
+  preStartCommands = [];
+
+  async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
+    console.log('Starting Openport tunnel...');
+    this.process = spawn('openport', [port.toString()]);
+
+    return new Promise((resolve, reject) => {
+      let mainPort: string | null = null;
+      let timeoutId: NodeJS.Timeout;
+      let isResolved = false;
+
+      const handleOutput = async (data: Buffer) => {
+        const output = data.toString();
+        
+        // Match the forwarding port info
+        if (!mainPort) {
+          const portMatch = output.match(/forwarding remote port (spr\.openport\.io:\d+)/);
+          if (portMatch) {
+            mainPort = portMatch[1];
+            console.log(`✓ Port allocated: ${mainPort}`);
+          }
+        }
+
+        // Match the auth URL
+        const authMatch = output.match(/first visit (https:\/\/spr\.openport\.io\/l\/\d+\/\w+)/);
+        if (authMatch && mainPort && !isResolved) {
+          const authUrl = authMatch[1];
+          console.log(`✓ Auth URL found: ${authUrl}`);
+          console.log('Attempting authentication...');
+          
+          clearTimeout(timeoutId);
+          
+          try {
+            const response = await axios.get(authUrl);
+            if (response.status === 200) {
+              const finalUrl = `http://${mainPort}`;
+              console.log(`✓ Authentication successful!`);
+              console.log(`✓ Final URL: ${finalUrl}`);
+              isResolved = true;
+              resolve(finalUrl);
+            }
+          } catch (error: any) {
+            console.error('✗ Authentication failed:', error.message);
+            reject(new Error(`Failed to authenticate: ${error.message}`));
+          }
+        }
+      };
+
+      this.process.stdout.on('data', handleOutput);
+      this.process.stderr.on('data', handleOutput);
+
+      this.process.on('error', (error) => {
+        if (!isResolved) {
+          console.error('✗ Process error:', error);
+          reject(new Error(`Process error: ${error.message}`));
+        }
+      });
+
+      this.process.on('close', (code) => {
+        // Only log if it's not a normal shutdown
+        if (code !== null && code !== 0 && !isResolved) {
+          console.error(`✗ Process closed with code ${code}`);
+          reject(new Error(`Process closed with code ${code}`));
+        }
+      });
+
+      timeoutId = setTimeout(() => {
+        if (!isResolved) {
+          const state = {
+            mainPort,
+            processRunning: this.process?.killed === false
+          };
+          console.error('✗ Timeout reached. Current state:', state);
+          reject(new Error('Timeout: Failed to start Openport Tunnel'));
+        }
+      }, 45000);
+    });
+  }
+
+  async stop(): Promise<void> {
+    if (this.process) {
+      console.log('Stopping Openport tunnel...');
+      this.process.kill();
+      console.log(`✓ Stopped ${this.name} tunnel`);
+    }
+  }
+}
+
+export class NgtorTunnel extends BaseTunnel {
+  name = 'Ngtor';
+  preSetupCommands = [];
+  preStartCommands = [];
+
+  async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
+    await this.ensureTorRunning();
+
+    // Start the Ngtor process
+    this.process = spawn('java', ['-jar', 'ngtor-0.1.0-boot.jar', 'http', `--port=${port}`]);
+
+    return new Promise((resolve, reject) => {
+      const urlRegex = /http:\/\/\S+\.onion/;
+
+      const handleOutput = (data: Buffer) => {
+        const output = data.toString();
+        const urlMatch = output.match(urlRegex);
+        if (urlMatch) {
+          const onionUrl = urlMatch[0];
+          console.log(`Ngtor Onion URL: ${onionUrl}`);
+          resolve(onionUrl);
+        }
+      };
+
+      this.process.stdout.on('data', handleOutput);
+      this.process.stderr.on('data', handleOutput);
+
+      setTimeout(() => {
+        reject(new Error('Timeout: Failed to start Ngtor Tunnel'));
+      }, 30000);
+    });
+  }
+
+  private async ensureTorRunning(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      exec('pgrep tor', async (error) => {
+        if (error) {
+          console.log('Starting Tor service...');
+          exec('service tor start', (startError, stdout, stderr) => {
+            if (startError) {
+              reject(new Error(`Failed to start Tor: ${startError.message}`));
+            } else {
+              console.log('Tor service started successfully');
+              resolve();
+            }
+          });
+        } else {
+          console.log('Tor service is already running');
+          resolve();
+        }
+      });
+    });
+  }
+}
+
+export class EphemeralHiddenServiceTunnel extends BaseTunnel {
+  name = 'EphemeralHiddenService';
+  preSetupCommands = [];
+  preStartCommands = [];
+
+  async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
+    await this.ensureTorRunning();
+
+    this.process = spawn('ephemeral-hidden-service', ['-lp', port.toString()]);
+
+    return new Promise((resolve, reject) => {
+      const urlRegex = /http:\/\/\S+\.onion/;
+
+      const handleOutput = (data: Buffer) => {
+        const output = data.toString();
+        const urlMatch = output.match(urlRegex);
+        if (urlMatch) {
+          const onionUrl = urlMatch[0];
+          console.log(`Ephemeral Hidden Service URL: ${onionUrl}`);
+          resolve(onionUrl);
+        }
+      };
+
+      this.process.stdout.on('data', handleOutput);
+      this.process.stderr.on('data', handleOutput);
+
+      setTimeout(() => {
+        reject(new Error('Timeout: Failed to start Ephemeral Hidden Service'));
+      }, 30000);
+    });
+  }
+
+  private async ensureTorRunning(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      exec('pgrep tor', async (error) => {
+        if (error) {
+          console.log('Starting Tor service...');
+          exec('service tor start', (startError, stdout, stderr) => {
+            if (startError) {
+              reject(new Error(`Failed to start Tor: ${startError.message}`));
+            } else {
+              console.log('Tor service started successfully');
+              resolve();
+            }
+          });
+        } else {
+          console.log('Tor service is already running');
+          resolve();
+        }
+      });
+    });
+  }
+}
+
+export class OnionpipeTunnel extends BaseTunnel {
+  name = 'Onionpipe';
+  preSetupCommands = [];
+  preStartCommands = [];
+
+  async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
+    await this.ensureTorRunning();
+
+    this.process = spawn('onionpipe', [port.toString()]);
+
+    return new Promise((resolve, reject) => {
+      const handleOutput = (data: Buffer) => {
+        const output = data.toString();
+        const lines = output.split('\n');
+        for (const line of lines) {
+          if (line.includes('.onion:')) {
+            const parts = line.split('>');
+            const onionUrl = parts[1].trim();
+            console.log(`Onionpipe URL: ${onionUrl}`);
+            resolve(onionUrl);
+            break;
+          }
+        }
+      };
+
+      this.process.stdout.on('data', handleOutput);
+      this.process.stderr.on('data', handleOutput);
+
+      setTimeout(() => {
+        reject(new Error('Timeout: Failed to start Onionpipe Tunnel'));
+      }, 30000);
+    });
+  }
+
+  private async ensureTorRunning(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      exec('pgrep tor', async (error) => {
+        if (error) {
+          console.log('Starting Tor service...');
+          exec('service tor start', (startError, stdout, stderr) => {
+            if (startError) {
+              reject(new Error(`Failed to start Tor: ${startError.message}`));
+            } else {
+              console.log('Tor service started successfully');
+              resolve();
+            }
+          });
+        } else {
+          console.log('Tor service is already running');
+          resolve();
+        }
+      });
+    });
+  }
+}
+
+  
 export const tunnelTools: TunnelTool[] = [
-  new CloudflareTunnel(),
-  new NgrokTunnel(),
+
+  // new NgrokTunnel(),
+  // new CloudflareTunnel(),
+  // new DevTunnel(),
+  new ZrokTunnel(),
   new LocalTunnel(),
-  new PagekiteTunnel(),
   new ServeoTunnel(),
   new TelebitTunnel(),
   new BoreTunnel(),
@@ -946,15 +1232,19 @@ export const tunnelTools: TunnelTool[] = [
   new LoopholeTunnel(),
   new PinggyTunnel(),
   new TailscaleTunnel(),
-  // new TunnelPyjamas(),
-  new ZrokTunnel(),
+  // new OpenportTunnel(),
   new TunwgTunnel(),
   new PacketriotTunnel(),
   // new BoreDigitalTunnel(),
   new LocalhostRunTunnel(),
   new BeeceptorTunnel(),
-  new DevTunnel(),
-  new Btunnel()
+  // new Btunnel(),
+  new PagekiteTunnel(),
+  new TunnelPyjamas(),
+
+  new OnionpipeTunnel(),
+  new NgtorTunnel(),
+  // new EphemeralHiddenServiceTunnel(),
 ]
 
 // async function executeTool(toolName: string, options: TunnelOptions = { port: 3000, urlPattern: /https:\/\/[^\s]+/ }) {
@@ -1078,4 +1368,4 @@ async function runAllTools() {
 
 // runAllTools();
 
-// executeTool(new BoreDigitalTunnel());
+// executeTool(new LocalTunnel());

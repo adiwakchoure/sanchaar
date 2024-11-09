@@ -1,0 +1,86 @@
+{
+  "tool": "Localxpose",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> drppz0lioj.loclx.io\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58092\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;drppz0lioj.loclx.io.\t\tIN\tA\n\n;; ANSWER SECTION:\ndrppz0lioj.loclx.io.\t60\tIN\tCNAME\tus.loclx.io.\nus.loclx.io.\t\t300\tIN\tA\t45.55.35.48\n\n;; AUTHORITY SECTION:\nloclx.io.\t\t172263\tIN\tNS\tns-1212.awsdns-23.org.\nloclx.io.\t\t172263\tIN\tNS\tns-1945.awsdns-51.co.uk.\nloclx.io.\t\t172263\tIN\tNS\tns-439.awsdns-54.com.\nloclx.io.\t\t172263\tIN\tNS\tns-847.awsdns-41.net.\n\n;; Query time: 53 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:23 IST 2024\n;; MSG SIZE  rcvd: 221\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "drppz0lioj.loclx.io.",
+            "type": "CNAME",
+            "ttl": 60,
+            "data": "us.loclx.io."
+          },
+          {
+            "name": "us.loclx.io.",
+            "type": "A",
+            "ttl": 300,
+            "data": "45.55.35.48"
+          }
+        ],
+        "queryTime": 53,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 221
+      },
+      "timing": {
+        "duration": 93.93560699999944
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 4109.7617869999995
+    },
+    "toolSetup": {
+      "duration": 4012.5298019999973
+    },
+    "diagnostics": {
+      "duration": 94.10155000000304
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.011314999999740394
+      },
+      "average": {
+        "duration": 0.0022629999999480787
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

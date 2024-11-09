@@ -1,0 +1,74 @@
+{
+  "tool": "Pagekite",
+  "diagnostics": [],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 5.994072999999844
+    },
+    "toolSetup": {
+      "duration": 2.942560000000185
+    },
+    "diagnostics": {
+      "duration": 0.0032829999997829873
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.010475999999925989
+      },
+      "average": {
+        "duration": 0.002095199999985198
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "Tunnel Setup",
+      "error": "Failed to start tunnel: "
+    },
+    {
+      "stage": "Tunnel Setup",
+      "error": "Tunnel URL is empty or invalid"
+    },
+    {
+      "stage": "Diagnostics",
+      "error": "Skipped diagnostics due to missing tunnel URL"
+    },
+    {
+      "stage": "File List",
+      "error": "Failed to get file list: "
+    },
+    {
+      "stage": "Tunnel Cleanup",
+      "error": "Failed to stop tunnel: "
+    }
+  ]
+}

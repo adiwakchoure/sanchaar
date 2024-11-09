@@ -1,0 +1,271 @@
+{
+  "tool": "Cloudflared",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> sanchaar.remedium.world\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29516\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;sanchaar.remedium.world.\tIN\tA\n\n;; ANSWER SECTION:\nsanchaar.remedium.world. 300\tIN\tA\t172.67.170.223\nsanchaar.remedium.world. 300\tIN\tA\t104.21.28.145\n\n;; Query time: 67 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 07:40:40 IST 2024\n;; MSG SIZE  rcvd: 84\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "172.67.170.223"
+          },
+          {
+            "name": "sanchaar.remedium.world.",
+            "type": "A",
+            "ttl": 300,
+            "data": "104.21.28.145"
+          }
+        ],
+        "queryTime": 67,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 07",
+        "rcvdSize": 84
+      },
+      "timing": {
+        "duration": 104.85581699999966
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 16,
+            "hash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timestamp": "2024-10-29T02:10:41.047Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timeTaken": 0.8033860000005006
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 530,
+            "timeSplit": {
+              "dnsLookup": 0.073153,
+              "tcpConnection": 0.192549,
+              "tlsHandshake": 0.402627,
+              "firstByte": 0.515487,
+              "total": 0.51609
+            },
+            "ttfb": 1.183816,
+            "latency": 0.192549,
+            "sizeDownload": 16,
+            "speedDownload": 31,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 16,
+            "hash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timestamp": "2024-10-29T02:10:41.563Z"
+          },
+          "transferSuccess": false,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "d1a1864eb67675d67399463ea62a8cca74891508a265a213e23ebd3ea8c7235a",
+            "timeTaken": 0.3837780000003477
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 530,
+            "timeSplit": {
+              "dnsLookup": 0.002264,
+              "tcpConnection": 0.105726,
+              "tlsHandshake": 0.368233,
+              "firstByte": 0.485592,
+              "total": 0.486517
+            },
+            "ttfb": 0.961815,
+            "latency": 0.105726,
+            "sizeDownload": 16,
+            "speedDownload": 32,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 32,
+            "hash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timestamp": "2024-10-29T02:10:42.392Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timeTaken": 0.5603379999993194
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002394,
+              "tcpConnection": 0.105741,
+              "tlsHandshake": 0.362511,
+              "firstByte": 0.802229,
+              "total": 0.803665
+            },
+            "ttfb": 1.272875,
+            "latency": 0.105741,
+            "sizeDownload": 32,
+            "speedDownload": 39,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 32,
+            "hash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timestamp": "2024-10-29T02:10:43.295Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timeTaken": 0.6301790000006804
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.00228,
+              "tcpConnection": 0.107956,
+              "tlsHandshake": 0.352775,
+              "firstByte": 0.874713,
+              "total": 0.875064
+            },
+            "ttfb": 1.337724,
+            "latency": 0.107956,
+            "sizeDownload": 32,
+            "speedDownload": 36,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {
+        "test.json": {
+          "filename": "test.json",
+          "originalMetadata": {},
+          "receivedMetadata": {
+            "filename": "test.json",
+            "size": 32,
+            "hash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timestamp": "2024-10-29T02:10:44.108Z"
+          },
+          "transferSuccess": true,
+          "hashMatch": false,
+          "metadataMatch": false,
+          "serverHash": "",
+          "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+          "hashMatchDetails": {
+            "matched": false,
+            "serverHash": "",
+            "clientHash": "1ca0f6093de393ba23d776ecc83f38610b4727c44e77c6533d6b5b8d8448282e",
+            "timeTaken": 0.3862230000004274
+          },
+          "sizeMatch": false,
+          "transferStats": {
+            "statusCode": 200,
+            "timeSplit": {
+              "dnsLookup": 0.002251,
+              "tcpConnection": 0.104746,
+              "tlsHandshake": 0.289909,
+              "firstByte": 0.783841,
+              "total": 0.784293
+            },
+            "ttfb": 1.180747,
+            "latency": 0.104746,
+            "sizeDownload": 32,
+            "speedDownload": 40,
+            "speedUpload": 0
+          }
+        }
+      },
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 3790.372935
+    },
+    "toolSetup": {
+      "duration": 75.22446899999977
+    },
+    "diagnostics": {
+      "duration": 106.10066999999981
+    },
+    "measurements": {
+      "total": {
+        "duration": 3599.663762
+      },
+      "average": {
+        "duration": 719.9327524
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": false,
+  "errors": []
+}

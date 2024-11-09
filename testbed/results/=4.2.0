@@ -1,0 +1,11 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting nbformat
+  Using cached nbformat-5.10.4-py3-none-any.whl (78 kB)
+Requirement already satisfied: traitlets>=5.1 in /home/adi/.local/lib/python3.11/site-packages (from nbformat) (5.14.3)
+Collecting fastjsonschema>=2.15
+  Using cached fastjsonschema-2.20.0-py3-none-any.whl (23 kB)
+Requirement already satisfied: jsonschema>=2.6 in /usr/lib/python3/dist-packages (from nbformat) (3.2.0)
+Requirement already satisfied: jupyter-core!=5.0.*,>=4.12 in /home/adi/.local/lib/python3.11/site-packages (from nbformat) (5.7.2)
+Requirement already satisfied: platformdirs>=2.5 in /home/adi/.local/lib/python3.11/site-packages (from jupyter-core!=5.0.*,>=4.12->nbformat) (4.3.6)
+Installing collected packages: fastjsonschema, nbformat
+Successfully installed fastjsonschema-2.20.0 nbformat-5.10.4

@@ -1,0 +1,97 @@
+[
+  {
+    "toolName": "Serveo",
+    "measurementNumber": 1,
+    "timestamp": 824418.094076,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20132.503140000044,
+    "setupDuration": 10131.663159999996,
+    "diagnosticsDuration": 0.037225000094622374,
+    "measurementDuration": 0.02898299996741116,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Serveo",
+    "measurementNumber": 2,
+    "timestamp": 824418.144222,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20132.503140000044,
+    "setupDuration": 10131.663159999996,
+    "diagnosticsDuration": 0.037225000094622374,
+    "measurementDuration": 0.02898299996741116,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Serveo",
+    "measurementNumber": 3,
+    "timestamp": 824418.166711,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20132.503140000044,
+    "setupDuration": 10131.663159999996,
+    "diagnosticsDuration": 0.037225000094622374,
+    "measurementDuration": 0.02898299996741116,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Serveo",
+    "measurementNumber": 4,
+    "timestamp": 824418.186615,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20132.503140000044,
+    "setupDuration": 10131.663159999996,
+    "diagnosticsDuration": 0.037225000094622374,
+    "measurementDuration": 0.02898299996741116,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Serveo",
+    "measurementNumber": 5,
+    "timestamp": 824418.20666,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20132.503140000044,
+    "setupDuration": 10131.663159999996,
+    "diagnosticsDuration": 0.037225000094622374,
+    "measurementDuration": 0.02898299996741116,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "tool": "Telebit",
+  "diagnostics": [],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 4.754737000000205
+    },
+    "toolSetup": {
+      "duration": 2.1721390000000156
+    },
+    "diagnostics": {
+      "duration": 0.0028630000001612643
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.010335999999824708
+      },
+      "average": {
+        "duration": 0.0020671999999649416
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "Tunnel Setup",
+      "error": "Failed to start tunnel: "
+    },
+    {
+      "stage": "Tunnel Setup",
+      "error": "Tunnel URL is empty or invalid"
+    },
+    {
+      "stage": "Diagnostics",
+      "error": "Skipped diagnostics due to missing tunnel URL"
+    },
+    {
+      "stage": "File List",
+      "error": "Failed to get file list: "
+    },
+    {
+      "stage": "Tunnel Cleanup",
+      "error": "Failed to stop tunnel: "
+    }
+  ]
+}

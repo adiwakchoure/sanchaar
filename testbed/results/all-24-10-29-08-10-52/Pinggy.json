@@ -1,0 +1,86 @@
+{
+  "tool": "Pinggy",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> rnrzl-110-226-183-126.a.free.pinggy.link\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21169\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;rnrzl-110-226-183-126.a.free.pinggy.link. IN A\n\n;; ANSWER SECTION:\nrnrzl-110-226-183-126.a.free.pinggy.link. 10 IN\tCNAME lin.ap.4.a.pinggy.click.\nlin.ap.4.a.pinggy.click. 597\tIN\tA\t172.105.114.192\n\n;; AUTHORITY SECTION:\npinggy.click.\t\t172797\tIN\tNS\tns-1312.awsdns-36.org.\npinggy.click.\t\t172797\tIN\tNS\tns-1772.awsdns-29.co.uk.\npinggy.click.\t\t172797\tIN\tNS\tns-275.awsdns-34.com.\npinggy.click.\t\t172797\tIN\tNS\tns-740.awsdns-28.net.\n\n;; Query time: 173 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:31 IST 2024\n;; MSG SIZE  rcvd: 262\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "rnrzl-110-226-183-126.a.free.pinggy.link.",
+            "type": "CNAME",
+            "ttl": 10,
+            "data": "lin.ap.4.a.pinggy.click."
+          },
+          {
+            "name": "lin.ap.4.a.pinggy.click.",
+            "type": "A",
+            "ttl": 597,
+            "data": "172.105.114.192"
+          }
+        ],
+        "queryTime": 173,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 262
+      },
+      "timing": {
+        "duration": 216.09010699999635
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 3139.3004839999994
+    },
+    "toolSetup": {
+      "duration": 2917.281812999994
+    },
+    "diagnostics": {
+      "duration": 216.3266599999988
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.042393000003357884
+      },
+      "average": {
+        "duration": 0.008478600000671577
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "tool": "Telebit",
+  "diagnostics": [],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 10029.453311000001
+    },
+    "toolSetup": {
+      "duration": 10024.448120999998
+    },
+    "diagnostics": {
+      "duration": 0.004329999999754364
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.016133999997691717
+      },
+      "average": {
+        "duration": 0.0032267999995383434
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "Tunnel Setup",
+      "error": "Failed to start tunnel: Request failed with status code 500"
+    },
+    {
+      "stage": "Tunnel Setup",
+      "error": "Tunnel URL is empty or invalid"
+    },
+    {
+      "stage": "Diagnostics",
+      "error": "Skipped diagnostics due to missing tunnel URL"
+    },
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    },
+    {
+      "stage": "Tunnel Cleanup",
+      "error": "Failed to stop tunnel: Request failed with status code 400"
+    }
+  ]
+}

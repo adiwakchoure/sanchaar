@@ -174,3 +174,13 @@ Total List: 85
 Working: 20
 Limitless: 
 Gateway tools:
+
+
+
+
+# Oct 2024
+- Time to get magic linnk must be separate from the tunnel
+- Explain the testbed setup, measurements and iterations and everything
+- Get the apache nginx caddy graphs
+- Get the curl and web rendering graphs
+- Get the timesplit breakdown with thorughput also

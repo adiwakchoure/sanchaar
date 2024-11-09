@@ -8,14 +8,22 @@ import { performance } from 'perf_hooks';
 import crypto from 'crypto';
 import path from 'path';
 import os from 'os';
+import { chromium } from 'playwright';
+
+
+import SocksProxyAgent from 'socks-proxy-agent';
+const TOR_SOCKS_PORT = 9050; // Default Tor SOCKS port
+const TOR_SOCKS_HOST = '127.0.0.1';
+const TOR_SOCKS_PROXY = `socks5h://${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT}`;
+
 
 // const SERVER_HOST = 'localhost';
 const SERVER_HOST = 'localhost';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes
-const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
-const NUM_MEASUREMENTS = 5;
+// const FILE_SIZES_MB = [1]; // All sizes in megabytes (MB)
+const NUM_MEASUREMENTS = 3;
 
 const ENABLE_LOGGING = false;
 const ENABLE_PCAP = false; // Set this to true to enable PCAP capturing
@@ -56,6 +64,7 @@ interface Timing {
   
   interface Measurement {
     measurementNumber: number;
+    timestamp: number; // Performance.now() timestamp
     fileTransfers: { [key: string]: FileTransferResult };
     webTests: WebTestResult[];
   }
@@ -118,12 +127,33 @@ interface Timing {
 
   interface FileTransferResult {
     filename: string;
+    timestamp: number; // Add this field
     originalMetadata: FileMetadata;
     receivedMetadata: FileMetadata;
     transferSuccess: boolean;
     hashMatch: boolean;
     metadataMatch: boolean;
+    serverHash: string;
+    clientHash: string;
+    hashMatchDetails: {
+      matched: boolean;
+      serverHash: string;
+      clientHash: string;
+      timeTaken: number; // Time taken to calculate hash
+    };
+    sizeMatch: boolean;
     transferStats: CurlResult;
+    error?: string;
+  }
+
+  interface WebTestResult {
+    url: string;
+    statusCode: number;
+    speedDownload: number;
+    speedUpload: number;
+    timeSplit: TimeSplit;
+    fcp: number;
+    lcp: number;
     error?: string;
   }
 
@@ -324,7 +354,7 @@ async function runDiagnosticTool(tool: string, args: string[]): Promise<Diagnost
       parsedOutput = new Dig().parse(rawOutput);
       break;
     case 'ping':
-      parsedOutput = rawOutput; // For simplicity, we're not parsing ping output
+      parsedOutput = rawOutput;
       break;
     // Add more cases for other tools as needed
   }
@@ -338,10 +368,12 @@ async function runDiagnosticTool(tool: string, args: string[]): Promise<Diagnost
 }
 
 
-async function performWebTest(url: string): Promise<CurlResult> {
+async function performWebTest(url: string): Promise<WebTestResult> {
     const stopwatch = new Stopwatch();
     stopwatch.start();
-    const curlOutput = await runCommand('curl', [
+    
+    const isOnionUrl = url.includes('.onion');
+    const curlArgs = [
       '-w', '\
       DNS Lookup: %{time_namelookup}s\n\
       TCP Connection: %{time_connect}s\n\
@@ -352,14 +384,69 @@ async function performWebTest(url: string): Promise<CurlResult> {
       Upload Speed: %{speed_upload} bytes/sec\n\
       HTTP Code: %{http_code}\n\
       Size of Download: %{size_download} bytes\n',
-      '-o', '/dev/null',
-      '-s',
-      url
-    ]);
+      '-D', '-',  
+      '-o', '/dev/null',  // Save actual file content to temp file
+      '-s',  // Silent mode
+    ];
+
+    if (isOnionUrl) {
+      curlArgs.push(
+        '--socks5-hostname', `${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT}`,
+        '--insecure'
+      );
+    }
+
+    curlArgs.push(url);
+    const curlOutput = await runCommand('curl', curlArgs);
     stopwatch.stop();
   
-    return new Curl().parse(curlOutput);
-  }
+    const curlResult = new Curl().parse(curlOutput);
+
+    let fcp = 0;
+    let lcp = 0;
+    let error: string | undefined;
+
+    const browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    try {
+        await page.goto(url, { waitUntil: 'load' });
+
+        // Evaluate FCP and LCP using the performance API
+        const metrics = await page.evaluate(() => {
+            return new Promise((resolve) => {
+                const observer = new PerformanceObserver((entryList) => {
+                    const entries = entryList.getEntries();
+                    const fcpEntry = entries.find(entry => entry.name === 'first-contentful-paint');
+                    const lcpEntry = entries.find(entry => entry.entryType === 'largest-contentful-paint');
+                    resolve({
+                        fcp: fcpEntry ? fcpEntry.startTime : 0,
+                        lcp: lcpEntry ? lcpEntry.startTime : 0
+                    });
+                });
+                observer.observe({ type: 'paint', buffered: true });
+                observer.observe({ type: 'largest-contentful-paint', buffered: true });
+            });
+        });
+
+        fcp = metrics.fcp;
+        lcp = metrics.lcp;
+    } catch (err) {
+        error = `Playwright error: ${(err as Error).message}`;
+    } finally {
+        await browser.close();
+    }
+
+    return {
+      url,
+      statusCode: curlResult.statusCode,
+      speedDownload: curlResult.speedDownload,
+      speedUpload: curlResult.speedUpload,
+      timeSplit: curlResult.timeSplit,
+      fcp,
+      lcp,
+      error: error || curlResult.error
+    };
+}
 
   const TEMP_DIR = path.join(os.tmpdir(), 'tunnel-testbed');
 
@@ -374,8 +461,12 @@ async function performWebTest(url: string): Promise<CurlResult> {
     await fs.mkdir(TEMP_DIR, { recursive: true });
   }
 
-  // Replace performFileTransfer with this new version
-  async function performFileTransfer(url: string, filename: string): Promise<FileTransferResult> {
+  async function performFileTransfer(
+    url: string, 
+    filename: string, 
+    originalMetadata: FileMetadata
+  ): Promise<FileTransferResult> {
+    const transferStartTime = performance.now();
     const tempFilePath = path.join(TEMP_DIR, `${Date.now()}-${filename}`);
     
     if (ENABLE_LOGGING) {
@@ -384,11 +475,10 @@ async function performWebTest(url: string): Promise<CurlResult> {
     }
 
     try {
-      // Ensure temp directory exists
       await ensureTempDir();
 
-      // Perform the download
-      const curlOutput = await runCommand('curl', [
+      const isOnionUrl = url.includes('.onion');
+      const curlArgs = [
         '-w', '\
         DNS Lookup: %{time_namelookup}s\n\
         TCP Connection: %{time_connect}s\n\
@@ -399,57 +489,91 @@ async function performWebTest(url: string): Promise<CurlResult> {
         Upload Speed: %{speed_upload} bytes/sec\n\
         HTTP Code: %{http_code}\n\
         Size of Download: %{size_download} bytes\n',
-        '-D', '-',
-        '-o', tempFilePath,
-        '-s',
-        url
-      ]);
+        '-D', '-',  
+        '-o', tempFilePath,  // Save actual file content to temp file
+        '-s',  // Silent mode
+      ];
 
-      // Parse curl result
+      if (isOnionUrl) {
+        curlArgs.push(
+          '--socks5-hostname', `${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT}`,
+          '--insecure'
+        );
+      }
+
+      curlArgs.push(url);
+      const curlOutput = await runCommand('curl', curlArgs);
+
       const transferStats = new Curl().parse(curlOutput);
 
-      // Get original metadata from response headers
-      const originalMetadata: FileMetadata = JSON.parse(
-        curlOutput.match(/X-File-Metadata: (.+)/)?.[1] || '{}'
-      );
+      const serverHash = originalMetadata.hash;
+      const serverSize = originalMetadata.size;
 
-      // Calculate received file metadata
+      const hashStartTime = performance.now();
+      const clientHash = await calculateFileHash(tempFilePath);
+      const hashEndTime = performance.now();
+
+      const stats = await fs.stat(tempFilePath);
       const receivedMetadata = {
         filename,
-        size: (await fs.stat(tempFilePath)).size,
-        hash: await calculateFileHash(tempFilePath),
+        size: stats.size,
+        hash: clientHash,
         contentType: originalMetadata.contentType,
         timestamp: new Date().toISOString()
       };
 
-      // Clean up temp file
-      await fs.unlink(tempFilePath);
+      const hashMatch = serverHash === clientHash;
+      const sizeMatch = serverSize === stats.size;
 
-      const hashMatch = originalMetadata.hash === receivedMetadata.hash;
-      const metadataMatch = originalMetadata.size === receivedMetadata.size;
+      await fs.unlink(tempFilePath);
 
       return {
         filename,
+        timestamp: transferStartTime,
         originalMetadata,
         receivedMetadata,
         transferSuccess: transferStats.statusCode === 200,
         hashMatch,
-        metadataMatch,
+        metadataMatch: sizeMatch && hashMatch,
+        serverHash,
+        clientHash,
+        hashMatchDetails: {
+          matched: hashMatch,
+          serverHash,
+          clientHash,
+          timeTaken: hashEndTime - hashStartTime
+        },
+        sizeMatch,
         transferStats
       };
     } catch (error) {
-      // Clean up temp file in case of error
       try {
         await fs.unlink(tempFilePath);
       } catch {} // Ignore cleanup errors
 
       return {
         filename,
-        originalMetadata: {} as FileMetadata,
-        receivedMetadata: {} as FileMetadata,
+        timestamp: transferStartTime,
+        originalMetadata,
+        receivedMetadata: {
+          filename,
+          size: 0,
+          hash: '',
+          contentType: originalMetadata.contentType,
+          timestamp: new Date().toISOString()
+        },
         transferSuccess: false,
         hashMatch: false,
         metadataMatch: false,
+        serverHash: originalMetadata.hash,
+        clientHash: '',
+        hashMatchDetails: {
+          matched: false,
+          serverHash: originalMetadata.hash,
+          clientHash: '',
+          timeTaken: 0
+        },
+        sizeMatch: false,
         transferStats: {
           statusCode: 0,
           timeSplit: { dnsLookup: 0, tcpConnection: 0, tlsHandshake: 0, firstByte: 0, total: 0 },
@@ -463,7 +587,6 @@ async function performWebTest(url: string): Promise<CurlResult> {
       };
     }
   }
-
 
   async function startPcapCapture(toolName: string): Promise<[any, string]> {
     if (!ENABLE_PCAP) {
@@ -493,6 +616,21 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   let tunnelUrl = ''; 
   let allDownloadsComplete = true;
   let errors: { stage: string; error: string }[] = [];
+  let availableFiles: FileMetadata[] = [];
+
+  // Pre-fetch file metadata from server
+  try {
+    const response = await axios.get(`${SERVER_URL}/files`);
+    availableFiles = response.data;
+    if (ENABLE_LOGGING) console.log(`Pre-fetched metadata for ${availableFiles.length} files`);
+  } catch (error) {
+    errors.push({ stage: 'File Metadata Fetch', error: `Failed to get file metadata: ${(error as Error).message}` });
+  }
+
+  // Create a map of filename to metadata for quick lookup
+  const fileMetadataMap = new Map(
+    availableFiles.map(metadata => [metadata.filename, metadata])
+  );
 
   // Tunnel Setup Stage
   if (ENABLE_LOGGING) console.log(`Requesting server to start tunnel with ${tunnelTool.name}`);
@@ -507,6 +645,8 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   if (!tunnelUrl) {
     errors.push({ stage: 'Tunnel Setup', error: 'Tunnel URL is empty or invalid' });
   }
+
+  const isOnionUrl = tunnelUrl.includes('.onion');
 
   // Post-setup Commands Stage
   if (tunnelTool.postSetupCommands) {
@@ -532,10 +672,14 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
   
   setupStopwatch.stop();
   
-  // Diagnostics Stage
+  // Add delay after setup but before measurements
+  if (ENABLE_LOGGING) console.log('Waiting 10 seconds for tunnel to stabilize...');
+  await new Promise(resolve => setTimeout(resolve, 10000));
+  
+  // Diagnostics Stage - Skip for .onion URLs
   diagnosticsStopwatch.start();
   const diagnostics: DiagnosticResult[] = [];
-  if (tunnelUrl) {
+  if (tunnelUrl && !isOnionUrl) {
     const url = new URL(tunnelUrl); 
     const domain = url.hostname;
     try {
@@ -550,6 +694,8 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
         error: (error as Error).message
       });
     }
+  } else if (isOnionUrl) {
+    if (ENABLE_LOGGING) console.log('Skipping diagnostics for .onion URL');
   } else {
     errors.push({ stage: 'Diagnostics', error: 'Skipped diagnostics due to missing tunnel URL' });
   }
@@ -573,18 +719,11 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
 
   measurementsProgressBar.start(numMeasurements, 0);
   
-  // Get list of files to transfer
-  let availableFiles: FileMetadata[] = [];
-  try {
-    const response = await axios.get(`${SERVER_URL}/files`);
-    availableFiles = response.data;
-  } catch (error) {
-    errors.push({ stage: 'File List', error: `Failed to get file list: ${(error as Error).message}` });
-  }
-
+  // Modify the measurements loop to use pre-fetched metadata
   for (let i = 0; i < numMeasurements; i++) {
     const measurementsStopwatch = new Stopwatch();
     measurementsStopwatch.start();
+    const measurementStartTime = performance.now();
   
     const fileTransfers: { [key: string]: FileTransferResult } = {};
     const webTests: WebTestResult[] = [];
@@ -594,7 +733,8 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
         try {
           const result = await performFileTransfer(
             `${tunnelUrl}/download/${fileMetadata.filename}`,
-            fileMetadata.filename
+            fileMetadata.filename,
+            fileMetadata
           );
           fileTransfers[fileMetadata.filename] = result;
 
@@ -610,6 +750,17 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
         }
       }
     }
+
+    // Perform web tests
+    try {
+      const webTestResult = await performWebTest(`${tunnelUrl}/webtest`);
+      webTests.push(webTestResult);
+    } catch (error) {
+      errors.push({ 
+        stage: 'Web Test', 
+        error: `Failed to perform web test: ${(error as Error).message}` 
+      });
+    }
   
     measurementsStopwatch.stop();
     const measurementDuration = measurementsStopwatch.getTiming().duration;
@@ -617,6 +768,7 @@ async function performMeasurementsRun(tunnelTool: TunnelTool, enablePcap: boolea
 
     measurements.push({
       measurementNumber: i + 1,
+      timestamp: measurementStartTime,
       fileTransfers,
       webTests
     });
@@ -860,11 +1012,73 @@ async function main() {
 }
 
 async function saveResults(directory: string, toolName: string, result: RunResult) {
-  const filename = `${toolName}.json`;
-  const filePath = `${directory}/${filename}`;
+  // Save original format
+  // const originalFilename = `${toolName}-original.json`;
+  // const originalFilePath = `${directory}/${originalFilename}`;
+  // await fs.writeFile(originalFilePath, JSON.stringify(result, null, 2));
 
-  await fs.writeFile(filePath, JSON.stringify(result, null, 2));
-  if (ENABLE_LOGGING) console.log(`Results saved to ${filePath}`);
+  // Save flattened format
+  const flattenedFilename = `${toolName}.json`;
+  const flattenedFilePath = `${directory}/${flattenedFilename}`;
+  const flattenedResults = flattenResults(result);
+  await fs.writeFile(flattenedFilePath, JSON.stringify(flattenedResults, null, 2));
+
+  if (ENABLE_LOGGING) {
+    console.log(`Results saved to ${flattenedFilePath}`);
+  }
+}
+
+function flattenResults(result: RunResult): FlattenedMeasurement[] {
+  return result.measurements.map(measurement => {
+    // Flatten file transfers
+    const flattenedTransfers = Object.entries(measurement.fileTransfers).map(([filename, transfer]) => ({
+      filename,
+      timestamp: transfer.timestamp,
+      fileSize: transfer.originalMetadata.size,
+      contentType: transfer.originalMetadata.contentType,
+      transferSuccess: transfer.transferSuccess,
+      statusCode: transfer.transferStats.statusCode,
+      downloadSpeed: transfer.transferStats.speedDownload,
+      uploadSpeed: transfer.transferStats.speedUpload,
+      dnsLookup: transfer.transferStats.timeSplit.dnsLookup * 1000, // Convert to ms
+      tcpConnection: transfer.transferStats.timeSplit.tcpConnection * 1000,
+      tlsHandshake: transfer.transferStats.timeSplit.tlsHandshake * 1000,
+      timeToFirstByte: transfer.transferStats.timeSplit.firstByte * 1000,
+      totalTransferTime: transfer.transferStats.timeSplit.total * 1000,
+      hashMatch: transfer.hashMatch,
+      sizeMatch: transfer.sizeMatch,
+      // hashCalculationTime: transfer.hashMatchDetails.timeTaken,
+      error: transfer.error
+    }));
+
+    return {
+      toolName: result.tool,
+      measurementNumber: measurement.measurementNumber,
+      timestamp: measurement.timestamp,
+      fileTransfers: flattenedTransfers,
+      webTests: measurement.webTests.map(test => ({
+        url: test.url,
+        statusCode: test.statusCode,
+        downloadSpeed: test.speedDownload,
+        uploadSpeed: test.speedUpload,
+        dnsLookup: test.timeSplit.dnsLookup * 1000,
+        tcpConnection: test.timeSplit.tcpConnection * 1000,
+        tlsHandshake: test.timeSplit.tlsHandshake * 1000,
+        timeToFirstByte: test.timeSplit.firstByte * 1000,
+        totalTime: test.timeSplit.total * 1000,
+        fcp: test.fcp,
+        lcp: test.lcp,
+        error: test.error
+      })),
+      totalDuration: result.durations.total.duration,
+      setupDuration: result.durations.toolSetup.duration,
+      diagnosticsDuration: result.durations.diagnostics.duration,
+      measurementDuration: result.durations.measurements.total.duration,
+      hasErrors: result.errors.length > 0,
+      errorCount: result.errors.length,
+      errors: result.errors.map(e => `${e.stage}: ${e.error}`)
+    };
+  });
 }
 
 main()

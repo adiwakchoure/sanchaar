@@ -1,0 +1,68 @@
+[
+  {
+    "toolName": "Tailscale",
+    "measurementNumber": 1,
+    "timestamp": 945349.514839,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20130.645755999954,
+    "setupDuration": 10054.535604999983,
+    "diagnosticsDuration": 0.043302000034600496,
+    "measurementDuration": 74.68989299994428,
+    "hasErrors": true,
+    "errorCount": 7,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Tailscale",
+    "measurementNumber": 2,
+    "timestamp": 945378.197161,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20130.645755999954,
+    "setupDuration": 10054.535604999983,
+    "diagnosticsDuration": 0.043302000034600496,
+    "measurementDuration": 74.68989299994428,
+    "hasErrors": true,
+    "errorCount": 7,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Tailscale",
+    "measurementNumber": 3,
+    "timestamp": 945401.355924,
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 20130.645755999954,
+    "setupDuration": 10054.535604999983,
+    "diagnosticsDuration": 0.043302000034600496,
+    "measurementDuration": 74.68989299994428,
+    "hasErrors": true,
+    "errorCount": 7,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Web Test: Failed to perform web test: Command failed with code 3",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  }
+]

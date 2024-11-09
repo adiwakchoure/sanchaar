@@ -1,0 +1,97 @@
+[
+  {
+    "toolName": "Localxpose",
+    "measurementNumber": 1,
+    "timestamp": "2024-11-02T13:04:17.893Z",
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 10048.150560999988,
+    "setupDuration": 10047.500407999847,
+    "diagnosticsDuration": 0.004749000072479248,
+    "measurementDuration": 0.032476999796926975,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Localxpose",
+    "measurementNumber": 2,
+    "timestamp": "2024-11-02T13:04:17.894Z",
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 10048.150560999988,
+    "setupDuration": 10047.500407999847,
+    "diagnosticsDuration": 0.004749000072479248,
+    "measurementDuration": 0.032476999796926975,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Localxpose",
+    "measurementNumber": 3,
+    "timestamp": "2024-11-02T13:04:17.894Z",
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 10048.150560999988,
+    "setupDuration": 10047.500407999847,
+    "diagnosticsDuration": 0.004749000072479248,
+    "measurementDuration": 0.032476999796926975,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Localxpose",
+    "measurementNumber": 4,
+    "timestamp": "2024-11-02T13:04:17.894Z",
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 10048.150560999988,
+    "setupDuration": 10047.500407999847,
+    "diagnosticsDuration": 0.004749000072479248,
+    "measurementDuration": 0.032476999796926975,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  },
+  {
+    "toolName": "Localxpose",
+    "measurementNumber": 5,
+    "timestamp": "2024-11-02T13:04:17.894Z",
+    "fileTransfers": [],
+    "webTests": [],
+    "totalDuration": 10048.150560999988,
+    "setupDuration": 10047.500407999847,
+    "diagnosticsDuration": 0.004749000072479248,
+    "measurementDuration": 0.032476999796926975,
+    "hasErrors": true,
+    "errorCount": 4,
+    "errors": [
+      "Tunnel Setup: Failed to start tunnel: Request failed with status code 500",
+      "Tunnel Setup: Tunnel URL is empty or invalid",
+      "Diagnostics: Skipped diagnostics due to missing tunnel URL",
+      "Tunnel Cleanup: Failed to stop tunnel: Request failed with status code 400"
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "tool": "Pinggy",
+  "diagnostics": [],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 4.610305000000153
+    },
+    "toolSetup": {
+      "duration": 2.0733829999999216
+    },
+    "diagnostics": {
+      "duration": 0.004331000000092899
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.010475000000269574
+      },
+      "average": {
+        "duration": 0.002095000000053915
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "Tunnel Setup",
+      "error": "Failed to start tunnel: "
+    },
+    {
+      "stage": "Tunnel Setup",
+      "error": "Tunnel URL is empty or invalid"
+    },
+    {
+      "stage": "Diagnostics",
+      "error": "Skipped diagnostics due to missing tunnel URL"
+    },
+    {
+      "stage": "File List",
+      "error": "Failed to get file list: "
+    },
+    {
+      "stage": "Tunnel Cleanup",
+      "error": "Failed to stop tunnel: "
+    }
+  ]
+}

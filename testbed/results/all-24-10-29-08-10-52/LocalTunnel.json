@@ -1,0 +1,80 @@
+{
+  "tool": "LocalTunnel",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> cyan-numbers-own.loca.lt\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51701\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;cyan-numbers-own.loca.lt.\tIN\tA\n\n;; ANSWER SECTION:\ncyan-numbers-own.loca.lt. 300\tIN\tA\t193.34.76.44\n\n;; Query time: 12 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:06 IST 2024\n;; MSG SIZE  rcvd: 69\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "cyan-numbers-own.loca.lt.",
+            "type": "A",
+            "ttl": 300,
+            "data": "193.34.76.44"
+          }
+        ],
+        "queryTime": 12,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 69
+      },
+      "timing": {
+        "duration": 48.238812999999936
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 3482.848713000001
+    },
+    "toolSetup": {
+      "duration": 3427.1784160000007
+    },
+    "diagnostics": {
+      "duration": 48.4597219999996
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.01808799999889743
+      },
+      "average": {
+        "duration": 0.003617599999779486
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

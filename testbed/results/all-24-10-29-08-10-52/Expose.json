@@ -1,0 +1,80 @@
+{
+  "tool": "Expose",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> bgk6v5ju4x.sharedwithexpose.com\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29431\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;bgk6v5ju4x.sharedwithexpose.com. IN\tA\n\n;; ANSWER SECTION:\nbgk6v5ju4x.sharedwithexpose.com. 3600 IN A\t64.225.109.66\n\n;; Query time: 74 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:24 IST 2024\n;; MSG SIZE  rcvd: 76\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "bgk6v5ju4x.sharedwithexpose.com.",
+            "type": "A",
+            "ttl": 3600,
+            "data": "64.225.109.66"
+          }
+        ],
+        "queryTime": 74,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 76
+      },
+      "timing": {
+        "duration": 118.47881300000154
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 1039.1024900000048
+    },
+    "toolSetup": {
+      "duration": 915.2016750000039
+    },
+    "diagnostics": {
+      "duration": 118.6717839999983
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.01522599999589147
+      },
+      "average": {
+        "duration": 0.003045199999178294
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+[
+  {
+    "toolName": "TunnelPyjamas",
+    "measurementNumber": 1,
+    "timestamp": 13476.399841,
+    "fileTransfers": [
+      {
+        "filename": "malicious.zip",
+        "timestamp": 13476.834742,
+        "fileSize": 6572980,
+        "contentType": "application/zip",
+        "transferSuccess": false,
+        "statusCode": 200,
+        "downloadSpeed": 15483,
+        "uploadSpeed": 0,
+        "dnsLookup": 136.84799999999998,
+        "tcpConnection": 283.77000000000004,
+        "tlsHandshake": 528.569,
+        "timeToFirstByte": 1225.249,
+        "totalTransferTime": 424517.373,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://6xc1q5.tunnel.pyjam.as/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1030,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.182,
+        "tcpConnection": 147.704,
+        "tlsHandshake": 414.967,
+        "timeToFirstByte": 2356.465,
+        "totalTime": 2357.969,
+        "fcp": 5059.80000000447,
+        "lcp": 5059.80000000447
+      }
+    ],
+    "totalDuration": 1359030.1486,
+    "setupDuration": 2465.0041300000003,
+    "diagnosticsDuration": 115.94759700000031,
+    "measurementDuration": 1346446.642779,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "TunnelPyjamas",
+    "measurementNumber": 2,
+    "timestamp": 447263.239128,
+    "fileTransfers": [
+      {
+        "filename": "malicious.zip",
+        "timestamp": 447263.243877,
+        "fileSize": 6572980,
+        "contentType": "application/zip",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 13508,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.371,
+        "tcpConnection": 147.404,
+        "tlsHandshake": 807.079,
+        "timeToFirstByte": 1128.2859999999998,
+        "totalTransferTime": 486591.027,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://6xc1q5.tunnel.pyjam.as/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 637,
+        "uploadSpeed": 0,
+        "dnsLookup": 268.201,
+        "tcpConnection": 452.077,
+        "tlsHandshake": 686.1800000000001,
+        "timeToFirstByte": 3810.171,
+        "totalTime": 3810.63,
+        "fcp": 1909.6999999955297,
+        "lcp": 1909.6999999955297
+      }
+    ],
+    "totalDuration": 1359030.1486,
+    "setupDuration": 2465.0041300000003,
+    "diagnosticsDuration": 115.94759700000031,
+    "measurementDuration": 1346446.642779,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "TunnelPyjamas",
+    "measurementNumber": 3,
+    "timestamp": 941504.893678,
+    "fileTransfers": [
+      {
+        "filename": "malicious.zip",
+        "timestamp": 941504.904922,
+        "fileSize": 6572980,
+        "contentType": "application/zip",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 15927,
+        "uploadSpeed": 0,
+        "dnsLookup": 15.9,
+        "tcpConnection": 1285.877,
+        "tlsHandshake": 1575.2630000000001,
+        "timeToFirstByte": 1972.405,
+        "totalTransferTime": 412691.88300000003,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://6xc1q5.tunnel.pyjam.as/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2281,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.575,
+        "tcpConnection": 198.41500000000002,
+        "tlsHandshake": 418.342,
+        "timeToFirstByte": 1063.8110000000001,
+        "totalTime": 1064.6119999999999,
+        "fcp": 2885,
+        "lcp": 2885
+      }
+    ],
+    "totalDuration": 1359030.1486,
+    "setupDuration": 2465.0041300000003,
+    "diagnosticsDuration": 115.94759700000031,
+    "measurementDuration": 1346446.642779,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

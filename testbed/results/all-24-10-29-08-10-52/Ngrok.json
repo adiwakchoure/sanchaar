@@ -1,0 +1,104 @@
+{
+  "tool": "Ngrok",
+  "diagnostics": [
+    {
+      "tool": "dig",
+      "rawOutput": "\n; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> 8e7e-110-226-183-126.ngrok-free.app\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27038\n;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 4, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 65494\n;; QUESTION SECTION:\n;8e7e-110-226-183-126.ngrok-free.app. IN\tA\n\n;; ANSWER SECTION:\n8e7e-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.122.107\n8e7e-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.182\n8e7e-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.115.64\n8e7e-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.30.85\n8e7e-110-226-183-126.ngrok-free.app. 60\tIN A\t3.6.98.232\n\n;; AUTHORITY SECTION:\nngrok-free.app.\t\t171602\tIN\tNS\tns-1311.awsdns-35.org.\nngrok-free.app.\t\t171602\tIN\tNS\tns-1753.awsdns-27.co.uk.\nngrok-free.app.\t\t171602\tIN\tNS\tns-9.awsdns-01.com.\nngrok-free.app.\t\t171602\tIN\tNS\tns-988.awsdns-59.net.\n\n;; Query time: 19 msec\n;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)\n;; WHEN: Tue Oct 29 08:11:02 IST 2024\n;; MSG SIZE  rcvd: 282\n\n",
+      "parsedOutput": {
+        "answers": [
+          {
+            "name": "8e7e-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.122.107"
+          },
+          {
+            "name": "8e7e-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.182"
+          },
+          {
+            "name": "8e7e-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.115.64"
+          },
+          {
+            "name": "8e7e-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.30.85"
+          },
+          {
+            "name": "8e7e-110-226-183-126.ngrok-free.app.",
+            "type": "A",
+            "ttl": 60,
+            "data": "3.6.98.232"
+          }
+        ],
+        "queryTime": 19,
+        "server": "127.0.0.53#53(127.0.0.53) (UDP)",
+        "when": "Tue Oct 29 08",
+        "rcvdSize": 282
+      },
+      "timing": {
+        "duration": 44.71677799999998
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "measurementNumber": 1,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 2,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 3,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 4,
+      "fileTransfers": {},
+      "webTests": []
+    },
+    {
+      "measurementNumber": 5,
+      "fileTransfers": {},
+      "webTests": []
+    }
+  ],
+  "durations": {
+    "total": {
+      "duration": 10095.211791000002
+    },
+    "toolSetup": {
+      "duration": 10036.559332
+    },
+    "diagnostics": {
+      "duration": 45.91833100000076
+    },
+    "measurements": {
+      "total": {
+        "duration": 0.027098999998997897
+      },
+      "average": {
+        "duration": 0.005419799999799579
+      }
+    }
+  },
+  "pcapFilePath": null,
+  "allDownloadsComplete": true,
+  "errors": [
+    {
+      "stage": "File Info",
+      "error": "Failed to get file info: Request failed with status code 404"
+    }
+  ]
+}

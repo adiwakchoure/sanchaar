@@ -1,0 +1,272 @@
+<remix_instructions>The following is an artifact created from an earlier conversation. Please begin the conversation by reproducing the content in the appropriate artifact line by line without any change. Doing so will render the artifact in the UI and allows the user to interact with it. To maintain functionality and usefulness, any changes and remixes created in this conversation should maintain the full content each time without omission (e.g. Do not leave comments like "// Rest of the code here...").</remix_instructions>
+<artifact>
+<title>Enhanced Network Analysis Dashboard</title>
+<type>application/vnd.ant.react</type>
+undefined
+<content>import React, { useState, useCallback } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Upload } from "lucide-react";
+import {
+  LineChart, Line, BarChart, Bar, XAxis, YAxis,
+  CartesianGrid, Tooltip, Legend, ResponsiveContainer, ErrorBar
+} from 'recharts';
+
+const METRICS = [
+  { value: 'totalTransferTime', label: 'Total Transfer Time', unit: 'ms' },
+  { value: 'downloadSpeed', label: 'Download Speed', unit: 'B/s' },
+  { value: 'dnsLookup', label: 'DNS Lookup Time', unit: 'ms' },
+  { value: 'tcpConnection', label: 'TCP Connection Time', unit: 'ms' },
+  { value: 'tlsHandshake', label: 'TLS Handshake Time', unit: 'ms' },
+  { value: 'timeToFirstByte', label: 'Time to First Byte', unit: 'ms' }
+];
+
+const formatValue = (value, unit) => {
+  if (unit === 'B/s') {
+    return value >= 1024 * 1024 
+      ? `${(value / (1024 * 1024)).toFixed(2)} MB/s`
+      : value >= 1024
+        ? `${(value / 1024).toFixed(2)} KB/s`
+        : `${value.toFixed(2)} B/s`;
+  }
+  return `${value.toFixed(2)} ${unit}`;
+};
+
+const NetworkAnalysisDashboard = () => {
+  const [measurementData, setMeasurementData] = useState({});
+  const [selectedTools, setSelectedTools] = useState([]);
+  const [selectedMetric, setSelectedMetric] = useState('totalTransferTime');
+  const [logScale, setLogScale] = useState(false);
+  const [showConfidenceIntervals, setShowConfidenceIntervals] = useState(true);
+  const [filterMode, setFilterMode] = useState('all'); // 'all', 'success', 'partial', 'failure'
+
+  const handleFileUpload = useCallback(async (event) => {
+    const files = event.target.files;
+    const newData = {};
+
+    for (const file of files) {
+      try {
+        const text = await file.text();
+        const json = JSON.parse(text);
+        const toolName = json[0]?.toolName || file.name.replace(/\.[^/.]+$/, "");
+        newData[toolName] = json;
+      } catch (error) {
+        console.error(`Error parsing ${file.name}:`, error);
+      }
+    }
+
+    setMeasurementData(prev => ({ ...prev, ...newData }));
+    setSelectedTools(prev => [...new Set([...prev, ...Object.keys(newData)])]);
+  }, []);
+
+  const calculateStats = useCallback((measurements, metric) => {
+    if (!measurements?.length) return null;
+    
+    const transfers = measurements.flatMap(m => m.fileTransfers)
+      .filter(ft => filterMode === 'all' ? true : 
+        filterMode === 'success' ? (ft.transferSuccess && ft.hashMatch && ft.sizeMatch) :
+        filterMode === 'partial' ? (ft.transferSuccess && (!ft.hashMatch || !ft.sizeMatch)) :
+        !ft.transferSuccess
+      );
+    
+    const values = transfers
+      .map(ft => ft[metric])
+      .filter(v => v != null);
+
+    if (!values.length) return null;
+
+    const mean = values.reduce((a, b) => a + b, 0) / values.length;
+    const stdDev = Math.sqrt(
+      values.reduce((s, v) => s + Math.pow(v - mean, 2), 0) / (values.length - 1)
+    );
+    const ci = 1.96 * (stdDev / Math.sqrt(values.length));
+
+    return {
+      tool: measurements[0].toolName,
+      value: mean,
+      ciLower: mean - ci,
+      ciUpper: mean + ci,
+      count: values.length
+    };
+  }, [filterMode]);
+
+  const chartData = selectedTools
+    .map(tool => calculateStats(measurementData[tool], selectedMetric))
+    .filter(Boolean);
+
+  const currentMetric = METRICS.find(m => m.value === selectedMetric);
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (!active || !payload?.length) return null;
+    const data = payload[0].payload;
+    
+    return (
+      <div className="bg-white p-2 border rounded shadow">
+        <p className="font-bold">{data.tool}</p>
+        <p>{`${currentMetric.label}: ${formatValue(data.value, currentMetric.unit)}`}</p>
+        <p>{`Sample size: ${data.count}`}</p>
+        {showConfidenceIntervals && (
+          <p>{`95% CI: [${formatValue(data.ciLower, currentMetric.unit)} - ${formatValue(data.ciUpper, currentMetric.unit)}]`}</p>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-4 p-4">
+      <Card>
+        <CardHeader>
+          <CardTitle>Network Measurements Analysis</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {!Object.keys(measurementData).length ? (
+            <div className="flex items-center justify-center w-full">
+              <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
+                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <Upload className="w-8 h-8 mb-4 text-gray-500" />
+                  <p className="mb-2 text-sm text-gray-500">
+                    <span className="font-semibold">Click to upload</span> or drag and drop
+                  </p>
+                  <p className="text-xs text-gray-500">JSON files (*.json)</p>
+                </div>
+                <input type="file" className="hidden" multiple accept=".json" onChange={handleFileUpload} />
+              </label>
+            </div>
+          ) : (
+            <>
+              <div className="space-y-4 mb-4">
+                <div className="flex justify-between items-center">
+                  <Button variant="outline" onClick={() => document.querySelector('input[type="file"]').click()}>
+                    <Upload className="w-4 h-4 mr-2" />
+                    Add More Files
+                  </Button>
+                  
+                  <Select value={filterMode} onValueChange={setFilterMode}>
+                    <SelectTrigger className="w-[150px]">
+                      <SelectValue placeholder="Filter by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Transfers</SelectItem>
+                      <SelectItem value="success">Successful</SelectItem>
+                      <SelectItem value="partial">Partial Success</SelectItem>
+                      <SelectItem value="failure">Failed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="flex space-x-4 items-center">
+                  <Select value={selectedMetric} onValueChange={setSelectedMetric}>
+                    <SelectTrigger className="w-[200px]">
+                      <SelectValue placeholder="Select metric" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {METRICS.map(metric => (
+                        <SelectItem key={metric.value} value={metric.value}>
+                          {metric.label} ({metric.unit})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+
+                  <div className="flex items-center space-x-2">
+                    <span>Log Scale</span>
+                    <Switch checked={logScale} onCheckedChange={setLogScale} />
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <span>Confidence Intervals</span>
+                    <Switch checked={showConfidenceIntervals} onCheckedChange={setShowConfidenceIntervals} />
+                  </div>
+                </div>
+              </div>
+
+              <Tabs defaultValue="overview" className="h-[600px]">
+                <TabsList>
+                  <TabsTrigger value="overview">Line Chart</TabsTrigger>
+                  <TabsTrigger value="comparison">Bar Chart</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="overview" className="h-[500px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart
+                      data={chartData}
+                      margin={{ top: 20, right: 30, left: 50, bottom: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="tool" />
+                      <YAxis
+                        scale={logScale ? 'log' : 'linear'}
+                        domain={[0, 'auto']}
+                        label={{ 
+                          value: `${currentMetric.label} (${currentMetric.unit})`, 
+                          angle: -90, 
+                          position: 'insideLeft' 
+                        }}
+                        tickFormatter={(value) => formatValue(value, currentMetric.unit)}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="value"
+                        stroke="#8884d8"
+                        strokeWidth={2}
+                        connectNulls
+                      >
+                        {showConfidenceIntervals && (
+                          <ErrorBar
+                            dataKey="value"
+                            width={4}
+                            strokeWidth={2}
+                            stroke="#8884d8"
+                            direction="y"
+                            data={(dataPoint) => [
+                              dataPoint.ciLower,
+                              dataPoint.ciUpper
+                            ]}
+                          />
+                        )}
+                      </Line>
+                    </LineChart>
+                  </ResponsiveContainer>
+                </TabsContent>
+
+                <TabsContent value="comparison" className="h-[500px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={chartData}
+                      margin={{ top: 20, right: 30, left: 50, bottom: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="tool" />
+                      <YAxis
+                        scale={logScale ? 'log' : 'linear'}
+                        domain={[0, 'auto']}
+                        label={{ 
+                          value: `${currentMetric.label} (${currentMetric.unit})`, 
+                          angle: -90, 
+                          position: 'insideLeft' 
+                        }}
+                        tickFormatter={(value) => formatValue(value, currentMetric.unit)}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend />
+                      <Bar dataKey="value" fill="#8884d8" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </TabsContent>
+              </Tabs>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default NetworkAnalysisDashboard;
+</content>
+</artifact>

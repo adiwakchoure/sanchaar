@@ -1,6 +1,7 @@
 import express from 'express';
 import { TunnelTool, tunnelTools } from './tools';
 import fs from 'fs/promises';
+import fsSync from 'fs'; // Import the synchronous fs module for streaming
 import pcap from 'pcap';
 import http from 'http';
 import crypto from 'crypto';
@@ -45,6 +46,36 @@ app.post('/start-tunnel', async (req, res) => {
   }
 });
 
+// Add this type definition at the top with other imports
+interface FileMetadata {
+  filename: string;
+  size: number;
+  hash: string;
+  contentType: string;
+  timestamp: string;
+}
+
+// Remove one of the duplicate /files endpoints and modify the remaining one
+app.get('/files', async (req, res) => {
+  try {
+    // Check if directory exists first
+    await fs.access(INPUT_FILES_DIR);
+    
+    const files = await fs.readdir(INPUT_FILES_DIR);
+    const filesMetadata = await Promise.all(
+      files.map(async (filename) => {
+        const filePath = path.join(INPUT_FILES_DIR, filename);
+        return await getFileMetadata(filePath);
+      })
+    );
+    res.json(filesMetadata);
+  } catch (error) {
+    const errorMessage = `Failed to list files: ${(error as Error).message}`;
+    console.error(errorMessage);
+    res.status(500).json({ error: errorMessage });
+  }
+});
+
 app.post('/stop-tunnel', async (req, res) => {
   if (ENABLE_LOGGING) console.log('Received request to stop tunnel');
   if (activeTunnel) {
@@ -74,39 +105,36 @@ app.get('/download/:filename', async (req, res) => {
     // Check if file exists
     await fs.access(filePath);
     
-    // Get file metadata
-    const metadata = await getFileMetadata(filePath);
+    // Calculate file hash before streaming
+    const fileHash = await calculateFileHash(filePath);
+    const stats = await fs.stat(filePath);
     
-    // Set response headers
+    // Get file metadata
+    const metadata = {
+      filename: path.basename(filePath),
+      size: stats.size,
+      hash: fileHash,
+      contentType: mime.lookup(filePath) || 'application/octet-stream',
+      timestamp: stats.mtime.toISOString()
+    };
+    
+    // Set response headers with integrity information
     res.set({
       'Content-Type': metadata.contentType,
-      'X-File-Metadata': JSON.stringify(metadata)
+      'X-File-Metadata': JSON.stringify(metadata),
+      'X-File-Hash': fileHash,
+      'X-File-Size': stats.size.toString()
     });
 
     // Stream the file
-    const fileStream = fs.createReadStream(filePath);
+    const fileStream = fsSync.createReadStream(filePath);
     fileStream.pipe(res);
 
-    if (ENABLE_LOGGING) console.log(`Sending file ${filename} (${metadata.size} bytes)`);
+    if (ENABLE_LOGGING) console.log(`Sending file ${filename} (${metadata.size} bytes) with hash ${fileHash}`);
   } catch (error) {
     const errorMessage = `Failed to send file: ${(error as Error).message}`;
     console.error(errorMessage);
     res.status(500).json({ error: errorMessage });
-  }
-});
-
-app.get('/files', async (req, res) => {
-  try {
-    const files = await fs.readdir(INPUT_FILES_DIR);
-    const filesMetadata = await Promise.all(
-      files.map(async (filename) => {
-        const filePath = path.join(INPUT_FILES_DIR, filename);
-        return await getFileMetadata(filePath);
-      })
-    );
-    res.json(filesMetadata);
-  } catch (error) {
-    res.status(500).json({ error: `Failed to list files: ${error.message}` });
   }
 });
 
@@ -155,6 +183,66 @@ app.post('/upload-test', (req, res) => {
   });
 });
 
+app.get('/webtest', (req, res) => {
+  if (ENABLE_LOGGING) console.log('Received webtest request');
+  
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Heavy Web Test Page</title>
+        
+        <!-- Bootstrap CSS framework to add extra weight -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaPp2pC++p7+qF8ebQPO5z8r3D7xQmiBm5/dEe6Pik+8C64Q4nVf5p4/ltw" crossorigin="anonymous">
+        
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          .content-block { height: 300px; background-color: #e0e0e0; margin: 20px 0; }
+        </style>
+      </head>
+      <body>
+        <h1 class="text-center">Heavy Web Test Page</h1>
+
+        <!-- High-Resolution Image from Picsum CDN -->
+        <img src="https://picsum.photos/1920/1080" alt="High-Resolution Image 1" width="100%" height="auto">
+
+        <!-- Lodash JavaScript library from a CDN for additional load -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha384-M9nCjApRKoA0VNfH4Iay8bLZ8RA1DWl3rkOIoPujVjyB6xTJRvJ8M9GAHkJwsMbt" crossorigin="anonymous"></script>
+
+        <!-- Large video from a CDN -->
+        <video controls width="100%">
+          <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Additional content blocks for a scrolling load test -->
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+
+        <!-- Another high-resolution image for extra load from Picsum CDN -->
+        <img src="https://picsum.photos/1920/1080?random=2" alt="High-Resolution Image 2" width="100%" height="auto">
+        
+        <!-- Computational JavaScript to create some processing load -->
+        <script>
+          // Generate some computational load with a simple loop
+          const heavyComputation = () => {
+            const array = Array(100000).fill().map((_, i) => i * Math.random());
+            return _.shuffle(array);
+          };
+          heavyComputation();
+        </script>
+
+        <p class="text-center">This page includes multiple heavy elements to simulate a real-world heavy load.</p>
+      </body>
+    </html>
+  `);
+});
+
+
 async function startPcapCapture() {
   if (!ENABLE_PCAP) {
     if (ENABLE_LOGGING) console.log('PCAP capturing is disabled.');
@@ -196,11 +284,19 @@ async function saveMeasurementResults(results: any) {
   }
 }
 
-app.listen(PORT, () => {
-  if (ENABLE_LOGGING) console.log(`Server running on port ${PORT}`);
-  if (ENABLE_PCAP) {
-    if (ENABLE_LOGGING) console.log('Starting daily PCAP capture');
-    setInterval(startPcapCapture, 24 * 60 * 60 * 1000);
+app.listen(PORT, async () => {
+  try {
+    // Create input_files directory if it doesn't exist
+    await fs.mkdir(INPUT_FILES_DIR, { recursive: true });
+    
+    if (ENABLE_LOGGING) console.log(`Server running on port ${PORT}`);
+    if (ENABLE_PCAP) {
+      if (ENABLE_LOGGING) console.log('Starting daily PCAP capture');
+      setInterval(startPcapCapture, 24 * 60 * 60 * 1000);
+    }
+  } catch (error) {
+    console.error(`Failed to initialize server: ${(error as Error).message}`);
+    process.exit(1);
   }
 });
 
