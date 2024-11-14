@@ -1,0 +1,692 @@
+[
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 1,
+    "timestamp": 337468.388987,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 337468.397857,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 1052,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.2430000000000003,
+        "tcpConnection": 28.573,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 84.203,
+        "totalTransferTime": 84.59400000000001,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 1027,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.933,
+        "tcpConnection": 25.333000000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 75.752,
+        "totalTime": 75.921,
+        "fcp": 261.80000001192093,
+        "lcp": 261.80000001192093
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 2,
+    "timestamp": 340113.338207,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 340113.347356,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 253,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.925,
+        "tcpConnection": 153.002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 350.30499999999995,
+        "totalTransferTime": 350.464,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 270,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.1540000000000001,
+        "tcpConnection": 87.47000000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 287.89500000000004,
+        "totalTime": 287.995,
+        "fcp": 293,
+        "lcp": 293
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 3,
+    "timestamp": 343410.828002,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 343410.834148,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 1165,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.474,
+        "tcpConnection": 27.116,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 76.208,
+        "totalTransferTime": 76.339,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 1056,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.9169999999999999,
+        "tcpConnection": 24.089,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 73.624,
+        "totalTime": 73.799,
+        "fcp": 237.30000001192093,
+        "lcp": 237.30000001192093
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 4,
+    "timestamp": 345755.582877,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 345755.588464,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 257,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.703,
+        "tcpConnection": 143.71900000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 345.663,
+        "totalTransferTime": 345.866,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 272,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.195,
+        "tcpConnection": 86.842,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 285.996,
+        "totalTime": 286.24899999999997,
+        "fcp": 281,
+        "lcp": 281
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 5,
+    "timestamp": 348624.309073,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 348624.314311,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 255,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.078,
+        "tcpConnection": 145.119,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 347.963,
+        "totalTransferTime": 348.2,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 273,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.3519999999999999,
+        "tcpConnection": 85.362,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 285.363,
+        "totalTime": 285.53499999999997,
+        "fcp": 256,
+        "lcp": 256
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 6,
+    "timestamp": 351585.232207,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 351585.245896,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 256,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.474,
+        "tcpConnection": 147.233,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 347.341,
+        "totalTransferTime": 347.574,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 267,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.432,
+        "tcpConnection": 88.634,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 291.38399999999996,
+        "totalTime": 291.479,
+        "fcp": 303.5,
+        "lcp": 303.5
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 7,
+    "timestamp": 354230.602011,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 354230.610182,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 1208,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.714,
+        "tcpConnection": 25.546,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 73.345,
+        "totalTransferTime": 73.622,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 992,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.9079999999999999,
+        "tcpConnection": 26.471,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 78.50500000000001,
+        "totalTime": 78.60000000000001,
+        "fcp": 249.89999997615814,
+        "lcp": 249.89999997615814
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 8,
+    "timestamp": 356498.665669,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 356498.670907,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 255,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.6039999999999999,
+        "tcpConnection": 147.96,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 347.914,
+        "totalTransferTime": 348.169,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 269,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.07,
+        "tcpConnection": 86.911,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 289.164,
+        "totalTime": 289.363,
+        "fcp": 292.7999999821186,
+        "lcp": 292.7999999821186
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 9,
+    "timestamp": 359664.441401,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 359664.446569,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 250,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.522,
+        "tcpConnection": 153.73700000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 354.56100000000004,
+        "totalTransferTime": 354.79,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 268,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.823,
+        "tcpConnection": 88.715,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 290.782,
+        "totalTime": 290.92,
+        "fcp": 230.7999999821186,
+        "lcp": 230.7999999821186
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 10,
+    "timestamp": 362547.314419,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 362547.319588,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 254,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.719,
+        "tcpConnection": 149.076,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 349.292,
+        "totalTransferTime": 349.56399999999996,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 272,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.921,
+        "tcpConnection": 88.164,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 286.567,
+        "totalTime": 286.745,
+        "fcp": 257.90000000596046,
+        "lcp": 257.90000000596046
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 11,
+    "timestamp": 364969.749182,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 364969.758681,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 1248,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.924,
+        "tcpConnection": 23.921999999999997,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 71.057,
+        "totalTransferTime": 71.30499999999999,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 1032,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.567,
+        "tcpConnection": 25.321,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 75.382,
+        "totalTime": 75.516,
+        "fcp": 288.59999999403954,
+        "lcp": 288.59999999403954
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 12,
+    "timestamp": 367252.99443,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 367252.996805,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 251,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.445,
+        "tcpConnection": 156.92700000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 353.933,
+        "totalTransferTime": 354.101,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 270,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.79,
+        "tcpConnection": 89.20599999999999,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 288.456,
+        "totalTime": 288.644,
+        "fcp": 253.90000000596046,
+        "lcp": 253.90000000596046
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 13,
+    "timestamp": 370414.896211,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 370414.903404,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 247,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.6949999999999998,
+        "tcpConnection": 154.57199999999997,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 358.848,
+        "totalTransferTime": 359.12300000000005,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 273,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.199,
+        "tcpConnection": 85.46,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 284.708,
+        "totalTime": 284.901,
+        "fcp": 236.5,
+        "lcp": 236.5
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 14,
+    "timestamp": 372905.196219,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 372905.202365,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 264,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.338,
+        "tcpConnection": 138.41,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 336.167,
+        "totalTransferTime": 336.30100000000004,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 266,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.875,
+        "tcpConnection": 91.015,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 292.126,
+        "totalTime": 292.298,
+        "fcp": 279.30000001192093,
+        "lcp": 279.30000001192093
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Packetriot",
+    "measurementNumber": 15,
+    "timestamp": 375633.40019,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 375633.402565,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 301,
+        "downloadSpeed": 1216,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.428,
+        "tcpConnection": 23.194,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 73.03999999999999,
+        "totalTransferTime": 73.173,
+        "hashMatch": false,
+        "sizeMatch": false
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://old-sound-23918.pktriot.net/webtest",
+        "statusCode": 301,
+        "downloadSpeed": 1032,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.302,
+        "tcpConnection": 26.875,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 75.48100000000001,
+        "totalTime": 75.575,
+        "fcp": 278.39999997615814,
+        "lcp": 278.39999997615814
+      }
+    ],
+    "totalDuration": 52707.846722999995,
+    "setupDuration": 1855.6528859999962,
+    "diagnosticsDuration": 315.33584499999415,
+    "measurementDuration": 40534.2037190001,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

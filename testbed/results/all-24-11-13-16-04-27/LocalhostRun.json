@@ -1,0 +1,693 @@
+[
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 1,
+    "timestamp": 390987.334439,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 390987.33821,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 225837,
+        "uploadSpeed": 0,
+        "dnsLookup": 12.290000000000001,
+        "tcpConnection": 319.642,
+        "tlsHandshake": 629.361,
+        "timeToFirstByte": 1452.4969999999998,
+        "totalTransferTime": 4643.0470000000005,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1738,
+        "uploadSpeed": 0,
+        "dnsLookup": 76.254,
+        "tcpConnection": 376.465,
+        "tlsHandshake": 682.1930000000001,
+        "timeToFirstByte": 1397.229,
+        "totalTime": 1397.3629999999998,
+        "fcp": 1253.0999999940395,
+        "lcp": 1253.0999999940395
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 2,
+    "timestamp": 400435.669715,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 400435.676978,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 200828,
+        "uploadSpeed": 0,
+        "dnsLookup": 42.308,
+        "tcpConnection": 341.815,
+        "tlsHandshake": 652.672,
+        "timeToFirstByte": 1535.606,
+        "totalTransferTime": 5221.2480000000005,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1882,
+        "uploadSpeed": 0,
+        "dnsLookup": 78.846,
+        "tcpConnection": 379.266,
+        "tlsHandshake": 679.884,
+        "timeToFirstByte": 1290.0069999999998,
+        "totalTime": 1290.149,
+        "fcp": 1306.800000011921,
+        "lcp": 1306.800000011921
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 3,
+    "timestamp": 410478.00817,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 410478.01236,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 261267,
+        "uploadSpeed": 0,
+        "dnsLookup": 36.414,
+        "tcpConnection": 237.982,
+        "tlsHandshake": 540.257,
+        "timeToFirstByte": 1705.4080000000001,
+        "totalTransferTime": 4013.4179999999997,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1639,
+        "uploadSpeed": 0,
+        "dnsLookup": 74.39999999999999,
+        "tcpConnection": 373.76599999999996,
+        "tlsHandshake": 777.338,
+        "timeToFirstByte": 1479.958,
+        "totalTime": 1481.4769999999999,
+        "fcp": 1342.5,
+        "lcp": 1342.5
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 4,
+    "timestamp": 418793.214174,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 418793.217038,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 217912,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.786,
+        "tcpConnection": 214.264,
+        "tlsHandshake": 490.683,
+        "timeToFirstByte": 1400.078,
+        "totalTransferTime": 4811.905000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1915,
+        "uploadSpeed": 0,
+        "dnsLookup": 76.442,
+        "tcpConnection": 280.048,
+        "tlsHandshake": 578.53,
+        "timeToFirstByte": 1267.685,
+        "totalTime": 1267.762,
+        "fcp": 1232.8999999761581,
+        "lcp": 1232.8999999761581
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 5,
+    "timestamp": 428376.046335,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 428376.049198,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 305190,
+        "uploadSpeed": 0,
+        "dnsLookup": 54.063,
+        "tcpConnection": 253.17499999999998,
+        "tlsHandshake": 555.783,
+        "timeToFirstByte": 1527.854,
+        "totalTransferTime": 3435.803,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1763,
+        "uploadSpeed": 0,
+        "dnsLookup": 77.8,
+        "tcpConnection": 278.227,
+        "tlsHandshake": 579.086,
+        "timeToFirstByte": 1377.511,
+        "totalTime": 1377.653,
+        "fcp": 1062.7000000178814,
+        "lcp": 1062.7000000178814
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 6,
+    "timestamp": 435974.521423,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 435974.523728,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 180099,
+        "uploadSpeed": 0,
+        "dnsLookup": 50.751999999999995,
+        "tcpConnection": 248.703,
+        "tlsHandshake": 557.956,
+        "timeToFirstByte": 1441.176,
+        "totalTransferTime": 5822.205,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2021,
+        "uploadSpeed": 0,
+        "dnsLookup": 72.098,
+        "tcpConnection": 272.78799999999995,
+        "tlsHandshake": 573.784,
+        "timeToFirstByte": 1199.973,
+        "totalTime": 1201.432,
+        "fcp": 1231.800000011921,
+        "lcp": 1231.800000011921
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 7,
+    "timestamp": 446305.826064,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 446305.829417,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 92455,
+        "uploadSpeed": 0,
+        "dnsLookup": 53.594,
+        "tcpConnection": 360.584,
+        "tlsHandshake": 752.3720000000001,
+        "timeToFirstByte": 1732.524,
+        "totalTransferTime": 11341.446,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1659,
+        "uploadSpeed": 0,
+        "dnsLookup": 373.42900000000003,
+        "tcpConnection": 573.712,
+        "tlsHandshake": 874.949,
+        "timeToFirstByte": 1463.592,
+        "totalTime": 1463.724,
+        "fcp": 1250.699999988079,
+        "lcp": 1250.699999988079
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 8,
+    "timestamp": 462001.433901,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 462001.438091,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 239112,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.837,
+        "tcpConnection": 194.322,
+        "tlsHandshake": 593.401,
+        "timeToFirstByte": 1193.055,
+        "totalTransferTime": 4385.28,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1733,
+        "uploadSpeed": 0,
+        "dnsLookup": 84.40599999999999,
+        "tcpConnection": 284.669,
+        "tlsHandshake": 687.3000000000001,
+        "timeToFirstByte": 1401.3329999999999,
+        "totalTime": 1401.4379999999999,
+        "fcp": 1523.300000011921,
+        "lcp": 1523.300000011921
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 9,
+    "timestamp": 471393.575861,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 471393.578795,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 315815,
+        "uploadSpeed": 0,
+        "dnsLookup": 54.510999999999996,
+        "tcpConnection": 253.751,
+        "tlsHandshake": 653.0820000000001,
+        "timeToFirstByte": 1434.96,
+        "totalTransferTime": 3320.2180000000003,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1543,
+        "uploadSpeed": 0,
+        "dnsLookup": 80.065,
+        "tcpConnection": 279.12199999999996,
+        "tlsHandshake": 585.936,
+        "timeToFirstByte": 1573.9460000000001,
+        "totalTime": 1574.069,
+        "fcp": 1681,
+        "lcp": 1681
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 10,
+    "timestamp": 480321.56192,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 480321.56625,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 293242,
+        "uploadSpeed": 0,
+        "dnsLookup": 33.14,
+        "tcpConnection": 325.167,
+        "tlsHandshake": 626.278,
+        "timeToFirstByte": 1608.7050000000002,
+        "totalTransferTime": 3575.797,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2056,
+        "uploadSpeed": 0,
+        "dnsLookup": 76.568,
+        "tcpConnection": 278.89000000000004,
+        "tlsHandshake": 580.6519999999999,
+        "timeToFirstByte": 1180.229,
+        "totalTime": 1181.4009999999998,
+        "fcp": 1160.4000000059605,
+        "lcp": 1160.4000000059605
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 11,
+    "timestamp": 488292.66037,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 488292.663304,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 54631,
+        "uploadSpeed": 0,
+        "dnsLookup": 47.643,
+        "tcpConnection": 251.88500000000002,
+        "tlsHandshake": 563.616,
+        "timeToFirstByte": 2104.819,
+        "totalTransferTime": 19193.66,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1927,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.691,
+        "tcpConnection": 203.546,
+        "tlsHandshake": 543.786,
+        "timeToFirstByte": 1260.1100000000001,
+        "totalTime": 1260.268,
+        "fcp": 1102.800000011921,
+        "lcp": 1102.800000011921
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 12,
+    "timestamp": 512160.477024,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 512160.481424,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 169301,
+        "uploadSpeed": 0,
+        "dnsLookup": 37.879000000000005,
+        "tcpConnection": 241.357,
+        "tlsHandshake": 543.043,
+        "timeToFirstByte": 1823.58,
+        "totalTransferTime": 6193.535,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1392,
+        "uploadSpeed": 0,
+        "dnsLookup": 385.366,
+        "tcpConnection": 575.8109999999999,
+        "tlsHandshake": 976.158,
+        "timeToFirstByte": 1743.585,
+        "totalTime": 1743.726,
+        "fcp": 1206.9000000059605,
+        "lcp": 1206.9000000059605
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 13,
+    "timestamp": 523321.783751,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 523321.788011,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 37399,
+        "uploadSpeed": 0,
+        "dnsLookup": 41.052,
+        "tcpConnection": 348.302,
+        "tlsHandshake": 943.136,
+        "timeToFirstByte": 2523.794,
+        "totalTransferTime": 28036.995000000003,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1596,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.356,
+        "tcpConnection": 293.007,
+        "tlsHandshake": 538.019,
+        "timeToFirstByte": 1521.606,
+        "totalTime": 1521.759,
+        "fcp": 1347.5999999940395,
+        "lcp": 1347.5999999940395
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 14,
+    "timestamp": 555690.245739,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 555690.248672,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 325060,
+        "uploadSpeed": 0,
+        "dnsLookup": 45.824,
+        "tcpConnection": 345.128,
+        "tlsHandshake": 647.304,
+        "timeToFirstByte": 1811.934,
+        "totalTransferTime": 3225.784,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1819,
+        "uploadSpeed": 0,
+        "dnsLookup": 6.909,
+        "tcpConnection": 220.922,
+        "tlsHandshake": 534.024,
+        "timeToFirstByte": 1335.003,
+        "totalTime": 1335.1390000000001,
+        "fcp": 1396.1000000238419,
+        "lcp": 1396.1000000238419
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "LocalhostRun",
+    "measurementNumber": 15,
+    "timestamp": 563778.830414,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 563778.836211,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 162674,
+        "uploadSpeed": 0,
+        "dnsLookup": 28.797,
+        "tcpConnection": 227.77100000000002,
+        "tlsHandshake": 529.52,
+        "timeToFirstByte": 1611.3280000000002,
+        "totalTransferTime": 6445.866,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://b8b62edc0096a3.lhr.life/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1522,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.348999999999999,
+        "tcpConnection": 342.59000000000003,
+        "tlsHandshake": 745.574,
+        "timeToFirstByte": 1595.2949999999998,
+        "totalTime": 1595.469,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://b8b62edc0096a3.lhr.life/webtest\nCall log:\n  \u001b[2m- navigating to \"https://b8b62edc0096a3.lhr.life/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 194782.18211,
+    "setupDuration": 2866.7171439999947,
+    "diagnosticsDuration": 110.51362900005188,
+    "measurementDuration": 181801.91643099993,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

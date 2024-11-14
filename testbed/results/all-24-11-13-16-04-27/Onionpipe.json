@@ -1,0 +1,723 @@
+[
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 1,
+    "timestamp": 12126.041621,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 12126.459341,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": false,
+        "statusCode": 0,
+        "downloadSpeed": 0,
+        "uploadSpeed": 0,
+        "dnsLookup": 0,
+        "tcpConnection": 0,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 0,
+        "totalTransferTime": 0,
+        "hashMatch": false,
+        "sizeMatch": false,
+        "error": "Command failed with code 97"
+      }
+    ],
+    "webTests": [],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 2,
+    "timestamp": 27905.920329,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 27905.93311,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 85836,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.033,
+        "tcpConnection": 6021.297,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 6519.625,
+        "totalTransferTime": 12215.927000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2282,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.038,
+        "tcpConnection": 671.957,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1064.0179999999998,
+        "totalTime": 1064.14,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 3,
+    "timestamp": 42218.323426,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 42218.332436,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 176784,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.045000000000000005,
+        "tcpConnection": 1353.989,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1743.927,
+        "totalTransferTime": 5931.366,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2168,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.036000000000000004,
+        "tcpConnection": 765.912,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1119.864,
+        "totalTime": 1120.039,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 4,
+    "timestamp": 50268.868049,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 50268.877408,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 179530,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.032,
+        "tcpConnection": 1065.808,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2063.972,
+        "totalTransferTime": 5840.652,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1687,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 936.235,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1439.394,
+        "totalTime": 1439.515,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 5,
+    "timestamp": 58522.780934,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 58522.787988,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 250204,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.041,
+        "tcpConnection": 390.656,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 788.959,
+        "totalTransferTime": 4190.878,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2494,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.041,
+        "tcpConnection": 588.1129999999999,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 973.7940000000001,
+        "totalTime": 973.914,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 6,
+    "timestamp": 64668.179361,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 64668.185926,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 205927,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.04,
+        "tcpConnection": 418.929,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 785.531,
+        "totalTransferTime": 5091.969,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1963,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 889.602,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1236.9810000000002,
+        "totalTime": 1237.099,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 7,
+    "timestamp": 71955.543227,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 71955.547906,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 122561,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.04,
+        "tcpConnection": 2114.051,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2526.823,
+        "totalTransferTime": 8555.506,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2083,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.032,
+        "tcpConnection": 776.051,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1165.769,
+        "totalTime": 1165.931,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 8,
+    "timestamp": 82621.924467,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 82621.929216,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 176355,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.036000000000000004,
+        "tcpConnection": 367.18,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 728.9330000000001,
+        "totalTransferTime": 5945.792,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2451,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 646.127,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 990.8580000000001,
+        "totalTime": 990.9879999999999,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 9,
+    "timestamp": 90497.79082,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 90497.79515,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 239566,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 368.454,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 778.1329999999999,
+        "totalTransferTime": 4376.974999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2267,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 683.1089999999999,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1070.97,
+        "totalTime": 1071.212,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 10,
+    "timestamp": 96874.969186,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 96874.977147,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 216514,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.039,
+        "tcpConnection": 382.43,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 754.761,
+        "totalTransferTime": 4842.985,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 706,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.038,
+        "tcpConnection": 3052.824,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 3438.4739999999997,
+        "totalTime": 3438.6290000000004,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 11,
+    "timestamp": 106146.917458,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 106146.927934,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 248543,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.046,
+        "tcpConnection": 387.96000000000004,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 775.9639999999999,
+        "totalTransferTime": 4218.884,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2292,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.026,
+        "tcpConnection": 689.1500000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1059.197,
+        "totalTime": 1059.344,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 12,
+    "timestamp": 112350.680073,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 112350.692016,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 272567,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 340.28799999999995,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 668.5029999999999,
+        "totalTransferTime": 3847.035,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1530,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 1156.192,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1587.0420000000001,
+        "totalTime": 1587.197,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 13,
+    "timestamp": 118750.441309,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 118750.450877,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 234849,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.029,
+        "tcpConnection": 359.543,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 881.5699999999999,
+        "totalTransferTime": 4464.888,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2131,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.039,
+        "tcpConnection": 687.03,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1139.293,
+        "totalTime": 1139.41,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 14,
+    "timestamp": 125364.939137,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 125364.948635,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 261774,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 422.755,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 763.703,
+        "totalTransferTime": 4005.65,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2362,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.032,
+        "tcpConnection": 693.276,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1028.125,
+        "totalTime": 1028.346,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  },
+  {
+    "toolName": "Onionpipe",
+    "measurementNumber": 15,
+    "timestamp": 131381.870837,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 131381.87796,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 212329,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 495.95099999999996,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 842.3580000000001,
+        "totalTransferTime": 4938.437000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 2305,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 569.7990000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1053.297,
+        "totalTime": 1053.468,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL\nCall log:\n  \u001b[2m- navigating to \"34kuphnrob3ev6qsdnclupfp6asxdqvhubdnwj4737tzgwfikljhtjyd.onion:80/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 137336.58898,
+    "setupDuration": 1098.433913,
+    "diagnosticsDuration": 0.007192999999460881,
+    "measurementDuration": 126232.63597999995,
+    "hasErrors": true,
+    "errorCount": 1,
+    "errors": [
+      "Web Test: Failed to perform web test: Command failed with code 97"
+    ]
+  }
+]

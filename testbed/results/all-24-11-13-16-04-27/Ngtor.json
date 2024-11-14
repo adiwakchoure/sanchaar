@@ -1,0 +1,707 @@
+[
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 1,
+    "timestamp": 166353.783456,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 166353.805246,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 121425,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.044,
+        "tcpConnection": 2952.503,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 3610.1290000000004,
+        "totalTransferTime": 8635.559000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1551,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.039,
+        "tcpConnection": 849.303,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1565.333,
+        "totalTime": 1565.452,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 2,
+    "timestamp": 177580.247964,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 177580.263608,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 106438,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.05,
+        "tcpConnection": 3615.8100000000004,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 4320.412,
+        "totalTransferTime": 9851.431,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1500,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 883.049,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1618.8890000000001,
+        "totalTime": 1619.0549999999998,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 3,
+    "timestamp": 190037.545521,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 190037.5546,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 167370,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.041,
+        "tcpConnection": 606.9630000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1385.0439999999999,
+        "totalTransferTime": 6265.003,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1304,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 1110.291,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1862.026,
+        "totalTime": 1862.215,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 4,
+    "timestamp": 199150.915036,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 199150.921112,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 175195,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.041,
+        "tcpConnection": 666.529,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1284.606,
+        "totalTransferTime": 5985.164,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1488,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.043000000000000003,
+        "tcpConnection": 1018.872,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1631.699,
+        "totalTime": 1631.96,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 5,
+    "timestamp": 207763.520271,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 207763.528791,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 112458,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.057,
+        "tcpConnection": 595.4350000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 4753.5689999999995,
+        "totalTransferTime": 9324.134,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1299,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.034,
+        "tcpConnection": 1148.793,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1869.547,
+        "totalTime": 1869.7060000000001,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 6,
+    "timestamp": 219945.168611,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 219945.175246,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 154313,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.038,
+        "tcpConnection": 761.281,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1449.973,
+        "totalTransferTime": 6795.116,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1214,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.026,
+        "tcpConnection": 1363.5949999999998,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2000.054,
+        "totalTime": 2000.178,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 7,
+    "timestamp": 229726.819439,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 229726.826144,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 172865,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.053,
+        "tcpConnection": 710.0880000000001,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1529.6380000000001,
+        "totalTransferTime": 6065.840999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1466,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.026,
+        "tcpConnection": 1077.8970000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1656.5890000000002,
+        "totalTime": 1656.677,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 8,
+    "timestamp": 238386.436806,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 238386.441555,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 115768,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.029,
+        "tcpConnection": 760.223,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 4660.490000000001,
+        "totalTransferTime": 9057.562,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1283,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 1207.025,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1892.8700000000001,
+        "totalTime": 1893.021,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 9,
+    "timestamp": 250335.599112,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 250335.607563,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 130379,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.037,
+        "tcpConnection": 744.381,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1915.471,
+        "totalTransferTime": 8042.484,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1176,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 1147.034,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2065.208,
+        "totalTime": 2065.3269999999998,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 10,
+    "timestamp": 261372.7458,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 261372.751038,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 138375,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.031,
+        "tcpConnection": 770.033,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1731.5910000000001,
+        "totalTransferTime": 7577.755,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1321,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 1059.76,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1837.428,
+        "totalTime": 1837.586,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 11,
+    "timestamp": 271731.267973,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 271731.278589,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 122299,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.04,
+        "tcpConnection": 2327.306,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2942.995,
+        "totalTransferTime": 8573.869,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1136,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 1317.2820000000002,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2136.797,
+        "totalTime": 2136.965,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 12,
+    "timestamp": 283378.204464,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 283378.212984,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 159460,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 725.934,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1434.3,
+        "totalTransferTime": 6575.781,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1271,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 1192.352,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1910.2140000000002,
+        "totalTime": 1910.405,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 13,
+    "timestamp": 292804.023288,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 292804.028457,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 160544,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.041,
+        "tcpConnection": 814.535,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1459.781,
+        "totalTransferTime": 6531.354,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1313,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 852.404,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1848.93,
+        "totalTime": 1849.077,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 14,
+    "timestamp": 302133.349173,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 302133.355947,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 104578,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.027,
+        "tcpConnection": 3697.614,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 4429.967000000001,
+        "totalTransferTime": 10026.643,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1196,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.028,
+        "tcpConnection": 1180.1299999999999,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 2029.3640000000003,
+        "totalTime": 2029.512,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngtor",
+    "measurementNumber": 15,
+    "timestamp": 315170.687049,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 315170.693614,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 145361,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.030000000000000002,
+        "tcpConnection": 858.121,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1795.106,
+        "totalTransferTime": 7213.563,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 1255,
+        "uploadSpeed": 0,
+        "dnsLookup": 0.049,
+        "tcpConnection": 1114.7469999999998,
+        "tlsHandshake": 0,
+        "timeToFirstByte": 1934.9950000000001,
+        "totalTime": 1935.145,
+        "fcp": 0,
+        "lcp": 0,
+        "error": "Playwright error: page.goto: net::ERR_NAME_NOT_RESOLVED at http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\nCall log:\n  \u001b[2m- navigating to \"http://c4fg7r4tse43syjmicnptkhq3jygniufphydsflgmyatkhj3b3aj2iyd.onion/webtest\", waiting until \"load\"\u001b[22m\n"
+      }
+    ],
+    "totalDuration": 186917.91142,
+    "setupDuration": 17977.671719999984,
+    "diagnosticsDuration": 0.00921999997808598,
+    "measurementDuration": 158936.735391,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

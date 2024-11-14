@@ -1,0 +1,52 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./test-file.dat:/usr/share/nginx/html/test-file.dat:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  apache:
+    image: httpd:latest
+    ports:
+      - "8082:80"
+    volumes:
+      - ./test-file.dat:/var/www/html/test-file.dat:ro
+      - ./apache.conf:/usr/local/apache2/conf/httpd.conf:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "8083:80"
+    volumes:
+      - ./test-file.dat:/srv/test-file.dat:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  express:
+    build: .
+    ports:
+      - "8084:3000"
+    volumes:
+      - ./test-file.dat:/app/test-file.dat:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

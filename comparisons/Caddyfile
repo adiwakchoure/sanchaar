@@ -1,0 +1,9 @@
+:80 {
+    root * /srv
+    file_server
+    header /test-file Content-Type "application/octet-stream"
+    header /test-file X-Server "caddy"
+    handle /health {
+        respond "OK" 200
+    }
+}
