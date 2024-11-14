@@ -1219,31 +1219,30 @@ export class OnionpipeTunnel extends BaseTunnel {
   
 export const tunnelTools: TunnelTool[] = [
 
-  // new NgrokTunnel(),
+  // new NgrokTunnel(), 
   // new CloudflareTunnel(),
   // new DevTunnel(),
-  new ZrokTunnel(),
-  new LocalTunnel(),
-  new ServeoTunnel(),
-  new TelebitTunnel(),
-  new BoreTunnel(),
-  new LocalxposeTunnel(),
-  new ExposeTunnel(),
-  new LoopholeTunnel(),
-  new PinggyTunnel(),
-  new TailscaleTunnel(),
+  // new ZrokTunnel(),
+  // new LocalTunnel(),
+  // new ServeoTunnel(),
+  // new TelebitTunnel(),
+  // new BoreTunnel(),
+  // new LocalxposeTunnel(),
+  // new ExposeTunnel(),
+  // new LoopholeTunnel(),
+  // new PinggyTunnel(),
+  // new TailscaleTunnel(),
+  new OnionpipeTunnel(),
+  new NgtorTunnel(),
   // new OpenportTunnel(),
-  new TunwgTunnel(),
+  // new TunwgTunnel(),
   new PacketriotTunnel(),
   // new BoreDigitalTunnel(),
   new LocalhostRunTunnel(),
-  new BeeceptorTunnel(),
+  new BeeceptorTunnel(), 
   // new Btunnel(),
   new PagekiteTunnel(),
   new TunnelPyjamas(),
-
-  new OnionpipeTunnel(),
-  new NgtorTunnel(),
   // new EphemeralHiddenServiceTunnel(),
 ]
 
@@ -1368,4 +1367,4 @@ async function runAllTools() {
 
 // runAllTools();
 
-// executeTool(new LocalTunnel());
+// executeTool(new TailscaleTunnel());
