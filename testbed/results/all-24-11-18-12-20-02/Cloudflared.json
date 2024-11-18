@@ -1,0 +1,692 @@
+[
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 1,
+    "timestamp": 91661.945131,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 91661.953162,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 442069,
+        "uploadSpeed": 0,
+        "dnsLookup": 70.24,
+        "tcpConnection": 174.186,
+        "tlsHandshake": 465.995,
+        "timeToFirstByte": 926.071,
+        "totalTransferTime": 2371.9700000000003,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3482,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.7080000000000002,
+        "tcpConnection": 104.74799999999999,
+        "tlsHandshake": 263.915,
+        "timeToFirstByte": 696.514,
+        "totalTime": 697.416,
+        "fcp": 787.3000000044703,
+        "lcp": 787.3000000044703
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 2,
+    "timestamp": 97789.977984,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 97789.991463,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1140574,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.4929999999999999,
+        "tcpConnection": 104.894,
+        "tlsHandshake": 285.149,
+        "timeToFirstByte": 397.435,
+        "totalTransferTime": 919.34,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3343,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.5939999999999999,
+        "tcpConnection": 105.37299999999999,
+        "tlsHandshake": 293.231,
+        "timeToFirstByte": 725.936,
+        "totalTime": 726.558,
+        "fcp": 793.5,
+        "lcp": 793.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 3,
+    "timestamp": 102399.552659,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 102399.575916,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1088614,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.681,
+        "tcpConnection": 103.262,
+        "tlsHandshake": 264.799,
+        "timeToFirstByte": 381.912,
+        "totalTransferTime": 963.221,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3397,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.3699999999999999,
+        "tcpConnection": 107.87299999999999,
+        "tlsHandshake": 270.555,
+        "timeToFirstByte": 713.26,
+        "totalTime": 715.011,
+        "fcp": 740.5999999940395,
+        "lcp": 740.5999999940395
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 4,
+    "timestamp": 106641.030709,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 106641.046004,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1183546,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.109,
+        "tcpConnection": 104.49600000000001,
+        "tlsHandshake": 261.325,
+        "timeToFirstByte": 371.822,
+        "totalTransferTime": 885.961,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3328,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.685,
+        "tcpConnection": 107.335,
+        "tlsHandshake": 294.378,
+        "timeToFirstByte": 727.624,
+        "totalTime": 729.675,
+        "fcp": 532.5999999940395,
+        "lcp": 532.5999999940395
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 5,
+    "timestamp": 110658.604034,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 110658.623589,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1094792,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.267,
+        "tcpConnection": 110.331,
+        "tlsHandshake": 283.879,
+        "timeToFirstByte": 393.08500000000004,
+        "totalTransferTime": 957.785,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3477,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.7730000000000001,
+        "tcpConnection": 105.965,
+        "tlsHandshake": 272.358,
+        "timeToFirstByte": 697.8050000000001,
+        "totalTime": 698.5799999999999,
+        "fcp": 531.6999999955297,
+        "lcp": 531.6999999955297
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 6,
+    "timestamp": 114609.440319,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 114609.460293,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1145137,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.66,
+        "tcpConnection": 104.968,
+        "tlsHandshake": 284.992,
+        "timeToFirstByte": 396.149,
+        "totalTransferTime": 915.6769999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3385,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.637,
+        "tcpConnection": 104.997,
+        "tlsHandshake": 287.298,
+        "timeToFirstByte": 714.155,
+        "totalTime": 717.3960000000001,
+        "fcp": 611.1000000014901,
+        "lcp": 611.1000000014901
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 7,
+    "timestamp": 118203.672546,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 118203.688819,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1133302,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.6719999999999997,
+        "tcpConnection": 109.178,
+        "tlsHandshake": 294.487,
+        "timeToFirstByte": 416.567,
+        "totalTransferTime": 925.239,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3478,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.938,
+        "tcpConnection": 103.923,
+        "tlsHandshake": 261.017,
+        "timeToFirstByte": 693.3580000000001,
+        "totalTime": 698.2420000000001,
+        "fcp": 743.5,
+        "lcp": 743.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 8,
+    "timestamp": 122595.699995,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 122595.707188,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1125475,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.108,
+        "tcpConnection": 108.384,
+        "tlsHandshake": 270.375,
+        "timeToFirstByte": 382.278,
+        "totalTransferTime": 931.674,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3328,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.21,
+        "tcpConnection": 101.646,
+        "tlsHandshake": 298.55199999999996,
+        "timeToFirstByte": 728.207,
+        "totalTime": 729.6669999999999,
+        "fcp": 795.7000000029802,
+        "lcp": 795.7000000029802
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 9,
+    "timestamp": 126918.941264,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 126918.950902,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1089462,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.8289999999999997,
+        "tcpConnection": 104.587,
+        "tlsHandshake": 264.23600000000005,
+        "timeToFirstByte": 375.996,
+        "totalTransferTime": 962.471,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3414,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.479,
+        "tcpConnection": 103.047,
+        "tlsHandshake": 280.86,
+        "timeToFirstByte": 710.273,
+        "totalTime": 711.387,
+        "fcp": 776.5,
+        "lcp": 776.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 10,
+    "timestamp": 130925.240904,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 130925.261926,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 986457,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.101999999999999,
+        "tcpConnection": 106.351,
+        "tlsHandshake": 291.373,
+        "timeToFirstByte": 410.356,
+        "totalTransferTime": 1062.971,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3513,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.573,
+        "tcpConnection": 105.69000000000001,
+        "tlsHandshake": 260.93899999999996,
+        "timeToFirstByte": 690.8570000000001,
+        "totalTime": 691.3439999999999,
+        "fcp": 771.5,
+        "lcp": 771.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 11,
+    "timestamp": 135270.295933,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 135270.317793,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1080225,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.367,
+        "tcpConnection": 104.78899999999999,
+        "tlsHandshake": 276.559,
+        "timeToFirstByte": 384.42199999999997,
+        "totalTransferTime": 970.701,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 4704,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.055,
+        "tcpConnection": 105.654,
+        "tlsHandshake": 293.48400000000004,
+        "timeToFirstByte": 513.178,
+        "totalTime": 516.291,
+        "fcp": 540.4000000059605,
+        "lcp": 540.4000000059605
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 12,
+    "timestamp": 139190.227379,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 139190.247912,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1055659,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.113,
+        "tcpConnection": 104.64,
+        "tlsHandshake": 296.116,
+        "timeToFirstByte": 406.45799999999997,
+        "totalTransferTime": 993.29,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3832,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.7619999999999998,
+        "tcpConnection": 105.311,
+        "tlsHandshake": 398.176,
+        "timeToFirstByte": 633.126,
+        "totalTime": 633.807,
+        "fcp": 765.7999999970198,
+        "lcp": 765.7999999970198
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 13,
+    "timestamp": 143061.329119,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 143061.353843,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1057812,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.306,
+        "tcpConnection": 104.227,
+        "tlsHandshake": 267.541,
+        "timeToFirstByte": 379.41999999999996,
+        "totalTransferTime": 991.268,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3438,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.291,
+        "tcpConnection": 105.085,
+        "tlsHandshake": 277.086,
+        "timeToFirstByte": 705.408,
+        "totalTime": 706.312,
+        "fcp": 544.5,
+        "lcp": 544.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 14,
+    "timestamp": 147104.139187,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 147104.153854,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 962572,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.476,
+        "tcpConnection": 104.44000000000001,
+        "tlsHandshake": 405.93800000000005,
+        "timeToFirstByte": 519.402,
+        "totalTransferTime": 1089.348,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3373,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.542,
+        "tcpConnection": 104.042,
+        "tlsHandshake": 284.84,
+        "timeToFirstByte": 718.853,
+        "totalTime": 719.982,
+        "fcp": 537.5,
+        "lcp": 537.5
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Cloudflared",
+    "measurementNumber": 15,
+    "timestamp": 151233.772884,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 151233.802916,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1100703,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.732,
+        "tcpConnection": 103.299,
+        "tlsHandshake": 266.65299999999996,
+        "timeToFirstByte": 376.59999999999997,
+        "totalTransferTime": 952.6419999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://sanchaar.remedium.world/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 3469,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.519,
+        "tcpConnection": 102.358,
+        "tlsHandshake": 273.596,
+        "timeToFirstByte": 699.207,
+        "totalTime": 700.029,
+        "fcp": 783.6000000014901,
+        "lcp": 783.6000000014901
+      }
+    ],
+    "totalDuration": 74094.36089000001,
+    "setupDuration": 32.41340800000762,
+    "diagnosticsDuration": 164.01295199999004,
+    "measurementDuration": 63892.384888999935,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

@@ -1,0 +1,692 @@
+[
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 1,
+    "timestamp": 44794.171187,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 44794.705052,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1748600,
+        "uploadSpeed": 0,
+        "dnsLookup": 14.602,
+        "tcpConnection": 20.91,
+        "tlsHandshake": 79.683,
+        "timeToFirstByte": 200.741,
+        "totalTransferTime": 599.666,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 26570,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.767,
+        "tcpConnection": 6.71,
+        "tlsHandshake": 68.616,
+        "timeToFirstByte": 91.107,
+        "totalTime": 91.416,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 2,
+    "timestamp": 49406.154752,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 49406.16858,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1559744,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.463,
+        "tcpConnection": 9.356,
+        "tlsHandshake": 72.53800000000001,
+        "timeToFirstByte": 138.41899999999998,
+        "totalTransferTime": 672.274,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 25318,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.748,
+        "tcpConnection": 7.908999999999999,
+        "tlsHandshake": 64.61,
+        "timeToFirstByte": 95.553,
+        "totalTime": 95.939,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 3,
+    "timestamp": 51596.02099,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 51596.030488,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1991525,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.4859999999999998,
+        "tcpConnection": 8.479000000000001,
+        "tlsHandshake": 63.972,
+        "timeToFirstByte": 126.028,
+        "totalTransferTime": 526.519,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 25653,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.8370000000000002,
+        "tcpConnection": 10.07,
+        "tlsHandshake": 74.35300000000001,
+        "timeToFirstByte": 94.117,
+        "totalTime": 94.686,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 4,
+    "timestamp": 53661.125409,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 53661.132952,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1246568,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.931,
+        "tcpConnection": 9.437,
+        "tlsHandshake": 64.621,
+        "timeToFirstByte": 163.301,
+        "totalTransferTime": 841.17,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 24256,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.227,
+        "tcpConnection": 7.751,
+        "tlsHandshake": 74.007,
+        "timeToFirstByte": 99.574,
+        "totalTime": 100.138,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 5,
+    "timestamp": 56021.40107,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 56021.415737,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1114574,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.075,
+        "tcpConnection": 8.375,
+        "tlsHandshake": 66.005,
+        "timeToFirstByte": 130.943,
+        "totalTransferTime": 940.7860000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 24655,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.8449999999999998,
+        "tcpConnection": 8.665000000000001,
+        "tlsHandshake": 77.352,
+        "timeToFirstByte": 98.292,
+        "totalTime": 98.518,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 6,
+    "timestamp": 59396.625484,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 59396.631769,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 983022,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.1879999999999997,
+        "tcpConnection": 82.04599999999999,
+        "tlsHandshake": 174.43200000000002,
+        "timeToFirstByte": 249.378,
+        "totalTransferTime": 1066.686,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 15499,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.7239999999999998,
+        "tcpConnection": 8.772,
+        "tlsHandshake": 110.75,
+        "timeToFirstByte": 156.018,
+        "totalTime": 156.71099999999998,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 7,
+    "timestamp": 61973.054062,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 61973.071173,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1486338,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.379,
+        "tcpConnection": 8.774000000000001,
+        "tlsHandshake": 72.46,
+        "timeToFirstByte": 166.43099999999998,
+        "totalTransferTime": 705.476,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 24466,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.634,
+        "tcpConnection": 8.661,
+        "tlsHandshake": 65.826,
+        "timeToFirstByte": 97.91,
+        "totalTime": 99.277,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 8,
+    "timestamp": 64151.386317,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 64151.399168,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1555180,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.319,
+        "tcpConnection": 9.25,
+        "tlsHandshake": 76.059,
+        "timeToFirstByte": 149.642,
+        "totalTransferTime": 674.2470000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 29737,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.556,
+        "tcpConnection": 8.177999999999999,
+        "tlsHandshake": 62.529,
+        "timeToFirstByte": 80.889,
+        "totalTime": 81.681,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 9,
+    "timestamp": 66416.829458,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 66416.847127,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1985003,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.81,
+        "tcpConnection": 12.022,
+        "tlsHandshake": 69.108,
+        "timeToFirstByte": 141.293,
+        "totalTransferTime": 528.249,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 29416,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.425,
+        "tcpConnection": 6.314,
+        "tlsHandshake": 63.505,
+        "timeToFirstByte": 81.93,
+        "totalTime": 82.574,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 10,
+    "timestamp": 68399.413579,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 68399.42217,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1776777,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.917,
+        "tcpConnection": 8.853,
+        "tlsHandshake": 67.51,
+        "timeToFirstByte": 137.89100000000002,
+        "totalTransferTime": 590.1560000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 26926,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.023,
+        "tcpConnection": 8.145,
+        "tlsHandshake": 70.91,
+        "timeToFirstByte": 89.28800000000001,
+        "totalTime": 90.207,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 11,
+    "timestamp": 70487.562568,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 70487.571089,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1537602,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.8370000000000002,
+        "tcpConnection": 9.224,
+        "tlsHandshake": 62.155,
+        "timeToFirstByte": 151.899,
+        "totalTransferTime": 681.9549999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 22362,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.629,
+        "tcpConnection": 7.252,
+        "tlsHandshake": 72.461,
+        "timeToFirstByte": 107.867,
+        "totalTime": 108.621,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 12,
+    "timestamp": 72680.873022,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 72680.884336,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1903504,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.3290000000000002,
+        "tcpConnection": 6.953,
+        "tlsHandshake": 70.68199999999999,
+        "timeToFirstByte": 126.84899999999999,
+        "totalTransferTime": 550.866,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 19199,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.8719999999999999,
+        "tcpConnection": 7.828,
+        "tlsHandshake": 77.61800000000001,
+        "timeToFirstByte": 125.35499999999999,
+        "totalTime": 126.51399999999998,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 13,
+    "timestamp": 75139.994903,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 75140.010966,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1957346,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.443,
+        "tcpConnection": 12.25,
+        "tlsHandshake": 86.316,
+        "timeToFirstByte": 207.304,
+        "totalTransferTime": 535.713,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 12215,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.726,
+        "tcpConnection": 8.706999999999999,
+        "tlsHandshake": 159.29299999999998,
+        "timeToFirstByte": 198.243,
+        "totalTime": 198.847,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 14,
+    "timestamp": 77344.416242,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 77344.438242,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1914196,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.9980000000000002,
+        "tcpConnection": 7.39,
+        "tlsHandshake": 65.687,
+        "timeToFirstByte": 143.702,
+        "totalTransferTime": 547.789,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 22288,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.126,
+        "tcpConnection": 8.298,
+        "tlsHandshake": 74.51299999999999,
+        "timeToFirstByte": 108.24000000000001,
+        "totalTime": 108.97900000000001,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "Ngrok",
+    "measurementNumber": 15,
+    "timestamp": 79488.448261,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 79488.458807,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 2159999,
+        "uploadSpeed": 0,
+        "dnsLookup": 1.842,
+        "tcpConnection": 7.911,
+        "tlsHandshake": 74.274,
+        "timeToFirstByte": 152.024,
+        "totalTransferTime": 485.452,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://d128-110-226-179-214.ngrok-free.app/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 24791,
+        "uploadSpeed": 0,
+        "dnsLookup": 2.472,
+        "tcpConnection": 9.945,
+        "tlsHandshake": 66.693,
+        "timeToFirstByte": 97.289,
+        "totalTime": 97.979,
+        "fcp": 0,
+        "lcp": 0
+      }
+    ],
+    "totalDuration": 56941.14456,
+    "setupDuration": 10140.238887999996,
+    "diagnosticsDuration": 141.96599399999832,
+    "measurementDuration": 36651.87196699996,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]

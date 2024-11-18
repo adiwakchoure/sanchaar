@@ -1,0 +1,692 @@
+[
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 1,
+    "timestamp": 170641.610611,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 170641.621646,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 749531,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.555,
+        "tcpConnection": 13.131,
+        "tlsHandshake": 94.351,
+        "timeToFirstByte": 637.011,
+        "totalTransferTime": 1398.9750000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14694,
+        "uploadSpeed": 0,
+        "dnsLookup": 9.139,
+        "tcpConnection": 20.671,
+        "tlsHandshake": 94.957,
+        "timeToFirstByte": 164.768,
+        "totalTime": 165.3,
+        "fcp": 600.6999999955297,
+        "lcp": 600.6999999955297
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 2,
+    "timestamp": 174109.224712,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 174109.231976,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1119760,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.25,
+        "tcpConnection": 16.129,
+        "tlsHandshake": 83.71199999999999,
+        "timeToFirstByte": 405.063,
+        "totalTransferTime": 936.429,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 15364,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.566,
+        "tcpConnection": 14.302999999999999,
+        "tlsHandshake": 89.02,
+        "timeToFirstByte": 157.444,
+        "totalTime": 158.08700000000002,
+        "fcp": 432.5,
+        "lcp": 432.5
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 3,
+    "timestamp": 176901.985142,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 176901.993802,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1258356,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.699,
+        "tcpConnection": 14.276,
+        "tlsHandshake": 74.217,
+        "timeToFirstByte": 160.696,
+        "totalTransferTime": 833.29,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 15848,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.77,
+        "tcpConnection": 15.219,
+        "tlsHandshake": 78.46000000000001,
+        "timeToFirstByte": 153.043,
+        "totalTime": 153.262,
+        "fcp": 289.5,
+        "lcp": 289.5
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 4,
+    "timestamp": 179364.285632,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 179364.297715,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1279134,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.746,
+        "tcpConnection": 15.796000000000001,
+        "tlsHandshake": 85.069,
+        "timeToFirstByte": 170.216,
+        "totalTransferTime": 819.754,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 12854,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.912,
+        "tcpConnection": 16.889000000000003,
+        "tlsHandshake": 106.06400000000001,
+        "timeToFirstByte": 188.72,
+        "totalTime": 188.954,
+        "fcp": 318.20000000298023,
+        "lcp": 318.20000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 5,
+    "timestamp": 181903.504533,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 181903.514031,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1216490,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.424,
+        "tcpConnection": 13.716000000000001,
+        "tlsHandshake": 84.593,
+        "timeToFirstByte": 171.991,
+        "totalTransferTime": 861.968,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 16244,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.876,
+        "tcpConnection": 15.858,
+        "tlsHandshake": 75.56400000000001,
+        "timeToFirstByte": 149.204,
+        "totalTime": 149.532,
+        "fcp": 302.20000000298023,
+        "lcp": 302.20000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 6,
+    "timestamp": 184413.038509,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 184413.057157,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1724484,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.5149999999999997,
+        "tcpConnection": 13.653,
+        "tlsHandshake": 77.082,
+        "timeToFirstByte": 147.97199999999998,
+        "totalTransferTime": 608.052,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 16531,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.549,
+        "tcpConnection": 15.959999999999999,
+        "tlsHandshake": 81.246,
+        "timeToFirstByte": 146.636,
+        "totalTime": 146.93200000000002,
+        "fcp": 313.6000000014901,
+        "lcp": 313.6000000014901
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 7,
+    "timestamp": 186688.424931,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 186688.432684,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1656264,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.94,
+        "tcpConnection": 14.239999999999998,
+        "tlsHandshake": 76.892,
+        "timeToFirstByte": 165.039,
+        "totalTransferTime": 633.097,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 12442,
+        "uploadSpeed": 0,
+        "dnsLookup": 7.355,
+        "tcpConnection": 23.975,
+        "tlsHandshake": 105.185,
+        "timeToFirstByte": 194.72500000000002,
+        "totalTime": 195.215,
+        "fcp": 341.70000000298023,
+        "lcp": 341.70000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 8,
+    "timestamp": 189143.687392,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 189143.71456,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1535985,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.202,
+        "tcpConnection": 14.912999999999998,
+        "tlsHandshake": 105.89,
+        "timeToFirstByte": 182.758,
+        "totalTransferTime": 682.673,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 15569,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.856,
+        "tcpConnection": 16.060000000000002,
+        "tlsHandshake": 82.511,
+        "timeToFirstByte": 155.765,
+        "totalTime": 156.012,
+        "fcp": 296.70000000298023,
+        "lcp": 296.70000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 9,
+    "timestamp": 191531.69892,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 191531.713098,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1424349,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.683,
+        "tcpConnection": 16.527,
+        "tlsHandshake": 75.84200000000001,
+        "timeToFirstByte": 157.84799999999998,
+        "totalTransferTime": 736.179,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14084,
+        "uploadSpeed": 0,
+        "dnsLookup": 24.181,
+        "tcpConnection": 33.910999999999994,
+        "tlsHandshake": 103.453,
+        "timeToFirstByte": 172.21800000000002,
+        "totalTime": 172.464,
+        "fcp": 319.6000000014901,
+        "lcp": 319.6000000014901
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 10,
+    "timestamp": 193889.193088,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 193889.212015,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1621944,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.763,
+        "tcpConnection": 18.915000000000003,
+        "tlsHandshake": 81.141,
+        "timeToFirstByte": 166.053,
+        "totalTransferTime": 646.4929999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14754,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.545999999999999,
+        "tcpConnection": 18.726,
+        "tlsHandshake": 79.29700000000001,
+        "timeToFirstByte": 164.46099999999998,
+        "totalTime": 164.633,
+        "fcp": 309.70000000298023,
+        "lcp": 309.70000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 11,
+    "timestamp": 196173.378026,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 196173.385638,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1772686,
+        "uploadSpeed": 0,
+        "dnsLookup": 6.012,
+        "tcpConnection": 18.279,
+        "tlsHandshake": 91.28699999999999,
+        "timeToFirstByte": 182.062,
+        "totalTransferTime": 591.518,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14831,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.8240000000000003,
+        "tcpConnection": 16.282999999999998,
+        "tlsHandshake": 84.221,
+        "timeToFirstByte": 163.497,
+        "totalTime": 163.77700000000002,
+        "fcp": 307.70000000298023,
+        "lcp": 307.70000000298023
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 12,
+    "timestamp": 198407.793546,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 198407.801228,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1398683,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.727,
+        "tcpConnection": 15.378,
+        "tlsHandshake": 80.182,
+        "timeToFirstByte": 194.64100000000002,
+        "totalTransferTime": 749.688,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 16400,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.247,
+        "tcpConnection": 14.298,
+        "tlsHandshake": 74.408,
+        "timeToFirstByte": 147.85000000000002,
+        "totalTime": 148.101,
+        "fcp": 328.5,
+        "lcp": 328.5
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 13,
+    "timestamp": 200767.605601,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 200767.613842,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1919547,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.675999999999999,
+        "tcpConnection": 15.25,
+        "tlsHandshake": 85.691,
+        "timeToFirstByte": 159.592,
+        "totalTransferTime": 546.2620000000001,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14702,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.44,
+        "tcpConnection": 16.358,
+        "tlsHandshake": 97.22,
+        "timeToFirstByte": 164.988,
+        "totalTime": 165.212,
+        "fcp": 509.30000000447035,
+        "lcp": 509.30000000447035
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 14,
+    "timestamp": 203163.256003,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 203163.261172,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1531655,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.273,
+        "tcpConnection": 15.124,
+        "tlsHandshake": 83.01899999999999,
+        "timeToFirstByte": 153.392,
+        "totalTransferTime": 684.603,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 14106,
+        "uploadSpeed": 0,
+        "dnsLookup": 4.119000000000001,
+        "tcpConnection": 14.109,
+        "tlsHandshake": 99.07100000000001,
+        "timeToFirstByte": 171.934,
+        "totalTime": 172.18900000000002,
+        "fcp": 380.6000000014901,
+        "lcp": 380.6000000014901
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  },
+  {
+    "toolName": "DevTunnel",
+    "measurementNumber": 15,
+    "timestamp": 205585.808371,
+    "fileTransfers": [
+      {
+        "filename": "A_1MB.bin",
+        "timestamp": 205585.81312,
+        "fileSize": 1048576,
+        "contentType": "application/octet-stream",
+        "transferSuccess": true,
+        "statusCode": 200,
+        "downloadSpeed": 1415600,
+        "uploadSpeed": 0,
+        "dnsLookup": 3.251,
+        "tcpConnection": 16.218,
+        "tlsHandshake": 81.376,
+        "timeToFirstByte": 172.444,
+        "totalTransferTime": 740.7289999999999,
+        "hashMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "webTests": [
+      {
+        "url": "https://vvdtzp3l.inc1.devtunnels.ms:3000/webtest",
+        "statusCode": 200,
+        "downloadSpeed": 16013,
+        "uploadSpeed": 0,
+        "dnsLookup": 5.594,
+        "tcpConnection": 16.57,
+        "tlsHandshake": 81.172,
+        "timeToFirstByte": 151.44299999999998,
+        "totalTime": 151.681,
+        "fcp": 314.29999999701977,
+        "lcp": 314.29999999701977
+      }
+    ],
+    "totalDuration": 52381.70582900001,
+    "setupDuration": 5022.798447000008,
+    "diagnosticsDuration": 51.15604299999541,
+    "measurementDuration": 37302.38663600004,
+    "hasErrors": false,
+    "errorCount": 0,
+    "errors": []
+  }
+]
