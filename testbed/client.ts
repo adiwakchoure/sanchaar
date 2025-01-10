@@ -18,7 +18,7 @@ const TOR_SOCKS_PROXY = `socks5h://${TOR_SOCKS_HOST}:${TOR_SOCKS_PORT}`;
 
 
 // const SERVER_HOST = 'localhost';
-const SERVER_HOST = 'localhost';
+const SERVER_HOST = '192.168.1.25';
 const SERVER_PORT = 3000;
 const SERVER_URL = `http://${SERVER_HOST}:${SERVER_PORT}`;
 // const FILE_SIZES = [1024, 10240, 102400, 1048576]; // All sizes in bytes

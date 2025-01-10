@@ -94,7 +94,7 @@ export class LocalTunnel extends BaseTunnel {
 
         if (urlMatch) {
           const localTunnelUrl = urlMatch[1];
-          console.log(`LocalTunnel URL: ${localTunnelUrl}`);
+          console.log(`LocalTunnel URL: ${localTunnelUrl}`); //removed the variable and hardcoded it : ${password}
           
           // Get the tunnel password using the provided command
           this.getTunnelPassword()
@@ -134,33 +134,53 @@ export class LocalTunnel extends BaseTunnel {
 }
 
 export class CloudflareTunnel extends BaseTunnel {
-    name = 'Cloudflared';
-    postSetupCommands = [['echo', 'post cloudflare setup v2!!']];
-    preSetupCommands = [];
-    preStartCommands = [];
-  
-    async launchTunnel(_: TunnelOptions): Promise<string> {
-      this.process = spawn('cloudflared', ['tunnel', 'run', 'sanchaar']);
-      
-      return new Promise((resolve, reject) => {
-        // Directly resolve with the fixed URL
-        const url = 'https://sanchaar.remedium.world';
-        console.log(`Tunnel URL: ${url}`);
-        resolve(url);
-  
-        this.process.stderr.on('data', (data: Buffer) => {
-          const output = data.toString();
-          if (output.includes('error')) {
-            reject(new Error('Failed to start Cloudflare Tunnel'));
-          }
-        });
-  
-        setTimeout(() => {
-          reject(new Error('Timeout: Failed to start Cloudflare Tunnel'));
-        }, 10000);
+  name = 'Cloudflared';
+  preSetupCommands = [];
+  preStartCommands = [];
+
+  async launchTunnel({ port = 8000 }: TunnelOptions): Promise<string> {
+    // Start the Cloudflare tunnel process
+    this.process = spawn('cloudflared', ['tunnel', '--url', `http://localhost:${port}`], { shell: true });
+
+    return new Promise((resolve, reject) => {
+      let tunnelUrl: string | null = null;
+
+      const handleOutput = (data: Buffer) => {
+        const output = data.toString();
+        console.log(`Cloudflared Output: ${output}`);
+
+        // Match the specific URL pattern for Cloudflare Tunnel
+        const urlMatch = output.match(/https?:\/\/[a-z0-9-]+\.trycloudflare\.com/);
+        if (urlMatch) {
+          tunnelUrl = urlMatch[0];
+          console.log(`Cloudflare Tunnel URL: ${tunnelUrl}`);
+        }
+      };
+
+      // Capture both stdout and stderr output
+      this.process.stdout.on('data', handleOutput);
+      this.process.stderr.on('data', handleOutput);
+
+      // Process exit handling
+      this.process.on('exit', (code) => {
+        if (code === 0 && tunnelUrl) {
+          resolve(tunnelUrl);
+        } else {
+          reject(new Error('Cloudflare Tunnel failed to launch or URL was not detected.'));
+        }
       });
-    }
+
+      // Timeout handling
+      setTimeout(() => {
+        if (tunnelUrl) {
+          resolve(tunnelUrl);
+        } else {
+          reject(new Error('Timeout: Failed to start Cloudflare Tunnel or detect the URL.'));
+        }
+      }, 15000); // Timeout after 15 seconds
+    });
   }
+}
 
 export class PagekiteTunnel extends BaseTunnel {
   name = 'Pagekite';
@@ -510,7 +530,7 @@ export class PagekiteTunnel extends BaseTunnel {
     preStartCommands = [];
   
     async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
-      this.process = spawn('tailscale', ['funnel', port.toString()], { shell: true });
+      this.process = spawn('sudo tailscale', ['funnel', port.toString()], { shell: true });
   
       return new Promise((resolve, reject) => {
         const urlRegex = /(https:\/\/[^\s]+\.ts\.net\/)/;
@@ -621,7 +641,7 @@ export class PagekiteTunnel extends BaseTunnel {
     preStartCommands = [];
   
     async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
-      this.process = spawn('zrok', ['share', 'public', `http://localhost:${port}`], { shell: true });
+      this.process = spawn('./zrok', ['share', 'public', `http://localhost:${port}`], { shell: true });
   
       return new Promise((resolve, reject) => {
         this.process.stdout.on('data', (data: Buffer) => {
@@ -690,41 +710,45 @@ export class PagekiteTunnel extends BaseTunnel {
     }
   }
 
-  export class PacketriotTunnel extends BaseTunnel {
-    name = 'Packetriot';
-    preSetupCommands = [];
-    preStartCommands = [];
-  
-    async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
-      this.process = spawn('pktriot', ['http', port.toString()]);
-  
-      return new Promise((resolve, reject) => {
-        this.process.stdout.on('data', (data: Buffer) => {
-          const output = data.toString();
-          const subdomainMatch = output.match(/(\w+-\w+-\d+\.pktriot\.net)/);
-          if (subdomainMatch) {
-            const fullUrl = `http://${subdomainMatch[1]}`;
-            console.log(`Packetriot URL: ${fullUrl}`);
-            resolve(fullUrl);
-          }
-        });
-  
-        this.process.stderr.on('data', (data: Buffer) => {
-          // Suppress stderr output
-        });
-  
-        this.process.on('close', (code) => {
-          if (code !== 0) {
-            reject(new Error('Failed to start Packetriot Tunnel'));
-          }
-        });
-  
-        setTimeout(() => {
-          reject(new Error('Timeout: Failed to start Packetriot Tunnel'));
-        }, 10000); // Set a reasonable timeout
+import { spawn, ChildProcess } from 'child_process';
+
+export class PacketriotTunnel extends BaseTunnel {
+  name = 'Packetriot';
+  preSetupCommands = [];
+  preStartCommands = [];
+  process!: ChildProcess;
+
+  async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
+    this.process = spawn('sudo', ['pktriot', 'http', port.toString()]);
+
+    return new Promise((resolve, reject) => {
+      this.process.stdout.on('data', (data: Buffer) => {
+        const output = data.toString();
+        const subdomainMatch = output.match(/(\w+-\w+-\d+\.pktriot\.net)/);
+        if (subdomainMatch) {
+          const fullUrl = `http://${subdomainMatch[1]}`;
+          console.log(`Packetriot URL: ${fullUrl}`);
+          resolve(fullUrl);
+        }
       });
-    }
+
+      this.process.stderr.on('data', (data: Buffer) => {
+        // Suppress stderr output or handle it as needed
+      });
+
+      this.process.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error('Failed to start Packetriot Tunnel'));
+        }
+      });
+
+      setTimeout(() => {
+        reject(new Error('Timeout: Failed to start Packetriot Tunnel'));
+      }, 10000); // Set a reasonable timeout
+    });
   }
+}
+
 
   export class BoreDigitalTunnel extends BaseTunnel {
     name = 'BoreDigital';
@@ -1164,10 +1188,12 @@ export class OnionpipeTunnel extends BaseTunnel {
   name = 'Onionpipe';
   preSetupCommands = [];
   preStartCommands = [];
+  process: any;
 
   async launchTunnel({ port = 3000 }: TunnelOptions): Promise<string> {
     await this.ensureTorRunning();
 
+    // Start the Onionpipe process
     this.process = spawn('onionpipe', [port.toString()]);
 
     return new Promise((resolve, reject) => {
@@ -1176,11 +1202,14 @@ export class OnionpipeTunnel extends BaseTunnel {
         const lines = output.split('\n');
         for (const line of lines) {
           if (line.includes('.onion:')) {
-            const parts = line.split('>');
-            const onionUrl = parts[1].trim();
-            console.log(`Onionpipe URL: ${onionUrl}`);
-            resolve(onionUrl);
-            break;
+            // Extract the .onion URL, removing ':80'
+            const match = line.match(/([a-z2-7]{16,56}\.onion):80/);
+            if (match) {
+              const onionUrl = match[1];
+              console.log(`Onionpipe URL: ${onionUrl}`);
+              resolve(onionUrl);
+              return;
+            }
           }
         }
       };
@@ -1188,18 +1217,25 @@ export class OnionpipeTunnel extends BaseTunnel {
       this.process.stdout.on('data', handleOutput);
       this.process.stderr.on('data', handleOutput);
 
+      this.process.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error('Onionpipe process exited with an error'));
+        }
+      });
+
       setTimeout(() => {
         reject(new Error('Timeout: Failed to start Onionpipe Tunnel'));
-      }, 30000);
+      }, 30000); // 30-second timeout
     });
   }
 
+  // Ensures Tor is running
   private async ensureTorRunning(): Promise<void> {
     return new Promise((resolve, reject) => {
-      exec('pgrep tor', async (error) => {
+      exec('pgrep tor', (error) => {
         if (error) {
           console.log('Starting Tor service...');
-          exec('service tor start', (startError, stdout, stderr) => {
+          exec('service tor start', (startError) => {
             if (startError) {
               reject(new Error(`Failed to start Tor: ${startError.message}`));
             } else {
@@ -1209,12 +1245,13 @@ export class OnionpipeTunnel extends BaseTunnel {
           });
         } else {
           console.log('Tor service is already running');
-          resolve();
+         resolve();
         }
       });
     });
   }
 }
+
 
   
 export const tunnelTools: TunnelTool[] = [
@@ -1237,13 +1274,13 @@ export const tunnelTools: TunnelTool[] = [
   new OpenportTunnel(),
   new TunwgTunnel(),
   new PacketriotTunnel(),
-  // new BoreDigitalTunnel(),
+  //new BoreDigitalTunnel(),
   new LocalhostRunTunnel(),
   new BeeceptorTunnel(), 
-  // new Btunnel(),
+  new Btunnel(),
   new PagekiteTunnel(),
   new TunnelPyjamas(),
-  // new EphemeralHiddenServiceTunnel(),
+  //new EphemeralHiddenServiceTunnel(),
 ]
 
 // async function executeTool(toolName: string, options: TunnelOptions = { port: 3000, urlPattern: /https:\/\/[^\s]+/ }) {
@@ -1365,7 +1402,1324 @@ async function runAllTools() {
   console.log(`Total tools: ${tunnelTools.length}`);
 }
 
-// runAllTools();
+//runAllTools();
 
-executeTool(new TelebitTunnel());
-// main();
+//executeTool(new TelebitTunnel());
+main();
+                                                                                                               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
